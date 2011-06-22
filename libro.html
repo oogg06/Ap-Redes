@@ -429,23 +429,19 @@ ul.auto-toc {
 <h3>3.1. Principios</h3>
 <div class="section" id="tolerancia-a-fallas">
 <h4>3.1.1 Tolerancia a fallas</h4>
-<p>Es la capacidad de la red para recuperarse automáticamente de fallos en determinados puntos de la red.</p>
-<p>¿Como se consigue?. Por medio de enlaces redundantes que permiten tomar varios caminos a un mismo destino.</p>
+<p>Es la capacidad de la red para recuperarse automáticamente de fallos en determinados puntos de la red.¿Como se consigue?. Por medio de enlaces redundantes que permiten tomar varios caminos a un mismo destino.</p>
 </div>
 <div class="section" id="escalabilidad">
 <h4>3.1.2 Escalabilidad</h4>
-<p>Es la capacidad para aumentar de tamaño o prestaciones sin que el conjunto del sistema se vea ralentizado o degradado.</p>
-<p>¿Como se consigue?. Se consigue haciendo que el diseño no implique el uso de puntos centrales.</p>
+<p>Es la capacidad para aumentar de tamaño o prestaciones sin que el conjunto del sistema se vea ralentizado o degradado.¿Como se consigue?. Se consigue haciendo que el diseño no implique el uso de puntos centrales.</p>
 </div>
 <div class="section" id="calidad-de-servicio">
 <h4>3.1.3 Calidad de servicio</h4>
-<p>Es la garantía de que la red ofrece el mejor servicio posible.</p>
-<p>¿Como se consigue?. Forzando el uso de protocolos que fomentan la colaboración entre máquinas.</p>
+<p>Es la garantía de que la red ofrece el mejor servicio posible. ¿Como se consigue?. Forzando el uso de protocolos que fomentan la colaboración entre máquinas.</p>
 </div>
 <div class="section" id="seguridad">
 <h4>3.1.4 Seguridad</h4>
-<p>Es la certeza de que la información es procesada solo por quien corresponde.</p>
-<p>¿Como se consigue?: Mecanismos de cifrado.</p>
+<p>Es la certeza de que la información es procesada solo por quien corresponde.¿Como se consigue?: Mecanismos de cifrado.</p>
 </div>
 </div>
 <div class="section" id="redes-basadas-en-conmutacion-de-paquetes">
@@ -475,8 +471,8 @@ ul.auto-toc {
 <li>Usuarios: se limitan a consumir y generar datos.</li>
 <li>ISP: Internet Service Provider o Proveedor de acceso. Son empresas que proporcionan a los usuarios finales los datos necesarios para poder acceder a Internet.</li>
 <li>Intercambiadores de datos o puntos neutros.</li>
+<li>Permiten la interconexión de proveedores.</li>
 </ol>
-<p>Permiten la interconexión de proveedores.</p>
 </div>
 <div class="section" id="estandares-comunes">
 <h4>3.4.2 Estándares comunes</h4>
@@ -502,8 +498,7 @@ ul.auto-toc {
 <li>La información podría ser modificada</li>
 <li>Se podría modificar la autoría de un mensaje.</li>
 </ol>
-<p>Hay otros factores ligados a lo económico. (Phishing)</p>
-<p>En cualquier caso lograr un cierto grado de seguridad sí es posible. Para ello es muy recomendable utilizar mecanismos de cifrado.</p>
+<p>Hay otros factores ligados a lo económico. (Phishing). En cualquier caso lograr un cierto grado de seguridad sí es posible. Para ello es muy recomendable utilizar mecanismos de cifrado.</p>
 </div>
 <div class="section" id="integridad-en-redes">
 <h2>3.7 Integridad en redes.</h2>
@@ -522,14 +517,44 @@ ul.auto-toc {
 <h3>4.1 Conversión de decimal a binario</h3>
 <p>Nos dan una cifra como 156 (en base 10) y queremos conocer la representación que hace la máquina (en base 2, en binario)</p>
 <p>El procedimiento consiste en ir dividiendo entre dos hasta que no podamos seguir. Despues, se toma el último cociente y todos los restos de final a principio. Esa secuencia de 0 y 1 es el número binario buscado</p>
-<p>156:2   Cociente: 78    Resto: 0</p>
-<p>78:2    Cociente: 39    Resto: 0</p>
-<p>39:2    Cociente: 19    Resto: 1</p>
-<p>19:2    Cociente:  9    Resto: 1</p>
-<p>9:2     Cociente:  4    Resto: 1</p>
-<p>4:2     Cociente:  2    Resto: 0</p>
-<p>2:2     Cociente:  1    Resto: 0</p>
-<p>Tomamos el último cociente y el último resto y escribimos los restos hacia arriba</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="22%" />
+<col width="43%" />
+<col width="35%" />
+</colgroup>
+<tbody valign="top">
+<tr><td>156:2</td>
+<td>Cociente: 78</td>
+<td>Resto: 0</td>
+</tr>
+<tr><td>78:2</td>
+<td>Cociente: 39</td>
+<td>Resto: 0</td>
+</tr>
+<tr><td>39:2</td>
+<td>Cociente: 19</td>
+<td>Resto: 1</td>
+</tr>
+<tr><td>19:2</td>
+<td>Cociente:  9</td>
+<td>Resto: 1</td>
+</tr>
+<tr><td>9:2</td>
+<td>Cociente:  4</td>
+<td>Resto: 1</td>
+</tr>
+<tr><td>4:2</td>
+<td>Cociente:  2</td>
+<td>Resto: 0</td>
+</tr>
+<tr><td>2:2</td>
+<td>Cociente:  1</td>
+<td>Resto: 0</td>
+</tr>
+</tbody>
+</table>
+<p>Tomamos el último cociente y el último resto y escribimos los restos leyéndolos hacia arriba</p>
 <p>10011100 es en binario el número decimal 156</p>
 <p><strong>Ejercicio</strong> 195 en base decimal necesita ser convertido a binario</p>
 <p>195:2   Cociente: 97    Resto: 1
@@ -1185,42 +1210,9 @@ Bits 8 7  4  21</p>
 <div class="section" id="modulacion-am">
 <h4>1.1.1 Modulacion AM</h4>
 <p>La modulación en amplitud permite alcances mucho mayores y se basa en la alteración de la amplitud o altura de la señal</p>
-<img alt="Ejemplo de modulación de amplitud" class="align-center" src="img/t1/ModulacionAM.png" />
 <p>Utilizando lápiz y papel dibuja la señal generada utilizando un esquema de modulacion AM de 4 señales que envíe la cadena de bits 0111.0010</p>
 <p>Solucion</p>
-<p>1111            |               |
-1110            |               |
-1101            |               |
-1100            |               |
-1011            |               |
-1010            |               |
-1001            |               |
-1000            |               |
-0111            |               |
-0110            |               |
-0101            |               |
-0100            |               |
-0011            |               |
-0010            |               |
-0001            |               |
-0000            |               |
-----------------+---------------+--------------
-0000            |               |
-0001            |               |
-0010            |               |
-0011            |               |
-0100            |               |
-0101            |               |
-0110            |               |
-0111            |               |
-1000            |               |
-1001            |               |
-1010            |               |
-1011            |               |
-1100            |               |
-1101            |               |
-1110            |               |
-1111            |               |</p>
+<img alt="Ejemplo de modulación de amplitud" class="align-center" src="img/t2/SolucionEjercicio1FM.png" />
 <p>La creación de señales tiene una serie de principios básicos:</p>
 <ol class="loweralpha simple">
 <li>Todos los tiempos son iguales: todos los intervalos de tiempo deben ser igual de anchos.</li>

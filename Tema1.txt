@@ -121,28 +121,20 @@ Las redes informáticas se han construido en base a una serie de principios básic
 3.1.1 Tolerancia a fallas
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Es la capacidad de la red para recuperarse automáticamente de fallos en determinados puntos de la red.
-
-¿Como se consigue?. Por medio de enlaces redundantes que permiten tomar varios caminos a un mismo destino.
+Es la capacidad de la red para recuperarse automáticamente de fallos en determinados puntos de la red.¿Como se consigue?. Por medio de enlaces redundantes que permiten tomar varios caminos a un mismo destino.
 
 3.1.2 Escalabilidad
 ^^^^^^^^^^^^^^^^^^^^
-Es la capacidad para aumentar de tamaño o prestaciones sin que el conjunto del sistema se vea ralentizado o degradado.
-
-¿Como se consigue?. Se consigue haciendo que el diseño no implique el uso de puntos centrales.
+Es la capacidad para aumentar de tamaño o prestaciones sin que el conjunto del sistema se vea ralentizado o degradado.¿Como se consigue?. Se consigue haciendo que el diseño no implique el uso de puntos centrales.
 
 3.1.3 Calidad de servicio
 ^^^^^^^^^^^^^^^^^^^^^^^^^
-Es la garantía de que la red ofrece el mejor servicio posible.
-
-¿Como se consigue?. Forzando el uso de protocolos que fomentan la colaboración entre máquinas.
+Es la garantía de que la red ofrece el mejor servicio posible. ¿Como se consigue?. Forzando el uso de protocolos que fomentan la colaboración entre máquinas.
 
 3.1.4 Seguridad
 ^^^^^^^^^^^^^^^
 
-Es la certeza de que la información es procesada solo por quien corresponde.
-
-¿Como se consigue?: Mecanismos de cifrado.
+Es la certeza de que la información es procesada solo por quien corresponde.¿Como se consigue?: Mecanismos de cifrado.
 
 3.2 Redes basadas en conmutación de paquetes
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -168,10 +160,10 @@ b) La eficiencia es mayor que en las redes de paquetes. Aunque todo el mundo est
 
 3.4 Características específicas de Internet.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 3.4.1 Es jerárquica.
 ^^^^^^^^^^^^^^^^^^^^
 Significa que hay un orden en cuanto a la organización de los participantes en la red. Este orden suele ser así:
-
 
 a) Usuarios: se limitan a consumir y generar datos.
 
@@ -179,7 +171,7 @@ b) ISP: Internet Service Provider o Proveedor de acceso. Son empresas que propor
 
 c) Intercambiadores de datos o puntos neutros.
 
-Permiten la interconexión de proveedores.
+d) Permiten la interconexión de proveedores.
 
 3.4.2 Estándares comunes
 ^^^^^^^^^^^^^^^^^^^^^^^^
@@ -215,9 +207,7 @@ Las redes hoy en dia transportan trafico de muchos tipos. No todo el trafico es 
 
 3) Se podría modificar la autoría de un mensaje.
 
-Hay otros factores ligados a lo económico. (Phishing)
-
-En cualquier caso lograr un cierto grado de seguridad sí es posible. Para ello es muy recomendable utilizar mecanismos de cifrado.
+Hay otros factores ligados a lo económico. (Phishing). En cualquier caso lograr un cierto grado de seguridad sí es posible. Para ello es muy recomendable utilizar mecanismos de cifrado.
 
 
 3.7 Integridad en redes.
@@ -245,21 +235,23 @@ Nos dan una cifra como 156 (en base 10) y queremos conocer la representación que
 
 El procedimiento consiste en ir dividiendo entre dos hasta que no podamos seguir. Despues, se toma el último cociente y todos los restos de final a principio. Esa secuencia de 0 y 1 es el número binario buscado
 
-156:2	Cociente: 78	Resto: 0
++--------+----------------+-------------+
+| 156:2  | Cociente: 78   |   Resto: 0  |
++--------+----------------+-------------+
+| 78:2   |  Cociente: 39  |  Resto: 0   |
++--------+----------------+-------------+
+| 39:2   |  Cociente: 19  |  Resto: 1   |
++--------+----------------+-------------+
+| 19:2   |  Cociente:  9  |  Resto: 1   |
++--------+----------------+-------------+
+| 9:2    |  Cociente:  4  |  Resto: 1   |
++--------+----------------+-------------+
+| 4:2    |  Cociente:  2  |  Resto: 0   |
++--------+----------------+-------------+
+| 2:2    |  Cociente:  1  |  Resto: 0   |
++--------+----------------+-------------+
 
-78:2	Cociente: 39	Resto: 0
-
-39:2	Cociente: 19	Resto: 1
-
-19:2	Cociente:  9	Resto: 1
-
-9:2	Cociente:  4	Resto: 1
-
-4:2	Cociente:  2	Resto: 0
-
-2:2	Cociente:  1	Resto: 0
-
-Tomamos el último cociente y el último resto y escribimos los restos hacia arriba
+Tomamos el último cociente y el último resto y escribimos los restos leyéndolos hacia arriba
 
 10011100 es en binario el número decimal 156
 

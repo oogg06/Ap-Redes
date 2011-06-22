@@ -37,48 +37,13 @@ Tanto la amplitud como la frecuencia se pueden modular lo que nos lleva a los do
 
 La modulación en amplitud permite alcances mucho mayores y se basa en la alteración de la amplitud o altura de la señal
 
-.. image:: img/t1/ModulacionAM.png
-   :align: center
-   :alt: Ejemplo de modulación de amplitud
-
 Utilizando lápiz y papel dibuja la señal generada utilizando un esquema de modulacion AM de 4 señales que envíe la cadena de bits 0111.0010
 
 Solucion
 
-1111		|		|
-1110		|		|
-1101		|		|
-1100		|		|
-1011		|		|
-1010		|		|
-1001		|		|
-1000		|		|
-0111		|		|
-0110		|		|
-0101		|		|
-0100		|		|
-0011		|		|
-0010		|		|
-0001		|		|
-0000		|		|
-----------------+---------------+--------------
-0000		|		|
-0001		|		|
-0010		|		|
-0011		|		|
-0100		|		|
-0101		|		|
-0110		|		|
-0111		|		|
-1000		|		|
-1001		|		|
-1010		|		|
-1011		|		|
-1100		|		|
-1101		|		|
-1110		|		|
-1111		|		|
-
+.. image:: img/t2/SolucionEjercicio1FM.png
+   :align: center
+   :alt: Ejemplo de modulación de amplitud
 
 
 
@@ -457,34 +422,4 @@ Utiliza una sola luz que circula en línea recta. Al ir en línea recta, la luz NO
 9.3.2 Multimodo.
 ~~~~~~~~~~~~~~~~
 La luz se dispersa. Eso conlleva que las velocidades son un poco menores. Sin embargo, al permitir la dispersión podemos usar luces LED (más baratas)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
