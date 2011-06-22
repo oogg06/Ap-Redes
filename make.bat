@@ -1,0 +1,1 @@
+/c/Python26/scripts/rst2html.py libro.rst > libro.html

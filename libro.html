@@ -1,0 +1,1494 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="Docutils 0.8: http://docutils.sourceforge.net/" />
+<title>Redes de área local</title>
+<style type="text/css">
+
+/*
+:Author: David Goodger (goodger@python.org)
+:Id: $Id: html4css1.css 6387 2010-08-13 12:23:41Z milde $
+:Copyright: This stylesheet has been placed in the public domain.
+
+Default cascading style sheet for the HTML output of Docutils.
+
+See http://docutils.sf.net/docs/howto/html-stylesheets.html for how to
+customize this style sheet.
+*/
+
+/* used to remove borders from tables and images */
+.borderless, table.borderless td, table.borderless th {
+  border: 0 }
+
+table.borderless td, table.borderless th {
+  /* Override padding for "table.docutils td" with "! important".
+     The right padding separates the table cells. */
+  padding: 0 0.5em 0 0 ! important }
+
+.first {
+  /* Override more specific margin styles with "! important". */
+  margin-top: 0 ! important }
+
+.last, .with-subtitle {
+  margin-bottom: 0 ! important }
+
+.hidden {
+  display: none }
+
+a.toc-backref {
+  text-decoration: none ;
+  color: black }
+
+blockquote.epigraph {
+  margin: 2em 5em ; }
+
+dl.docutils dd {
+  margin-bottom: 0.5em }
+
+object[type="image/svg+xml"], object[type="application/x-shockwave-flash"] {
+  overflow: hidden;
+}
+
+/* Uncomment (and remove this text!) to get bold-faced definition list terms
+dl.docutils dt {
+  font-weight: bold }
+*/
+
+div.abstract {
+  margin: 2em 5em }
+
+div.abstract p.topic-title {
+  font-weight: bold ;
+  text-align: center }
+
+div.admonition, div.attention, div.caution, div.danger, div.error,
+div.hint, div.important, div.note, div.tip, div.warning {
+  margin: 2em ;
+  border: medium outset ;
+  padding: 1em }
+
+div.admonition p.admonition-title, div.hint p.admonition-title,
+div.important p.admonition-title, div.note p.admonition-title,
+div.tip p.admonition-title {
+  font-weight: bold ;
+  font-family: sans-serif }
+
+div.attention p.admonition-title, div.caution p.admonition-title,
+div.danger p.admonition-title, div.error p.admonition-title,
+div.warning p.admonition-title {
+  color: red ;
+  font-weight: bold ;
+  font-family: sans-serif }
+
+/* Uncomment (and remove this text!) to get reduced vertical space in
+   compound paragraphs.
+div.compound .compound-first, div.compound .compound-middle {
+  margin-bottom: 0.5em }
+
+div.compound .compound-last, div.compound .compound-middle {
+  margin-top: 0.5em }
+*/
+
+div.dedication {
+  margin: 2em 5em ;
+  text-align: center ;
+  font-style: italic }
+
+div.dedication p.topic-title {
+  font-weight: bold ;
+  font-style: normal }
+
+div.figure {
+  margin-left: 2em ;
+  margin-right: 2em }
+
+div.footer, div.header {
+  clear: both;
+  font-size: smaller }
+
+div.line-block {
+  display: block ;
+  margin-top: 1em ;
+  margin-bottom: 1em }
+
+div.line-block div.line-block {
+  margin-top: 0 ;
+  margin-bottom: 0 ;
+  margin-left: 1.5em }
+
+div.sidebar {
+  margin: 0 0 0.5em 1em ;
+  border: medium outset ;
+  padding: 1em ;
+  background-color: #ffffee ;
+  width: 40% ;
+  float: right ;
+  clear: right }
+
+div.sidebar p.rubric {
+  font-family: sans-serif ;
+  font-size: medium }
+
+div.system-messages {
+  margin: 5em }
+
+div.system-messages h1 {
+  color: red }
+
+div.system-message {
+  border: medium outset ;
+  padding: 1em }
+
+div.system-message p.system-message-title {
+  color: red ;
+  font-weight: bold }
+
+div.topic {
+  margin: 2em }
+
+h1.section-subtitle, h2.section-subtitle, h3.section-subtitle,
+h4.section-subtitle, h5.section-subtitle, h6.section-subtitle {
+  margin-top: 0.4em }
+
+h1.title {
+  text-align: center }
+
+h2.subtitle {
+  text-align: center }
+
+hr.docutils {
+  width: 75% }
+
+img.align-left, .figure.align-left, object.align-left {
+  clear: left ;
+  float: left ;
+  margin-right: 1em }
+
+img.align-right, .figure.align-right, object.align-right {
+  clear: right ;
+  float: right ;
+  margin-left: 1em }
+
+img.align-center, .figure.align-center, object.align-center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.align-left {
+  text-align: left }
+
+.align-center {
+  clear: both ;
+  text-align: center }
+
+.align-right {
+  text-align: right }
+
+/* reset inner alignment in figures */
+div.align-right {
+  text-align: left }
+
+/* div.align-center * { */
+/*   text-align: left } */
+
+ol.simple, ul.simple {
+  margin-bottom: 1em }
+
+ol.arabic {
+  list-style: decimal }
+
+ol.loweralpha {
+  list-style: lower-alpha }
+
+ol.upperalpha {
+  list-style: upper-alpha }
+
+ol.lowerroman {
+  list-style: lower-roman }
+
+ol.upperroman {
+  list-style: upper-roman }
+
+p.attribution {
+  text-align: right ;
+  margin-left: 50% }
+
+p.caption {
+  font-style: italic }
+
+p.credits {
+  font-style: italic ;
+  font-size: smaller }
+
+p.label {
+  white-space: nowrap }
+
+p.rubric {
+  font-weight: bold ;
+  font-size: larger ;
+  color: maroon ;
+  text-align: center }
+
+p.sidebar-title {
+  font-family: sans-serif ;
+  font-weight: bold ;
+  font-size: larger }
+
+p.sidebar-subtitle {
+  font-family: sans-serif ;
+  font-weight: bold }
+
+p.topic-title {
+  font-weight: bold }
+
+pre.address {
+  margin-bottom: 0 ;
+  margin-top: 0 ;
+  font: inherit }
+
+pre.literal-block, pre.doctest-block {
+  margin-left: 2em ;
+  margin-right: 2em }
+
+span.classifier {
+  font-family: sans-serif ;
+  font-style: oblique }
+
+span.classifier-delimiter {
+  font-family: sans-serif ;
+  font-weight: bold }
+
+span.interpreted {
+  font-family: sans-serif }
+
+span.option {
+  white-space: nowrap }
+
+span.pre {
+  white-space: pre }
+
+span.problematic {
+  color: red }
+
+span.section-subtitle {
+  /* font-size relative to parent (h1..h6 element) */
+  font-size: 80% }
+
+table.citation {
+  border-left: solid 1px gray;
+  margin-left: 1px }
+
+table.docinfo {
+  margin: 2em 4em }
+
+table.docutils {
+  margin-top: 0.5em ;
+  margin-bottom: 0.5em }
+
+table.footnote {
+  border-left: solid 1px black;
+  margin-left: 1px }
+
+table.docutils td, table.docutils th,
+table.docinfo td, table.docinfo th {
+  padding-left: 0.5em ;
+  padding-right: 0.5em ;
+  vertical-align: top }
+
+table.docutils th.field-name, table.docinfo th.docinfo-name {
+  font-weight: bold ;
+  text-align: left ;
+  white-space: nowrap ;
+  padding-left: 0 }
+
+h1 tt.docutils, h2 tt.docutils, h3 tt.docutils,
+h4 tt.docutils, h5 tt.docutils, h6 tt.docutils {
+  font-size: 100% }
+
+ul.auto-toc {
+  list-style-type: none }
+
+</style>
+</head>
+<body>
+<div class="document" id="redes-de-area-local">
+<h1 class="title">Redes de área local</h1>
+<h2 class="subtitle" id="apuntes-breves-de-la-materia">Apuntes breves de la materia</h2>
+
+<div class="section" id="tema-1-introduccion">
+<h1>Tema 1: Introducción</h1>
+<div class="section" id="aproximacion">
+<h2>0. Aproximación.</h2>
+<p>¿Ventajas de la comunicación instantánea?</p>
+<ul class="simple">
+<li>Facilidad de comunicación de ideas.</li>
+<li>Agilizar trámites</li>
+<li>Información comercial y bancaria.</li>
+</ul>
+<p>Un inconveniente de muy alto nivel es el de la privacidad.</p>
+</div>
+<div class="section" id="caracteristicas-de-algunas-herramientas">
+<h2>1. Características de algunas herramientas</h2>
+<div class="section" id="mensajeria-instantanea-o-im">
+<h3>1.1 Mensajería instantánea o IM.</h3>
+<ul class="simple">
+<li>Instantánea: facilita mucho la comunicación.</li>
+<li>Proporcionan audio y vídeo.</li>
+<li>Herramientas gratuitas.</li>
+<li>Multi-usuario.</li>
+</ul>
+</div>
+<div class="section" id="blogs-weblog-o-bitacoras">
+<h3>1.2 Blogs (weblog o bitácoras).</h3>
+<ul class="simple">
+<li>Alcance universal.</li>
+<li>Libertad editorial.</li>
+<li>Anonimato.</li>
+<li>Suele haber plataformas gratuitas.</li>
+</ul>
+</div>
+<div class="section" id="podcasts">
+<h3>1.3 Podcasts</h3>
+<p>Es como un blog sonoro. Consiste simplemente en la difusión de charlas o audio por medio de ficheros de sonido.</p>
+<p>Sus ventajas son esencialmente las mismas que las de los blogs.</p>
+</div>
+<div class="section" id="wiki">
+<h3>1.4 Wiki</h3>
+<p>Un wiki es una página web modificable por cualquiera (o por casi cualquiera). Al sumar el esfuerzo de muchas personas se puede obtener información muy completa y de muy alta calidad. El inconveniente es que puede haber &quot;vandalismo&quot;.</p>
+</div>
+<div class="section" id="herramientas-de-aprendizaje">
+<h3>1.5 Herramientas de aprendizaje.</h3>
+<p>La enseñanza a distancia se ha visto reforzada y mejorada por las redes de datos. Es mucho más sencillo proporcionar información académica, tutorías, ejercicios, exámenes y demás mediante el uso de ciertos programas.</p>
+</div>
+<div class="section" id="cambios-en-la-vida-diaria">
+<h3>1.6 Cambios en la vida diaria</h3>
+<ul class="simple">
+<li>Pago por tarjeta.</li>
+<li>Cajeros automáticos</li>
+<li>Centralitas completas en casa.</li>
+</ul>
+</div>
+<div class="section" id="ocio">
+<h3>1.7 Ocio</h3>
+<ul class="simple">
+<li>Búsqueda de hoteles/viajes/vuelos...</li>
+<li>Juegos on-line</li>
+<li>Chats/Grupos de interés.</li>
+<li>Vídeo de distribución general</li>
+<li>Vídeo bajo demanda (Imagenio)</li>
+</ul>
+</div>
+</div>
+<div class="section" id="funcion-y-componentes-de-redes-de-datos">
+<h2>2. Función y componentes de redes de datos</h2>
+<div class="section" id="caracteristicas-basicas">
+<h3>2.1 Características básicas</h3>
+<p>Que en una hipotética comunicación siempre se debe empezar por tener unas reglas comunes que todo el mundo respeta. A pesar de que se envíe una información nunca hay garantías de que llegue, puede que sea necesario reenviarla.</p>
+<p>Además, es muy posible que también haya que tener mecanismos para mejorar la eficiencia de la comunicación.</p>
+</div>
+<div class="section" id="funcionamiento">
+<h3>2.2 Funcionamiento</h3>
+<p>Las redes de datos se basan en una jerarquía. Cada miembro de la jerarquía solo conoce un pequeño conjunto de la información total. Al colaborar todas juntas, se consigue el trasiego de información entre puntos muy lejanos.</p>
+<p>En esencia, la funcion de las redes es transportar datos de un sitio a otro. Para ello, pueden utilizar mecanismos muy diversos. Sin embargo, casi todos los mecanismos suelen basarse en los mismos principios.</p>
+</div>
+<div class="section" id="elementos-en-redes">
+<h3>2.3 Elementos en redes:</h3>
+<div class="section" id="dispositivos">
+<h4>2.3.1 Dispositivos</h4>
+<p>Hay dispositivos que no son de uso directo pero son necesarios, como los router.</p>
+</div>
+<div class="section" id="medios">
+<h4>2.3.2 Medios</h4>
+<ul class="simple">
+<li>Medios inalámbricos: IR, Bluetooth y Wi-Fi</li>
+<li>Medios alámbricos: Cobre, fibra....</li>
+</ul>
+<p>Los inalámbricos son más inestables e inseguros pero dan soporte a usuarios móviles. Entre ellos, hay muchas diferencias en cuanto a la capacidad en relación con la distancia.</p>
+</div>
+<div class="section" id="reglas-o-protocolos">
+<h4>2.3.3 Reglas o protocolos.</h4>
+<p>Acuerdos establecidos que los fabricantes respetan con el fin de garantizar la interoperabilidad.</p>
+</div>
+<div class="section" id="mensajes">
+<h4>2.3.4 Mensajes</h4>
+<p>Los mensajes en las redes de datos pueden ser convertidos a distintos medios muchas veces, sin embargo todos los dispositivos pueden volver al formato original de forma que se pueda recuperar la información.</p>
+</div>
+</div>
+<div class="section" id="redes-convergentes">
+<h3>2.4 Redes convergentes</h3>
+<p>La tendencia actual es utilizar redes IP para todos los servicios que hay o que pueda haber. Se denomina red convergente a aquella en la que tienen cabida todos los tipos de servicios que se basan en una única infraestructura.</p>
+</div>
+</div>
+<div class="section" id="arquitectura-de-las-redes">
+<h2>3. Arquitectura de las redes.</h2>
+<p>Las redes informáticas se han construido en base a una serie de principios básicos:</p>
+<div class="section" id="principios">
+<h3>3.1. Principios</h3>
+<div class="section" id="tolerancia-a-fallas">
+<h4>3.1.1 Tolerancia a fallas</h4>
+<p>Es la capacidad de la red para recuperarse automáticamente de fallos en determinados puntos de la red.</p>
+<p>¿Como se consigue?. Por medio de enlaces redundantes que permiten tomar varios caminos a un mismo destino.</p>
+</div>
+<div class="section" id="escalabilidad">
+<h4>3.1.2 Escalabilidad</h4>
+<p>Es la capacidad para aumentar de tamaño o prestaciones sin que el conjunto del sistema se vea ralentizado o degradado.</p>
+<p>¿Como se consigue?. Se consigue haciendo que el diseño no implique el uso de puntos centrales.</p>
+</div>
+<div class="section" id="calidad-de-servicio">
+<h4>3.1.3 Calidad de servicio</h4>
+<p>Es la garantía de que la red ofrece el mejor servicio posible.</p>
+<p>¿Como se consigue?. Forzando el uso de protocolos que fomentan la colaboración entre máquinas.</p>
+</div>
+<div class="section" id="seguridad">
+<h4>3.1.4 Seguridad</h4>
+<p>Es la certeza de que la información es procesada solo por quien corresponde.</p>
+<p>¿Como se consigue?: Mecanismos de cifrado.</p>
+</div>
+</div>
+<div class="section" id="redes-basadas-en-conmutacion-de-paquetes">
+<h3>3.2 Redes basadas en conmutación de paquetes</h3>
+<p>Una red de paquetes se basa en que todo mensaje se trocea. Cada trozo se envía y procesa por separado. Si un paquete se pierde, se reenvía solo ese paquete. Esto permite que:</p>
+<ol class="loweralpha simple">
+<li>Si el receptor está ocupado procesando un paquete, el emisor queda libre para enviar otras cosas a otros nodos.</li>
+<li>Si el emisor falla al enviar un paquete, el receptor no tiene que volver a pedir un archivo completo. Esto mejora mucho la eficiencia.</li>
+<li>Si algo falla en la red que no sea el emisor ni el receptor, no habrá ningún problema porque se pueden volver a enviar solo los paquetes que se pierdan.</li>
+<li>Se obtiene una cierta seguridad ya que cada paquete puede viajar por una ruta distinta.</li>
+</ol>
+</div>
+<div class="section" id="redes-basadas-en-conmutacion-de-circuitos">
+<h3>3.3 Redes basadas en conmutación de circuitos.</h3>
+<p>Se basan en que una vez que un usuario inicia una comunicación el cable (o circuito) es para él solo, aunque no lo aproveche al 100%</p>
+<ol class="loweralpha simple">
+<li>Si un emisor o receptor quieren tener garantía absoluta de poder enviar o recibir, se puede alquilar una línea que esté a nuestra disposición todo el tiempo.</li>
+<li>La eficiencia es mayor que en las redes de paquetes. Aunque todo el mundo esté enviando una línea alquilada pertenece solo a su dueño.</li>
+</ol>
+</div>
+<div class="section" id="caracteristicas-especificas-de-internet">
+<h3>3.4 Características específicas de Internet.</h3>
+<div class="section" id="es-jerarquica">
+<h4>3.4.1 Es jerárquica.</h4>
+<p>Significa que hay un orden en cuanto a la organización de los participantes en la red. Este orden suele ser así:</p>
+<ol class="loweralpha simple">
+<li>Usuarios: se limitan a consumir y generar datos.</li>
+<li>ISP: Internet Service Provider o Proveedor de acceso. Son empresas que proporcionan a los usuarios finales los datos necesarios para poder acceder a Internet.</li>
+<li>Intercambiadores de datos o puntos neutros.</li>
+</ol>
+<p>Permiten la interconexión de proveedores.</p>
+</div>
+<div class="section" id="estandares-comunes">
+<h4>3.4.2 Estándares comunes</h4>
+<p>Un estándar es una norma cuyo cumplimiento ayuda a la interoperabilidad. Los estándares suelen ser gratuitos y cualquiera puede ceñirse a ellos. Los protocolos de Internet son publicos y gratuitos.</p>
+<p>El hecho de que los estandares sean comunes ha dado lugar a muchisima competencia y por tanto un mayor desarrollo de Internet.</p>
+</div>
+<div class="section" id="protocolos-comunes">
+<h4>3.4.3 Protocolos comunes</h4>
+<p>El desarrollo de protocolos o estandares es un proceso abierto a la comunidad. CUALQUIERA PUEDE INTENTAR MEJORAR UN PROTOCOLO O HACER UNO NUEVO.</p>
+<p>Este mecanismo es muy bueno, porque lo unico que se verifica es que un protocolo sea tecnicamente superior, sin importar de donde viene.</p>
+</div>
+</div>
+<div class="section" id="calidad-del-servicio">
+<h3>3.5 Calidad del servicio</h3>
+<p>Las redes hoy en dia transportan trafico de muchos tipos. No todo el trafico es tiene los mismos requisitos: existen mecanismos para intentar que todo el mundo obtenga lo que necesite.</p>
+</div>
+</div>
+<div class="section" id="id1">
+<h2>3.6 Seguridad</h2>
+<p>¿Por qué las redes deben ser seguras?.</p>
+<ol class="arabic simple">
+<li>Porque por ellas circula información que no debería caer en personas no relacionadas con ella.</li>
+<li>La información podría ser modificada</li>
+<li>Se podría modificar la autoría de un mensaje.</li>
+</ol>
+<p>Hay otros factores ligados a lo económico. (Phishing)</p>
+<p>En cualquier caso lograr un cierto grado de seguridad sí es posible. Para ello es muy recomendable utilizar mecanismos de cifrado.</p>
+</div>
+<div class="section" id="integridad-en-redes">
+<h2>3.7 Integridad en redes.</h2>
+<p>La integridad es la propiedad que &quot;garantiza&quot; que un mensaje no ha sido modificado por error técnico o humano.</p>
+<p>En general, para tener la máxima disponibilidad en una red, se suele recurrir a la redundancia, es decir, disponer de más de un mecanismo o dispositivo para que funcione como respaldo del principal.</p>
+</div>
+<div class="section" id="sistemas-de-numeracion">
+<h2>4. Sistemas de numeración.</h2>
+<p>Las máquinas digitales utilizan señales eléctricas para la comunicación. El sentido habitual de los términos utilizados es el siguiente</p>
+<ul class="simple">
+<li><strong>NO HAY PULSO ELÉCTRICO:</strong> Se usa un 0</li>
+<li><strong>SI HAY PULSO ELÉCTRICO:</strong> Se usa un 1</li>
+</ul>
+<p>Esto da lugar a un problema: las personas utilizan numeración basada en 10 cifras (del 0 al 9). Es necesario establecer mecanismos de conversión</p>
+<div class="section" id="conversion-de-decimal-a-binario">
+<h3>4.1 Conversión de decimal a binario</h3>
+<p>Nos dan una cifra como 156 (en base 10) y queremos conocer la representación que hace la máquina (en base 2, en binario)</p>
+<p>El procedimiento consiste en ir dividiendo entre dos hasta que no podamos seguir. Despues, se toma el último cociente y todos los restos de final a principio. Esa secuencia de 0 y 1 es el número binario buscado</p>
+<p>156:2   Cociente: 78    Resto: 0</p>
+<p>78:2    Cociente: 39    Resto: 0</p>
+<p>39:2    Cociente: 19    Resto: 1</p>
+<p>19:2    Cociente:  9    Resto: 1</p>
+<p>9:2     Cociente:  4    Resto: 1</p>
+<p>4:2     Cociente:  2    Resto: 0</p>
+<p>2:2     Cociente:  1    Resto: 0</p>
+<p>Tomamos el último cociente y el último resto y escribimos los restos hacia arriba</p>
+<p>10011100 es en binario el número decimal 156</p>
+<p><strong>Ejercicio</strong> 195 en base decimal necesita ser convertido a binario</p>
+<p>195:2   Cociente: 97    Resto: 1
+97:2    Cociente: 48    Resto: 1
+48:2    Cociente: 24    Resto: 0
+24:2    Cociente: 12    Resto: 0
+12:2    Cociente:  6    Resto: 0
+6:2     Cociente:  3    Resto: 0
+3:2     Cociente:  1    Resto: 1</p>
+<p>El resultado es 1100.0011</p>
+<p><strong>Ejercicio</strong> 231 debe pasarse a binario</p>
+<p>231:2   Cociente: 115   Resto: 1
+115:2   Cociente:  57   Resto: 1
+57:2    Cociente:  28   Resto: 1
+28:2    Cociente:  14   Resto: 0
+14:2    Cociente:   7   Resto: 0
+7:2     Cociente:   3   Resto: 1
+3:2     Cociente:   1   Resto: 1</p>
+<p>La solución es 1110.0111</p>
+<p><strong>Ejercicio propuesto</strong> 466 debe pasarse a binario (El resultado debe ser 0001.1101.0010)</p>
+<p>Hacer las siguientes conversiones</p>
+<ul class="simple">
+<li>567</li>
+<li>890</li>
+<li>1030</li>
+<li>2044</li>
+<li>4767 (Solución 1.0010.1001.1111)</li>
+<li>6904 (Solución 1.1010.1111.1000)</li>
+</ul>
+</div>
+<div class="section" id="conversion-de-binario-a-decimal">
+<h3>4.2 Conversión de binario a decimal</h3>
+<p>Para hacer el proceso inverso debemos escribir las potencias de 2 encima de los bits. Estas potencias se escriben de derecha a izquierda y empezando por 0.</p>
+<p>Después se multiplican los bits por las potencias, y estas multiplicaciones se suman. Se debe recordar que algo elevado es 1</p>
+<p>Si por ejemplo, nos dan la secuencia 101011, el proceso es el siguiente</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="17%" />
+<col width="17%" />
+<col width="17%" />
+<col width="17%" />
+<col width="17%" />
+<col width="17%" />
+</colgroup>
+<tbody valign="top">
+<tr><td>2^5</td>
+<td>2^4</td>
+<td>2^3</td>
+<td>2^2</td>
+<td>2^1</td>
+<td>2^0</td>
+</tr>
+<tr><td>1</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<p>2^5 + 2^3 + 2^1 + 2^0 = 32 + 8 + 2 + 1 = 43</p>
+<p>Otro ejemplo: Convertir 1001.0011</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+</colgroup>
+<tbody valign="top">
+<tr><td>2^7</td>
+<td>2^6</td>
+<td>2^5</td>
+<td>2^4</td>
+<td>2^3</td>
+<td>2^2</td>
+<td>2^1</td>
+<td>2^0</td>
+</tr>
+<tr><td>1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<p>2^7 + 2^4 + 2^1 + 2^0 = 128 + 16 + 2 + 1 = 147</p>
+</div>
+<div class="section" id="conversion-desde-decimal-a-hexadecimal">
+<h3>4.3 Conversión desde decimal a hexadecimal</h3>
+<p>El sistema hexadecimal trabaja con 16 símbolos: 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, A, B, C, D, E, F</p>
+<p>Se debe tener presente que los símbolos A-F tienen valores internos como estos:</p>
+<ul class="simple">
+<li>A = 10</li>
+<li>B = 11</li>
+<li>C = 12</li>
+<li>D = 13</li>
+<li>E = 14</li>
+<li>F = 15</li>
+</ul>
+<p>Para convertir de decimal a hexadecimal debemos dividir por 16 hasta que no se pueda más. Despues se toma el último cociente y todos los restos desde el final hasta el principio.</p>
+<p><strong>¡CUIDADO!: LOS RESTOS DE LAS DIVISIONES TENDRÁN VALORES COMO 0, 1...7, 8, 9, 10, 11, 12, 13 14 O 15.CUANDO UN RESTO SEA 10, 11, 12, 13, 14 O 15 ESCRIBIREMOS LOS SÍMBOLOS A(10), B(11), C(12), D(13), E(14) O F(15)</strong></p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="28%" />
+<col width="73%" />
+</colgroup>
+<tbody valign="top">
+<tr><td>Paso 1</td>
+<td>65535 : 16 4095 y resto 15</td>
+</tr>
+<tr><td>Paso 2</td>
+<td>495: 16 255 y resto 15</td>
+</tr>
+<tr><td>Paso 3</td>
+<td>255:16 15 y resto 15</td>
+</tr>
+<tr><td>Paso 4</td>
+<td>15:16 0 y resto 15</td>
+</tr>
+</tbody>
+</table>
+<p>65535 EN HEXADECIMAL ES FFFF</p>
+</div>
+<div class="section" id="conversion-desde-hexadecimal-a-decimal">
+<h3>4.4 Conversión desde hexadecimal a decimal</h3>
+<p>Al igual que antes, se utilizan potencias y sumas. El proceso es exactamente el mismo: se ponen las potencias arriba, de derecha a izquierda, se multiplican y se suman. Sin embargo hay un par de diferencias</p>
+<ol class="arabic simple">
+<li>La potencia de base es 16</li>
+<li>Si encontramos una A, B, C...F debemos utilizar como multiplicador su valor correspondiente.</li>
+</ol>
+<p>Ejemplo: Convertir a decimal FFFA</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="25%" />
+<col width="25%" />
+<col width="25%" />
+<col width="25%" />
+</colgroup>
+<tbody valign="top">
+<tr><td>16^3</td>
+<td>16^2</td>
+<td>16^1</td>
+<td>16^0</td>
+</tr>
+<tr><td>F</td>
+<td>F</td>
+<td>F</td>
+<td>A</td>
+</tr>
+</tbody>
+</table>
+<p>Esto es</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="16%" />
+<col width="84%" />
+</colgroup>
+<tbody valign="top">
+<tr><td>Paso 1</td>
+<td>F*(16^3) + F*(16^2) + F*(16^1) + A*(16^0)</td>
+</tr>
+<tr><td>Paso 2</td>
+<td>F*(4096) + F*(256) + F*(16) + A*(1)</td>
+</tr>
+<tr><td>Paso 3</td>
+<td>15*(4096) + 15*(256) + 15*(16) + 10*(1)</td>
+</tr>
+<tr><td>Paso 4</td>
+<td>61440 + 3840 + 240 + 10= <strong>65530</strong></td>
+</tr>
+</tbody>
+</table>
+<p>4.5 Conversión de hexadecimal a binario y viceversa</p>
+<p>Para efectuar estas conversiones se necesitan hacer una tabla binaria. Una tabla binaria se construye poniendo 1 y 0 de forma alternativa y en bloques de 0, 1, 2, 4, 8, 16... (en potencias de 2)</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="20%" />
+<col width="20%" />
+<col width="20%" />
+<col width="20%" />
+<col width="20%" />
+</colgroup>
+<tbody valign="top">
+<tr><td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr><td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr><td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>2</td>
+</tr>
+<tr><td>0</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>3</td>
+</tr>
+<tr><td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>4</td>
+</tr>
+<tr><td>0</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>5</td>
+</tr>
+<tr><td>0</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>6</td>
+</tr>
+<tr><td>0</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>7</td>
+</tr>
+<tr><td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>8</td>
+</tr>
+<tr><td>1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>9</td>
+</tr>
+<tr><td>1</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>A</td>
+</tr>
+<tr><td>1</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>B</td>
+</tr>
+<tr><td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>C</td>
+</tr>
+<tr><td>1</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>D</td>
+</tr>
+<tr><td>1</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>E</td>
+</tr>
+<tr><td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>F</td>
+</tr>
+</tbody>
+</table>
+<p>Si queremos convertir de hexadecimal a binario el numero C2D7 solo tenemos que convertir elemento a elemento por bloques de 4 bits.</p>
+<p>Para convertir desde binario a hexadecimal tenemos que coger los bits de 4 en 4 y empezando por la derecha. Despues cada bloque de 4 bits, se convierte por el elemento de la derecha de la tabla binaria</p>
+<p>Por ejemplo, para convertir 1001010010 a hexadecimal tengo que dividir asi: 10.0101.0010. Si un bloque se queda aislado por la izquierda, se pueden añadir ceros para completar hasta 4 bits. El numero binario queda 0010.0101.0010. En informatica, el proceso de rellenar se llama tambien &quot;padding&quot;.</p>
+<div class="section" id="ejercicios">
+<h4>Ejercicios</h4>
+<ol class="arabic simple">
+<li>De decimal a binario los numeros 46744, 103221</li>
+<li>De hexadecimal a binario los numeros DE353 y A1B2C3</li>
+<li>De binario a decimal y hexadecimal 1001.0101.1010.0000 y 1001.1111.0000.1101.1111</li>
+</ol>
+</div>
+<div class="section" id="ejemplo-tipico-de-examen">
+<h4>Ejemplo típico de examen</h4>
+<p>Haz las siguientes conversiones</p>
+<ul class="simple">
+<li>0110010110 a decimal</li>
+<li>1875 está en decimal y hay que pasarlo a binario</li>
+<li>1875 está en hexadecimal y hay que pasarlo a binario</li>
+<li>45509 está de decimal y hay que pasarlo a hexadecimal</li>
+<li>CADE está en hexadecimal y hay que pasarlo a binario</li>
+</ul>
+</div>
+<div class="section" id="solucion-seleccionada">
+<h4>Solución seleccionada</h4>
+<p>01.1001.0110 a decimal
+Bits 8 7  4  21</p>
+<p>2**8 + 2**7 + 2**4 + 2**2 + 2**1
+256  + 128  + 16   + 4    + 2=406</p>
+</div>
+<div class="section" id="id2">
+<h4>Solucion seleccionada</h4>
+<p>1875 esta en decimal y hay que pasarlo a binario</p>
+<p>Lo vamos a convertir primero a hexadecimal</p>
+<dl class="docutils">
+<dt>1875 en hexadecimal es 753 y en binario queda</dt>
+<dd>0111.0101.0011</dd>
+</dl>
+<p>Solución:</p>
+<p>103221 en binario es 0001.1001.0011.0011.0101</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="17%" />
+<col width="17%" />
+<col width="17%" />
+<col width="17%" />
+<col width="17%" />
+<col width="17%" />
+</colgroup>
+<tbody valign="top">
+<tr><td>A</td>
+<td>1</td>
+<td>B</td>
+<td>2</td>
+<td>C</td>
+<td>3</td>
+</tr>
+<tr><td>1010</td>
+<td>0001</td>
+<td>1011</td>
+<td>0010</td>
+<td>1100</td>
+<td>0011</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id3">
+<h4>Solucion seleccionada</h4>
+<p>1001.1111.0000.1101.1111 a decimal</p>
+<p>Convierto primero a hexadecimal</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="20%" />
+<col width="20%" />
+<col width="20%" />
+<col width="20%" />
+<col width="20%" />
+</colgroup>
+<tbody valign="top">
+<tr><td colspan="5">1001.1111.0000.1101.1111</td>
+</tr>
+<tr><td>9</td>
+<td>F</td>
+<td>0</td>
+<td>D</td>
+<td>F</td>
+</tr>
+</tbody>
+</table>
+<p>Y ahora convertimos a decimal
+9*16^4 + 15*16^3 + 13*16^1 + 15*16^0 = 651487</p>
+</div>
+</div>
+</div>
+<div class="section" id="estructura-general-de-una-red">
+<h2>5 Estructura general de una red.</h2>
+<p>Toda red tiene un conjunto de elementos que interoperan entre ellos.</p>
+<p>Supongamos que una máquina con XP desea enviar un mensaje como &quot;Hola&quot; a través de Internet a una máquina que usa Linux.</p>
+<ul class="simple">
+<li>Origen: es la máquina que envía el mensaje.</li>
+<li>Codificación: La A en el origen se representa con un binario, como por ejemplo 1000.0001</li>
+<li>Transmisor: Por ejemplo, un router basado en cable.</li>
+<li>Medio: Elemento pasivo por el cual circulan los mensajes.</li>
+<li>Receptor: Por ejemplo, un router inalámbrico.</li>
+<li>Descodificación: Se recoge el 1000.0001 y se convierte (por ejemplo erróneamente) a &quot;ú&quot;</li>
+<li>Destinatario: La máquina que recibe el mensaje (en este caso &quot;ú&quot;</li>
+</ul>
+<p>En general, en cualquier red informática la información se envía troceada. Este troceado se denomina &quot;segmentación&quot;.</p>
+<p>Al trocear la información podemos &quot;compartir&quot; líneas de forma que cada uno la utilice &quot;un poco&quot;. Este compartición se denomina multiplexación. Para que todo funcione correctamente es imprescindible que cada trozo o segmento lleve una numeración o marca que lo identifique y que permita al receptor reconstruir el mensaje inicial.</p>
+<div class="section" id="componentes-de-una-red">
+<h3>5.1 Componentes de una red</h3>
+<div class="section" id="componentes-hardware">
+<h4>5.1.1 Componentes hardware</h4>
+<p>Son los elementos físicos que intervienen en la comunicación: router, módem, switches, proxies....</p>
+</div>
+<div class="section" id="componentes-software">
+<h4>5.1.2 Componentes software</h4>
+<p>Son programas que se ejecutan en un hardware con el fin de ofrecer un servicio. Ej: DNS, TCP/IP</p>
+<p>En los componentes software, no todos los elementos actúan de la misma manera.</p>
+<ul class="simple">
+<li>Clientes: un programa que solicita una tarea directamente relacionada con el usuario final.</li>
+<li>Servidores: no interactúan el usuario, sino con programas clientes.</li>
+<li>A veces, hay programas que pueden hacer las dos tareas a la vez, aunque no son tan frecuentes.</li>
+</ul>
+</div>
+</div>
+<div class="section" id="intermediarios">
+<h3>5.2 Intermediarios.</h3>
+<p>Se denomina dispositivos intermediarios a todos aquellos que no están bajo nuestro control pero que efectúan tareas de encaminamiento de la información.</p>
+<p>Se puede usar el comando tracert www.google.com (o cualquier otro sitio) para verificar si un problema está en nuestra red o no.</p>
+<p>Estos dispositivos intermediarios pueden tomar decisiones en cuanto a los caminos más apropiados para enviar un segmento a su destino. También son capaces de solicitar retransmisiones y detectar errores.</p>
+</div>
+<div class="section" id="id4">
+<h3>5.3 Medios</h3>
+<p>Los medios, que eran elementos pasivos, se pueden clasificar en tres grandes tipos.</p>
+<ol class="arabic simple">
+<li>Cobre</li>
+<li>Fibra óptica</li>
+<li>Pulsos EM.</li>
+</ol>
+<div class="section" id="cobre">
+<h4>5.3.1 Cobre</h4>
+<p>El cobre es un &quot;relativamente bueno&quot; conductor de electricidad. Así, podemos enviar 1 y 0's a lo largo de un cable de cobre por medio de impulsos eléctricos.</p>
+</div>
+<div class="section" id="fibra-optica">
+<h4>5.3.2 Fibra óptica</h4>
+<p>Se basa en conducir impulsos lumínicos. Debido a que la luz es el elemento más rápido conocido la velocidad que alcanzan estos cables suele ser mucho mayor. El problema de la fibra es el coste.</p>
+<p>Hay dos formas de usar fibra:</p>
+<ul class="simple">
+<li>Monomodo: el rayo de luz avanza en línea recta. Más rápido, pero se requiere una luz más intensa (láser).</li>
+<li>Multimodo: permite que varios rayos de luz crucen el cable. Se puede usar un diodo LED normal.</li>
+</ul>
+</div>
+<div class="section" id="electromagnetismo">
+<h4>5.3.3 Electromagnetismo</h4>
+<p>El estándar más popular es Wi-Fi. Permite una comodidad mayor para el usuario. El problema de las redes inalámbricas es doble: la seguridad y el otro la variabilidad de la señal.</p>
+</div>
+<div class="section" id="consideraciones-generales">
+<h4>5.3.4 Consideraciones generales</h4>
+<p>A la hora de elegir un medio para nuestra red se deben tener en cuenta estos tres factores</p>
+<ul class="simple">
+<li>Ancho de banda</li>
+<li>Coste</li>
+<li>Entorno (movilidad o no, industriales)</li>
+</ul>
+</div>
+</div>
+<div class="section" id="tipos-de-red">
+<h3>5.4 Tipos de red</h3>
+<div class="section" id="red-local-o-lan-local-area-network">
+<h4>5.4.1 Red local o LAN (Local Area Network)</h4>
+<p>Es una red de alcance pequeño: una sala o un edificio.</p>
+</div>
+<div class="section" id="red-metropolitana-o-man-metropolitan-an">
+<h4>5.4.2 Red metropolitana o MAN (Metropolitan AN)</h4>
+<p>Un barrio o una ciudad</p>
+</div>
+<div class="section" id="redes-de-area-amplia-o-wan-wide-an">
+<h4>5.4.3 Redes de area amplia o WAN (Wide AN)</h4>
+<p>Cubren áreas geográficas muy grandes: países e incluso continentes. Los proveedores de servicios internet o Internet Service Providers son los únicos que implantan redes de área amplia. Con ello, ofrecen sus servicios a usuario locales que desean estar interconectados con otros usuario.</p>
+</div>
+</div>
+<div class="section" id="internet">
+<h3>5.5 Internet</h3>
+<p>Internet es el resultado de interconectar redes aisladas. El hardware necesario lo proporcionan las compañías de teléfono. El software de IP ES GRATIS.</p>
+<p>En Internet cada uno puede hacer lo que quiera DENTRO DE SU LAN. La conexion al exterior de esa LAN es del proveedor. En ese punto &quot;fronterizo&quot; se deben respetar todos los estándares. El hecho de que sea el software el principal &quot;pegamento&quot; de distintas redes es lo que permite que un usuario con conexión inalámbrica se conecte con uno que usa ADSL en otro punto del mundo cruzando distintos tipos de línea.</p>
+</div>
+<div class="section" id="intranet">
+<h3>5.6 Intranet</h3>
+<p>Es una red privada de una compañía que usa Internet. Normalmente, para ver documentos o archivos de esa empresa será necesario un usuario y una contraseña.</p>
+</div>
+</div>
+<div class="section" id="protocolos">
+<h2>6 Protocolos</h2>
+<p>Un protocolo es un conjunto de reglas que hay que respetar para conseguir que la comunicación funcione.</p>
+<p>Los protocolos de red necesitan poner de acuerdo a las máquinas en cosas como:</p>
+<ul class="simple">
+<li>Formato: p.ej ¿qué tamaño de segmento se usará?</li>
+<li>Proceso: p.ej forzando a las máquinas a colaborar</li>
+<li>Errores: unificando los códigos de error.</li>
+<li>Terminación: determinando como se debe terminar.</li>
+</ul>
+</div>
+<div class="section" id="conjuntos-de-protocolos">
+<h2>7. Conjuntos de protocolos</h2>
+<p>A menudo, los protocolos no se han diseñado de forma aislada. Es más frecuente que los protocolos se diseñen e implementen como un conjunto. Por ejemplo, TCP/IP son solo dos protocolos de una familia.</p>
+<p>Hay dos grandes familias de protocolos: OSI y TCP/IP</p>
+<p>En una familia de protocolos hay distintas funciones. Esto se debe a que la comunicación es una tarea MUY compleja. Para hacerlo más sencillo, se divide la tarea en subtareas.</p>
+<div class="section" id="osi">
+<h3>7.1 OSI</h3>
+<p>En OSI los protocolos se organizan en &quot;capas&quot;. La idea subyacente es que podamos cambiar capas fácilmente. En OSI hay 7 capas.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="100%" />
+</colgroup>
+<tbody valign="top">
+<tr><td>Aplicación</td>
+</tr>
+<tr><td>Presentación</td>
+</tr>
+<tr><td>Sesión</td>
+</tr>
+<tr><td>Transporte</td>
+</tr>
+<tr><td>Red</td>
+</tr>
+<tr><td>Enlace</td>
+</tr>
+<tr><td>Física</td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="fisica">
+<h4>7.1.1 Física</h4>
+<p>Se encarga de las normas sobre forma de los conectores, voltajes en los cables</p>
+</div>
+<div class="section" id="enlace">
+<h4>7.1.2 Enlace</h4>
+<p>Se encarga de regular los envíos de datos entre vecinos inmediatos. Por ejemplo, en las redes locales Ethernet el enlace utiliza segmentos de 1500 bytes. Otro ejemplo es que en la capa de enlace se pueden enviar datos y despues el receptor debe CONFIRMARNOs de alguna forma que los datos llegan.</p>
+</div>
+<div class="section" id="red">
+<h4>7.1.3 Red</h4>
+<p>Regula la transmisión entre vecinos lejanos. Un ejemplo de elemento regulado son las direcciones que todo el mundo debe tener.</p>
+</div>
+<div class="section" id="transporte">
+<h4>7.1.4 Transporte</h4>
+<p>Se ocupa de que una misma conexión se pueda usar por muchos programas en el mismo ordenador. La capa de transporte permite multiplexar el cable por medio de una numeración especial que llamamos &quot;puertos&quot;.</p>
+</div>
+<div class="section" id="sesion">
+<h4>7.1.5 Sesión</h4>
+<p>Regula los procedimientos para iniciar y cerrar conexiones: uso de contraseñas, cifrados, tarificación.</p>
+</div>
+<div class="section" id="presentacion">
+<h4>7.1.6 Presentación</h4>
+<p>Que regula cosas como ¿qué número se va a utilizar para representar cada letra?. Por ejemplo, la A usará el código 65</p>
+</div>
+<div class="section" id="aplicacion">
+<h4>7.1.7 Aplicación</h4>
+<p>Son los programas que utiliza el usuario final. Se regulan cosas como intercambio de archivos, de páginas HTML</p>
+</div>
+</div>
+<div class="section" id="tcp-ip">
+<h3>7.2 TCP/IP</h3>
+<p>Es más sencillo. Elimina diversas capas y triunfó gracias a que funcionó desde el primer momento y a que era gratuito.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="100%" />
+</colgroup>
+<tbody valign="top">
+<tr><td>Aplicación</td>
+</tr>
+<tr><td>Transporte</td>
+</tr>
+<tr><td>Interred</td>
+</tr>
+<tr><td>Física</td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="id5">
+<h4>7.2.1 Física</h4>
+<p>TCP/IP NO REGULA NADA DE CAPA FÍSICA</p>
+</div>
+<div class="section" id="interred">
+<h4>7.2.2 Interred</h4>
+<p>Es una mezcla de la de red y enlace OSI. El protocolo más usado es IP</p>
+</div>
+<div class="section" id="id6">
+<h4>7.2.3 Transporte</h4>
+<p>El protocolo más usado es TCP y despues UDP. Se encarga de lo mismo que la de transporte OSI.</p>
+</div>
+<div class="section" id="id7">
+<h4>7.2.4 Aplicación</h4>
+<p>Dan libertad a los programadores de aplicaciones para que creen sus propios protocolos.</p>
+</div>
+</div>
+<div class="section" id="independencia-de-la-tecnologia">
+<h3>7.3 Independencia de la tecnología</h3>
+<p>Los protocolos en las redes son independientes del tipo de medio físico, cable, pulso EM o lo que sea. Es así porque si en el futuro aparecen tecnologías nuevas podría ocurrir que los protocolos quedasen obsoletos junto a los viejos &quot;cables&quot;.</p>
+</div>
+</div>
+<div class="section" id="consideraciones-en-los-modelos-de-capas">
+<h2>8. Consideraciones en los modelos de capas</h2>
+<p>Los modelos basados en capas son muy populares, pero ¿por qué diseñar software basándonos en esta arquitectura?. Hay varias razones</p>
+<ul class="simple">
+<li>Es más fácil diseñar algo al poder trocear las partes y ocuparnos cada uno de una parte.</li>
+<li>Fomentar la competencia haciendo que muchos fabricantes ofrecieran distintas versiones de los mismos protocolos haciendo que el precio bajara y la calidad subiera.</li>
+<li>Se pretendía que fuera fácil sustituir unos protocolos por otros. Esto facilita la vida de los usuarios.</li>
+<li>Se pretendía tener un conjunto de términos comunes para definir todos los conceptos.</li>
+</ul>
+<div class="section" id="encapsulacion">
+<h3>8.1 Encapsulación</h3>
+<p>Encapsulación es el proceso por el cual las capas cogen datos de sus capas vecinas SIN MIRAR PARA NADA LO QUE HAY. Procesan dichos datos y añaden la información necesaria para los destinatarios. La idea es tratar la información que llega como una cápsula que no podemos abrir ni tocar.</p>
+<p>En relación con esto se definen distintas PDU. Una PDU es una &quot;Protocol Data Unit&quot; o &quot;Unidad de datos de protocolo&quot;. Cada capa recibe una PDU (o bloque), la toma, le añade lo que sea necesaria y eso se convierte una PDU nueva que se pasa hacia abajo. Los distintos nombres de las PDU son estos</p>
+<ul class="simple">
+<li>Trama: Bloque de capa de enlace.</li>
+<li>Datagrama: Bloque de capa de red.</li>
+<li>Segmento: Bloque de capa de transporte.</li>
+<li>Paquete: Capa de aplicación.</li>
+</ul>
+<p>Cada PDU tiene su propia información especial: por ejemplo los segmentos necesitan los números de puerto, los datagramas necesitan las IP de origen y destino.</p>
+</div>
+<div class="section" id="direccionamiento">
+<h3>8.2 Direccionamiento</h3>
+<p>Cada capa puede tener su propia dirección especial. Es importante recalcar que las direcciones NO VAN ASOCIADAS A LOS EQUIPOS, sino a SUS CONEXIONES. Por tanto, si un equipo tiene varias tarjetas, podría tener varias direcciones.</p>
+<p>Algunos ejemplo de direcciones serían los siguientes</p>
+<ul class="simple">
+<li>Dirección DNS:        www.google.com (1024 caract)</li>
+<li>Dirección de TCP:     Puerto 80 (16 bits)</li>
+<li>Dirección IP:         66.249.92.104 (32 bits)</li>
+<li>Dirección Ethernet:   01:DC:43:23:99:7B (48 bits)</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="section" id="tema-2-nivel-fisico">
+<h1>Tema 2: Nivel físico</h1>
+<div class="section" id="introduccion">
+<h2>0. Introducción</h2>
+<p>Es la única capa que no es software sino elementos físicos. En general tenemos tres grandes categorías de medios físicos</p>
+<ol class="arabic simple">
+<li>Cobre</li>
+<li>Fibra</li>
+<li>Pulsos EM.</li>
+</ol>
+</div>
+<div class="section" id="funcion">
+<h2>1. Función</h2>
+<p>La capa física se encarga de transportar bits convirtiéndolos primero al tipo de señal correspondiente al medio físico y luego extrae de esos medios físicos los bits.</p>
+<p>Esta tarea requiere de varios elementos:</p>
+<ol class="loweralpha simple">
+<li>Medio físico</li>
+<li>Mecanismo de representación (p. ej 0V-&gt;bit 0, 5V-&gt;1)</li>
+<li>Circuitería electrónica: esto supone que habrá un coste.</li>
+<li>Mecanismos de codificación (p. ej, asignación de bloques).</li>
+</ol>
+<p>Se llama señalización al proceso de conversión de una secuencia de bits en una secuencia de impulsos.</p>
+<div class="section" id="modulacion-demodulacion">
+<h3>1.1 Modulación/demodulación.</h3>
+<p>Se llama modulación al proceso de modificación de una señal para que transporte bits. Toda señal tiene una amplitud y una frecuencia. Se llama Amplitud al punto más alto (o bajo) de una señal. Se llama frecuencia al número de ondas completas que transcurren en un segundo.</p>
+<p>Tanto la amplitud como la frecuencia se pueden modular lo que nos lleva a los dos procesos fundamentales de modulación: AM y FM</p>
+<div class="section" id="modulacion-am">
+<h4>1.1.1 Modulacion AM</h4>
+<p>La modulación en amplitud permite alcances mucho mayores y se basa en la alteración de la amplitud o altura de la señal</p>
+<img alt="Ejemplo de modulación de amplitud" class="align-center" src="img/t1/ModulacionAM.png" />
+<p>Utilizando lápiz y papel dibuja la señal generada utilizando un esquema de modulacion AM de 4 señales que envíe la cadena de bits 0111.0010</p>
+<p>Solucion</p>
+<p>1111            |               |
+1110            |               |
+1101            |               |
+1100            |               |
+1011            |               |
+1010            |               |
+1001            |               |
+1000            |               |
+0111            |               |
+0110            |               |
+0101            |               |
+0100            |               |
+0011            |               |
+0010            |               |
+0001            |               |
+0000            |               |
+----------------+---------------+--------------
+0000            |               |
+0001            |               |
+0010            |               |
+0011            |               |
+0100            |               |
+0101            |               |
+0110            |               |
+0111            |               |
+1000            |               |
+1001            |               |
+1010            |               |
+1011            |               |
+1100            |               |
+1101            |               |
+1110            |               |
+1111            |               |</p>
+<p>La creación de señales tiene una serie de principios básicos:</p>
+<ol class="loweralpha simple">
+<li>Todos los tiempos son iguales: todos los intervalos de tiempo deben ser igual de anchos.</li>
+<li>Si me dicen que hay 4 niveles, es porque se van a enviar bits de 4 en 4. Se deben crear todas las combinaciones de 4 (desde 0000, 0001....1111)</li>
+<li>Toda señal debe alcanzar la máxima y mínima altura por encima y por debajo del eje de las X.</li>
+<li>Debemos escribir todas las combinaciones por arriba y por debajo del eje de las X</li>
+<li>Divido la cadena en bloques de 4. Si me hace falta añado ceros por la izquierda.</li>
+</ol>
+</div>
+<div class="section" id="para-practicar-en-casa">
+<h4>Para practicar en casa</h4>
+<p>Utilizando un esquema de 2 bits enviar la cadena 00100101</p>
+<p>Utilizando un esquema de 3 bits enviar la cadena 101001011</p>
+<p>Utilizando un esquema de 4 bits enviar la cadena 0010010101101</p>
+</div>
+<div class="section" id="modulacion-fm">
+<h4>1.1.2 Modulación FM</h4>
+<p>La modulación FM es un mecanismo basado en modificar el número de ondas por tiempo.</p>
+<p>Solo hay que elegir un esquema de codificación basándonos en el número de ondas. P.ej:</p>
+<p>000---&gt;1 onda
+001---&gt;2 ondas
+010---&gt;3 ondas
+011---&gt;4 ondas
+100---&gt;5 ondas
+101---&gt;6 ondas
+110---&gt;7 ondas
+111---&gt;8 ondas</p>
+</div>
+<div class="section" id="modulacion-pm-psk-o-modulacion-de-fase">
+<h4>1.1.3 Modulación PM/PSK o modulación de fase.</h4>
+<p>La modulación en fase se basa en modificar el punto en el que empieza una onda. Al final, todas las ondas empiezan y acaban en el mismo punto y además todas hacen dos &quot;crestas&quot;: una en el máximo y otra en el mínimo.</p>
+<p>Se debe tener en cuenta que en todos los mecanismos de modulación se cumple la misma regla:</p>
+<p>&quot;Cuantos más estados de modulación (divisiones) más bits por onda y por tanto más velocidad. Sin embargo, las señales se vuelven mucho más complicadas de manejar.&quot;</p>
+</div>
+<div class="section" id="sistemas-mixtos">
+<h4>1.1.4 Sistemas mixtos.</h4>
+<p>En la vida real, es muy extraño encontrar dispositivos que solo usen AM, FM o PM. Lo más normal es que se combinen varios mecanismos para intentar aprovechar las ventajas de todos ellos.</p>
+<p>En un sistema que combinara 2 niveles de AM con dos de FM tendríamos cuatro posibles formas de onda</p>
+<p>Onda 00: Amplitud 1 y Frecuencia 1
+Onda 01: Amplitud 1 y Frecuencia 2
+Onda 10: Amplitud 2 y Frecuencia 1
+Onda 11: Amplitud 2 y Frecuencia 2</p>
+<p>Se pueden combinar los tres sistemas en un formato denominado QAM (Quadrature Amplitude Modulation)</p>
+<p>Para el próximo día se propone crear el esquema que combina: 4 fases, 2 frecuencias, 4 alturas</p>
+</div>
+</div>
+</div>
+<div class="section" id="transmision-recepcion-en-analogico-o-digital">
+<h2>2. Transmisión/recepción en analógico o digital.</h2>
+<p>Se dice que una señal es analógica cuando se acepta que tome cualquier valor en un intervalo dado.</p>
+<p>Una señal es digital cuando solo se aceptan ciertos valores de la señal. La señal digital más básica es aquella que solo utiliza dos niveles correspondientes a los bits 0 y 1.</p>
+<p>Las señales analógicas emitidas no pueden ser procesadas &quot;demasiado bien&quot; por el receptor, ya que al fin y al cabo todo es posible.</p>
+<p>Sin embargo, las señales digitales pueden ser procesadas por el receptor y reconstruidas al saber que no todo es posible, por lo tanto la señal original se puede reconstruir &quot;casi&quot; a la perfección.</p>
+<p>Cuando una señal analógica se convierte a digital SE PIERDE INFORMACIÓN.</p>
+</div>
+<div class="section" id="transmision-o-recepcion-sincrona-asincrona">
+<h2>3. Transmisión o recepción síncrona/asíncrona.</h2>
+<p>Cuando alguien envía una señal digital, surge un problema importante. ¿Donde empieza y acaba un bit?.</p>
+<p>Para resolver este problema hay dos soluciones:</p>
+<ol class="loweralpha simple">
+<li>Transmisión síncrona: el emisor envía una señal junto a la señal de datos que marca los comienzos y los finales. Es decir, que nos envía dos cosas a la vez, la señal de sincronismo y la de datos.</li>
+<li>Transmisión asíncrona: solo nos envía una cosa. Primero se envía una señal por delante que sean unos y ceros consecutivos. Esta señal le sirve al receptor para saber como de largos son los pulsos. Despues, el emisor envía datos, y el receptor ya sabe como de largos son los bits y sabe &quot;por donde cortar&quot;.</li>
+</ol>
+</div>
+<div class="section" id="transmision-en-serie-o-en-paralelo">
+<h2>4. Transmisión en serie o en paralelo</h2>
+<p>Una transmisión en serie es una transmisión/recepción que solo utiliza un cable. Los datos se envían uno tras otro. Se ahorra cobre pero la velocidad es más pequeña.</p>
+<p>Una transmisión en paralelo utiliza muchos cables a la vez para enviar muchos bits a la vez. Se utiliza más cobre pero la velocidad se multiplica.</p>
+</div>
+<div class="section" id="codificaciones-descodificaciones">
+<h2>5. Codificaciones/Descodificaciones</h2>
+<p>La codificación es el mecanismo por el cual un flujo de datos se convierte en una secuencia de unos y ceros. Por ejemplo, una secuencia como 011 puede que se envíe dentro del cable como 01011.</p>
+<p>¿Por qué se hace esto?</p>
+<p>¿Como funciona la codificación de bloques en los CD?</p>
+<div class="section" id="estandares">
+<h3>5.1. Estándares</h3>
+<p>Un estándar es una norma: dicha norma puede ser obligatoria o recomendable. En el primer caso se dice que es &quot;de iure&quot; y en el segundo de facto.</p>
+<p>Algunos países imponen normas a las transmisiones dentro de su territorio y en otros casos los fabricantes deciden adoptar un sistema común con el fin de tener interoperabilidad.</p>
+<p>Las tarjetas de red siguen casi al 100% el estándar Ethernet (&quot;de facto&quot;).</p>
+<p>En España el organismo regulador es AENOR (pertenece a la ISO)</p>
+<p>Hay otros estándares internaciones emitidos por otros organismos como el IEEE (Institute of Electrical and Electronic Engineers). Algunas de las normas que emite el IEEE son seguidas en todo el mundo, como por ejemplo las normas de la serie IEEE 802.11 (wi-Fi).</p>
+<p>En relación con esto hay otros estándares como los de IEEE 802.3 (Ethernet).</p>
+</div>
+</div>
+<div class="section" id="conceptos-habituales-en-fisica">
+<h2>6. Conceptos habituales en física</h2>
+<p>a) Ancho de banda: Todo medio tolera una frecuencia mínima y una máxima. La diferencia entre los dos es el ancho de banda. ¡Esto significa que el ancho de banda es una medida de capacidad y no tiene por qué ser la velocidad máxima!. De forma similar a una tubería de agua, el ancho de banda es el ancho del tubo, y no la velocidad del agua dentro del tubo.
+El ancho de banda se mide en potencias de 10, y no de 2.
+Es decir 10Mbps son 10^6 bits por segundo
+Un GByte de RAM son 1024 Megas, pero 1Gbps son 1000 Mbits.</p>
+<p>b)Throughput: Productividad. Esto se mide en porcentaje. Es una medida del uso real de una conexión. Se debe recordar que al enviar algo, cada capa añade información, y esa información consume ancho de banda. El throughput nos indica el porcentaje real que se usa para enviar nuestra información y no la de las cabeceras.
+Si genero 1000 bytes, mi máquina enviará esos 1000 bytes + 30 bytes de direcciones y otras cosas, por lo que tengo una productividad de 1000/1030. La productividad se mide en porcentaje y a veces también se llama &quot;rendimiento&quot;.</p>
+<ol class="loweralpha simple" start="3">
+<li>Capacidad de transferencia útil, es una medida del ancho de banda descontando la productividad. Si tengo un ancho de banda de 6 Mbps y la productividad media es del 80%, mi capacidad útil es 4'8 Mbps. Es decir, se multiplica a*b.</li>
+</ol>
+</div>
+<div class="section" id="medios-fisicos">
+<h2>7. Medios físicos.</h2>
+<div class="section" id="basados-en-cobre">
+<h3>7.1 Basados en cobre.</h3>
+<div class="section" id="baset">
+<h4>7.1.1 10BaseT</h4>
+<p>10 Base T
+|   |   |
+|   |   +--&gt;Trenzado
+|   +------&gt;Emite en banda base
++----------&gt;Ancho de banda</p>
+<p>El cable de par trenzado utiliza parejas de cables entrelazados para reducir las interferencias mutuas debidas al magnetismo.</p>
+</div>
+<div class="section" id="id8">
+<h4>7.1.2 100BaseT</h4>
+<p>100Base T
+|   |   |
+|   |   +--&gt;Trenzado
+|   +------&gt;Emite en banda base
++----------&gt;Ancho de banda</p>
+</div>
+<div class="section" id="id9">
+<h4>7.1.3 1000BaseT</h4>
+<p>1000BaseT
+|   |   |
+|   |   +--&gt;Trenzado
+|   +------&gt;Emite en banda base
++----------&gt;Ancho de banda</p>
+</div>
+<div class="section" id="basef">
+<h4>7.1.4 100BaseF</h4>
+<p>100Base F
+|   |   |
+|   |   +--&gt;Fibra
+|   +------&gt;Emite en banda base
++----------&gt;Ancho de banda</p>
+<p>Se puede poner en entornos industriales, con maquinaria pesada, etc.. sin sufrir interferencias.</p>
+</div>
+<div class="section" id="basec">
+<h4>7.1.4 100BaseC</h4>
+<p>100Base C
+|   |   |
+|   |   +--&gt;Coaxial
+|   +------&gt;Emite en banda base
++----------&gt;Ancho de banda</p>
+<p>Tiene cierta tolerancia a las interferencias.</p>
+<p>En general, todos ellos tienen un tamaño máximo de segmento. Es decir, el cable que va de un equipo a otro no puede ser mayor de cierta longitud. Esta longitud oscila entre los 100 m y los kilómetros.</p>
+</div>
+</div>
+<div class="section" id="medios-inalambricos">
+<h3>7.2 Medios inalámbricos</h3>
+<div class="section" id="bluetooth">
+<h4>7.2.1 Bluetooth</h4>
+<p>Muy poco alcance y muy poca velocidad: 56-64 kbps. Pensada para dispositivos de todo tipo que se conectan uno con uno, y no uno con muchos.</p>
+</div>
+<div class="section" id="wi-max">
+<h4>7.2.2 Wi-Max</h4>
+<p>Redes de muy gran alcance (80km) y con una velocidad media de 50-100 Mbps.</p>
+</div>
+<div class="section" id="infrarrojos">
+<h4>7.2.3 Infrarrojos.</h4>
+<p>Son impulsos cuyo longitud de onda está justo por debajo de lo que ve el ojo humano. Pueden obtener bastante velocidad pero el alcance es muy bajo. Además, es absolutamente necesario que los dispositivos se vean físicamente (uno enfrente del otro).</p>
+<p>La señal de infrarrojos se ve muy afectada por el calor ambiental, que siempre está presente. De ahí, que al alejar los dispositivos la velocidad o incluso el funcionamiento se vean afectados.</p>
+</div>
+<div class="section" id="wi-fi">
+<h4>7.2.4 Wi-Fi</h4>
+<p>Se denomina Wi-Fi a una tecnología que utiliza frecuencias en torno a los 2,4 Ghz y que está pensada para redes domésticas. Esta clase de señales con frecuencias tan altas permiten velocidades de un rango aceptable para un ordenador (alrededor de 54 Mbps).</p>
+<p>Las señales del rango Wi-Fi se ven muy afectadas por la humedad ambiental.</p>
+</div>
+<div class="section" id="hsdpa">
+<h4>7.2.5 HSDPA</h4>
+<p>High Speed Downlink Packet Access (Acceso a una red de paquetes con enlace de bajada de alta velocidad). HSDPA utiliza unas frecuencias que permiten alcances bastante grandes (50-80 km) y velocidades de hasta 14 MBps. Está pensada para ser ofrecida por compañías de telefonía móvil.</p>
+<p>También se conoce como &quot;Internet por UMTS&quot; (Universal Mobile Telephone System).</p>
+<p>HSDPA utiliza las distintas frecuencias asignadas para descargar pero de una forma distinta a sistemas como GPRS. Tradicionalmente la transmisión se ha hecho reservando frecuencias a los distintos participantes de una red. Este sistema se llama FDMA (Frequency Division Multiple Access o acceso múltiple mediante división de frecuencias).</p>
+<p>Sin embargo HSDPA asigna una misma banda a todo el mundo. Para evitar el solapamiento de datos cada dispositivo tiene un código asignado que se envía junto con sus datos. Este sistema de asignación de códigos se llama WCDMA (Wideband Code Division Multiple Access o acceso múltiple por división de códigos en (redes de) banda ancha)</p>
+</div>
+</div>
+</div>
+<div class="section" id="cableado-estructurado">
+<h2>8. Cableado estructurado</h2>
+<div class="section" id="organizacion-del-cable">
+<h3>8.1 Organización del cable</h3>
+<p>En general en todas las instalaciones nos vamos a encontrar cable de cobre de par trenzado no apantallado.</p>
+<p>El cable de par trenzado se denomina de 8 vías por tener 8 pequeños cables de colores en su interior. No es igual que el del teléfono (que tiene 4).</p>
+<p>Para montar un cable es importante saber que los pequeños cables del interior siempre van en el mismo orden. Al montar los cables dentro de los conectores se debe hacer lo siguiente</p>
+<p>Se debe poner el conector con los pin metálicos mirando hacia nosotros. Los pin se conectan de izquierda a derecha del 1 al 8. Hay 8 cables cuyos colores son los siguientes</p>
+<p>Blanco/Naranja
+Naranja</p>
+<p>Blanco/Verde
+Verde</p>
+<p>Blanco/Azul
+Azul</p>
+<p>Blanco/Marron
+Marron</p>
+<p>Crimpadora 20-45 Euros
+Pelacables 8 euros</p>
+<div class="section" id="cable-normal-o-directo">
+<h4>Cable Normal (o directo)</h4>
+<p>Punta 1</p>
+<p>Tx+   Tx-  Rx+            Rx-
+1     2    3    4    5    6    7    8
+Bl/N  N    B/V  A    B/A  V    B/M  M</p>
+<p>Punta 2
+1     2    3    4    5    6    7    8
+Bl/N  N    B/V  A    B/A  V    B/M  M</p>
+</div>
+<div class="section" id="cable-cruzado">
+<h4>Cable Cruzado</h4>
+<p>Se puede crear un tipo de cable que se denomina cruzado poniendo en una punta del cable los colores que hemos dicho y en la otra modificando el orden.</p>
+<p>Punta 1
+Tx+   Tx-  Rx+            Rx-
+1     2    3    4    5    6    7    8
+Bl/N  N    B/V  A    B/A  V    B/M  M</p>
+<p>Punta 2
+Rx+   Rx-
+1     2    3    4    5    6    7    8
+Bl/V  V    B/N  A    B/A  N    B/M  M</p>
+<p>Se puede crear un tipo de cable que se denomina cruzado poniendo en una punta del cable los colores que hemos dicho y en la otra modificando el orden.</p>
+</div>
+</div>
+<div class="section" id="montaje-de-salas">
+<h3>8.2 Montaje de salas</h3>
+<p>En salas de ordenadores es normal que los cables no vayan directamente del PC al switch, sino que haya conexiones intermedias con el fin de ofrecer flexibilidad en la organización de la sala. Los paneles de parcheo y las rosetas permiten ampliar la red o modificar la organización con cierta</p>
+</div>
+<div class="section" id="seguridad-en-los-cables-de-cobre">
+<h3>8.3 Seguridad en los cables de cobre.</h3>
+<div class="section" id="interferencias">
+<h4>8.3.1 Interferencias.</h4>
+<p>El cable de cobre es sensible a los campos electromagnéticos debido a un fenómeno llamado inducción. Estas interferencias pueden provenir de muchos sitios: máquinas, cables eléctricos e incluso de otros cables de datos. Cuando dos cables de datos se hacen interferencia mutua se denomina al resultado como &quot;diafonía&quot; (conversaciones cruzadas) o en inglés &quot;crosstalk&quot;</p>
+</div>
+<div class="section" id="riesgos-para-la-salud">
+<h4>8.3.2 Riesgos para la salud.</h4>
+<p>Un cable(s) mal hechos podría llegar a ser un posible origen de foco de incendio. Cerca de toda instalación eléctrica debería haber extintores.</p>
+<p>Hay extintores para distintos usos:</p>
+<p>-Fuego por combustión química
+-Fuego de origen eléctrico.
+-Combustión de maderas, tejidos o papeles.</p>
+<p>La fibra óptica utiliza a menudo luces láser de alta intensidad que pueden quemar la retina.</p>
+</div>
+<div class="section" id="riesgos-especificos-de-la-electricidad">
+<h4>8.3.3 Riesgos específicos de la electricidad</h4>
+<p>-En toda instalación, las conexiones deberían estar compartimentadas en tramos.</p>
+<p>-La instalación debería tener conexiones a tierra.</p>
+</div>
+</div>
+</div>
+<div class="section" id="otros-medios-fisicos">
+<h2>9. Otros medios físicos</h2>
+<div class="section" id="cable-stp">
+<h3>9.1 Cable STP</h3>
+<p>El cable Shielded Twisted Pair (par trenzado apantallado) es como el UTP (par trenzado no apantallado) con la salvedad de que dispone de un revestimiento extra de aluminio para proteger de interferencias EM.</p>
+<p>El inconveniente de dicho cable es que su precio es superior al UTP</p>
+</div>
+<div class="section" id="cable-coaxial">
+<h3>9.2 Cable coaxial.</h3>
+<p>Es bastante robusto, lleva protección metálica, su velocidad es similar, pero sin embargo no ha sido elegido por la industria. Esto se debe a que es menos versátil que el par trenzado.</p>
+</div>
+<div class="section" id="id10">
+<h3>9.3 Fibra óptica</h3>
+<p>La fibra óptica es muy rápida, pero bastante compleja de montar.</p>
+<p>Hay dos tipos de fibra:</p>
+</div>
+<div class="section" id="monomodo">
+<h3>9.3.1 Monomodo.</h3>
+<p>Utiliza una sola luz que circula en línea recta. Al ir en línea recta, la luz NO SE DISPERSA y se pueden conseguir las mayores velocidades. Sin embargo, se necesita una luz láser (que es más cara)</p>
+</div>
+<div class="section" id="multimodo">
+<h3>9.3.2 Multimodo.</h3>
+<p>La luz se dispersa. Eso conlleva que las velocidades son un poco menores. Sin embargo, al permitir la dispersión podemos usar luces LED (más baratas)</p>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>

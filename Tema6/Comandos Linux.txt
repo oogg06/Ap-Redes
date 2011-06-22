@@ -1,0 +1,17 @@
+ifconfig
+shutdown -h now
+shutdown -r
+loadkeys es
+
+ifconfig eth0 10.0.0.161 
+	netmask 255.255.255.0
+
+ping 10.0.0.161
+
+route -h
+
+Para configurar una ruta en Linux se usa un comando como este
+
+"Para llegar a la red 10.1.0.0 con mascara 255.255.0.0 ir por el punto 10.2.0.1 que se encuentra saliendo por la tarjeta eth0"
+
+route add -net 10.1.0.0 netmask 255.255.0.0 gw 10.2.0.1 dev eth0

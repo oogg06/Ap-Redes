@@ -1,0 +1,407 @@
+Tema 8: Nivel de aplicación
+===========================
+
+
+0.- Introducción
+-----------------
+
+
+No hay ninguna norma sobre el nivel de aplicación. Hemos repasado como funcionan las distintas capas.
+
+
+1. Funciones de distintas capas de aplicación
+---------------------------------------------
+
+
+1.1 DNS
+-------
+
+La aplicación DNS traduce entre IPs y DNS. El DNS también puede darnos el nombre DNS de una cierta IP. El hecho de traducir de IPs hacia nombres DNS se llama DNS inverso.
+
+En internet podemos encontrar servicios WHOIS que nos pueden dar todos los detalles para un cierto nombre DNS o IP. En estos servicios WHOIS se pude consultar el responsable de un nombre web.
+
+
+1.2 HTTP
+--------
+
+Significa HyperText Transfer Protocol. Es el protocolo usado por la web.
+
+El protocolo HTTP NO TIENE ESTADO. Para conseguir que tenga "memoria" se inventaron "cookies"
+
+
++-----------+		+-----------+
+| Cliente   |-----------| Servidor  |
+| e-mail    |           |           |
++-----------+           +-----------+
+
+Cuando el cliente se conecta, el servidor envia tambien una "cookie".
+
+Cuando el cliente solicita ver una nueva página de correo el servidor le solicita una
+cookie para ver si el cliente se "autenticó".
+
+Si la cookie se borra HTTP NO PUEDE RECORDAR NADA
+
+
+1.3 E-mail
+----------
+
+Es un servicio que permite la transferencia de mensajes entre máquinas. No es una exigencia el tener un nombre DNS.
+
+Para enviar correo hay diversos protocolos
+
+1) SMTP: Permite enviar correos entre servidores
+
+2) POP3 e IMAP: Permite intercambiar correo entre una máquina de un cliente y un servidor de correo
+
+Un problema muy actual es el spam.
+
+
+1.4 Acceso remoto (Telnet/SSH/VNC/RDP)
+--------------------------------------
+
+Estos servicios permiten manipular un equipo como si estuviéramos sentados en él.
+
+Telnet y SSH están orientados a comandos. No sirven para Windows. Telnet NO UTILIZA CIFRADO.
+
+
+VNC es un protocolo para toda clase de sistemas gráficos (Windows o Linux con entorno gráfico)
+
+
+RDP está orientado solo a sistemas Windows.
+
+
+
+1.5 Servidor FTP
+----------------
+
+Viene de File Transfer Protocol. Es un protocolo especializado en la carga y descarga de ficheros.
+
+Está un poco en desuso.
+
+
+2. Modelo cliente/servidor
+--------------------------
+
+Hoy en día, en Internet, casi todos los programas funcionan mediante división de tareas asumidas por programas que se denominan clientes y servidores.
+
+a) Un servidor es un programa que se ejecuta todo el tiempo y espera que alguien se conecte para ofrecerle un servicio.
+
+
+b) Un cliente es un programa que se conecta de forma esporádica a un servidor, solicita una tarea y al obtener su resultado se desconecta y se apaga.
+
+Los servicios son programas que se ejecutan todo el tiempo y que no suelen mostrar nada en pantalla, ni siquiera comandos.
+
+
+2.1 Alternativo: P2P
+--------------------
+
+En un mecanismo de trabajo "Peer-to-peer" (de igual a igual) todas las máquinas son servidores y clientes.Esta es una manera de trabajar que reparte la carga de tráfico en los nodos de una red. No se puede configurar un programa para que deje de ser cliente/servidor y se convierta en P2P
+
+
+3. Servicios Internet
+---------------------
+
+
+3.1 Servicio DNS
+----------------
+El DNS traduce entre nombres y direcciones IP. Un nombre de máquina tiene una secuencia de "palabras" separadas por puntos. Por ejemplo
+
+olmo.pntic.red-es.educacion.es
+
+Cada "palabra" se denomina "DOMINIO".
+
+Los dominios se leen de final a principio. Los dominios del final se llaman "TLD" "Top Level Domains" o "Dominios de primer nivel".
+
+Cuando una máquina pone en su navegador un nombre como ese, el nombre se resuelve de final a principio. La máquina acude a un resolvedor de nombres (este resolvedor debe haber sido proporcionado por el proveedor de Internet).
+
+La resolución de nombres consiste en ir preguntando a máquinas que controlen cada uno de los dominios y subdominios hasta encontrar el nombre "olmo".
+
+Cuando se encuentra, la respuesta viaja de vuelta a la máquina que solicitó la resolución y se entrega a la máquina que preguntó por ese nombre.
+
+a) Descargamos y descomprimimos BIND
+
+b) Deberemos crear un usuario (por ejemplo llamado "bind") y ponerle una contraseña. Esto lo haremos en el panel de control
+
+c) Ejecutamos BINDInstall y lo instalaremos en una carpeta que recordemos. Deberemos ponerle también el usuario y la contraseña que pusimos en b)
+
+d) Nos vamos al directorio bind/etc y alli crearemos un archivo llamado named.conf y ponemos esto para que BIND redirija las peticiones a un servidor "autoritativo".
+
+options {
+	forwarders {
+	    195.235.113.3; 
+	    195.235.96.90;
+	};
+ 	forward only;
+};
+
+Si reiniciamos el equipo y en el panel de control y propiedades de TCP/IP ponemos como servidor DNS la IP del ordenador configurado veremos que resuelve los nombres correctamente.
+
+
+Existe en los sistemas operativos un fichero llamado "hosts" que almacena traducciones y donde se mira antes de consultar a nadie. En Windows, dicho directorio está en
+
+c:\windows\system32\drivers\etc
+
+En Linux este archivo está en
+
+/etc/hosts.conf
+
+
+3.2 Servicio FTP
+----------------
+Es un servicio especializado en la transferencia de archivos.
+
+3.2.1 Clientes por comandos
+---------------------------
+
+a) ftp <direccion>
+Se conecta a una direccion que tenga un servicio de FTP. Se puede usar un login llamado "anonymous"
+b) dir o ls muestran los archivos
+c) cd para cambiar de directorio
+d) bin (cambia al modo de transferencia binario)
+e) ascii (cambia al modo de transferencia textual)
+f) get para descargar archivos
+g) bye
+
+
+3.2.2 Servidores de FTP
+-----------------------
+Un servidor FTP es un programa especializado en la entrega y carga de ficheros. Utiliza su propio sistema de usuarios QUE NO TIENE NADA QUE VER CON LOS USUARIOS DEL SISTEMA OPERATIVO.
+
+3.3 Servidores E-mail
+---------------------
+
+Un servidor de email es un programa especializado en la transferencia de mensajes sin ninguna clase de garantía temporal. Se basa en dos mecanismos
+
+a) SMTP para la entrega de correo desde el cliente hacia el servidor o desde servidor hacia servidor. Viene de Simple Mail Transfer Protocol
+
+b.1)POP3 descarga todo el correo sin preguntar al usuario
+
+b.2)IMAP descarga las cabeceras y espera que sea el usuario quien determine qué mensajes descargar y cuales no.
+
+3.3.1 Clientes E-mail
+---------------------
+
+Son programas que descargan correo (por POP o IMAP) y requieren la indicación de dos cosas
+
+a) Correo saliente: usa SMTP y se necesita el protocolo de seguridad , el puerto usado y el nombre DNS de la máquina que acepta correos
+
+b) Correo entrante: puede usarse POP o IMAP y requiere el protocolo, el puerto y el nombre DNS.
+
+3.3.2 Servidores-Email
+----------------------
+
+Se debe tener cuidado con los llamados servidores e-mail que actúan de "relay". Un servidor relay es un servidor que es forzado a actuar como intermediario entre un usuario emisor de correo y un usuario receptor.
+
+Si el servidor acepta colaborar podría acabar siendo forzado a enviar spam. Un servidor que acaba enviando spam tiene dos inconvenientes graves
+
+a) Se entrega correo no deseado 
+b) La máquina puede estar muy ocupada enviando spam y no enviando correos verdaderos.
+
+3.3.3 Esquema de un servidor de e-mail
+--------------------------------------
+
+               +-------------+         +-------------+
+               |   Servidor  |  Envía  |  Servidor   |
+       +------>|   SMTP para |-------->|    SMTP     |
+      /        |  salir      |         |             |
+     /         +-------------+         +-------------+
+    /                                        |
+   /                                         |
+  /                                          |
++---------+                                 \ /        
+| Cliente |                              +-----------+
++---------+                              |   Buzón   |
+ \                                       +-----------+
+  \                                          |
+   \                                         |
+    \          +-------------+               |
+     \         |   Servidor  |               |
+      +--<-----|   POP  para |<--------------+
+               |  descargar  |
+               +-------------+
+
+3.3.4 Servidor de correo Postfix
+--------------------------------
+El servidor de correo Postfix ofrece cuatro opciones predefinidas
+
+3.3.4.1 Sitio Internet
+----------------------
+Esta configuración es para máquinas conectadas a Internet con nombre de dominio
+
+3.3.4.2 Smarthost
+-----------------
+Es una configuración para máquinas con nombres y para correo local
+
+3.3.4.3 Correo local
+--------------------
+Solamente entrega a usuarios internos.
+
+3.3.4.4 Sistema satélite
+------------------------
+Es un servidor de correo secundario de un servidor principal
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

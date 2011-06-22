@@ -1,0 +1,790 @@
+El examen de este tema se realizará el Viernes, 4 de marzo
+
+Tema 5: Nivel de red
+====================
+
+0. Introducción
+---------------
+
+El nivel de red se ocupa de conexiones a nivel lejano.
+
+Las redes modernas están agrupadas en niveles muy estrictos, lo que hace que la organización sea mucho más fácil pero esto tiene otros problemas (es más fácil "apagar" Internet).
+
+Dentro de nuestros equipos se ejecutan algoritmos de enrutamiento, que permiten encontrar el camino a un destino lejano.
+
+1. Funciones de la capa de red
+------------------------------
+La capa de red hace lo siguiente:
+
+1) Establecer mecanismos para poner direcciones.
+2) Encontrar caminos (enrutar)
+
+3) Encapsular (meter información dentro) y desencapsular (extraer información de dentro).
+
+
+1.1 Protocolos de capa de red
+-----------------------------
+
+El protocolo más famoso es IP. Hay otros como
+-IPX (Novell)
+-AppleTalk (MacOS)
+
+1.2 Características
+-------------------
+
+El protocolo IP 
+
+-No es confiable-->Nunca se puede ofrecer garantía de ningún tipo.
+
+-No utiliza establecimiento de conexión. No avisa de que los datos van a llegar ni nada por el estilo.
+
+-No se basa en ningún medio físico, le da igual la fibra óptica, el cable coaxial, el UTP.
+
+
+1.2.1 ¿Qué significa sin conexión?
+----------------------------------
+No hay un proceso previo de aviso de llegada de mensajes. Por ejemplo, el teléfono si utiliza conexiones. El protocolo IP se parece más bien a un sistema postal, donde todo se envía sin avisar.
+
+
+1.2.2. ¿Qué es no confiable?
+----------------------------
+No se garantiza
+-Que la información vaya a llegar
+-Que la información llegue correctamente.
+-Que la información llegue sin errores.
+
+
+Cuando se envía información, lo normal es que se trocee. Al trocearse puede ocurrir
+-Que haya trozos que se pierdan.
+-Que haya trozos que lleguen tarde y el archivo no esté en orden.
+-Que haya trozos que lleguen mal.
+
+
+¿Por qué funciona tan bien Internet si IP es tan poco fiable?
+
+Existen mecanismos para evitar errores, pero IP no se ocupa de eso, sino la capa de transporte.
+
+1.2.3 ¿Qué es independiente del medio?
+--------------------------------------
+Cuando se diseñó se tenía la esperanza de que la tecnología mejorase, y como no se sabía como sería se hizo un protocolo que no se basase en nada.
+
+1.3 Cabecera de IP
+------------------
+
+Hay varios campos:
+
+-Campo de versión
+-Campo de longitud de la cabecera medido en bloques de 4 bytes
+-TTL: Tiempo que el paquete tiene permitido circular por redes. Cuando una máquina (un router) recibe un paquete quita tiempo al TTL, si algún router descuenta y sale 0, el paquete se tira.
+
+¿Deberíamos usar un TTL grande o pequeño?
+
+1) Un TTL grande da más margen a que un paquete esté circulando por la red y acabe siendo procesado.
+
+2) Un TTL más pequeño permite resolver las congestiones sin esperar tanto
+
+
+2. Agrupamiento de redes
+------------------------
+
+2.1 Criterios
+Los ordenadores están agrupados con el fin de simplificar la gestión. El tipo de agrupamiento depende de varios factores
+
+1) Geográfico. Es normal agrupar equipos que estén cercanos físicamente.
+2) Propósito. Un ejemplo sería agrupar los ordenadores de los profesores y por otro lado agrupar los de los alumnos.
+3) Propiedad.
+
+2.2 Subagrupamientos
+¿Podemos dividir una red en trozos más pequeños? sí, se puede
+
+¿Por qué querríamos hacerlo?. Existen 2 factores fundamentales
+
+1) Seguridad: se puede impedir que usuarios de una red accedan a datos o recursos de otra red distinta
+
+2) Rendimiento: al enviar o recibir datos, el impacto de un usuario queda limitado a su red.
+
+Una tarjeta tiene una dirección IP y una máscara que le permiten saber a qué grupo pertenecen.
+
+Por ejemplo, 10.8.91.94 255.255.0.0 indican que esa tarjeta pertenece al grupo 10.8
+
+Si se intenta hacer ping al (por ejemplo) 10.8.45.60, funcionará. Si intentamos enviar datos a un equipo como 10.4.105.45 el equipo no lo enviará a ese equipo sino que se pasará la información a un router o puerta de enlace.
+
+En clase, el router está en la 192.168.0.254 con máscara 255.255.255.0 y por tanto ni siquiera podemos ver al router, por lo que los ping a otras máquinas NO FUNCIONAN.
+
+
+En IP las máscaras se procesan EN BINARIO. Por lo tanto, la división de una IP puede ser bastante farragosa.
+
+
+Ejemplo: 10.1.2.4 con 255.255.224.0
+
++--------+--------+--------+--------+
+|00001010|00000001|00000010|00000100| IP
++--------+--------+--------+--------+
+|11111111|11111111|11100000|00000000| Masc.
++--------+--------+--------+--------+
+
+
+Esto significa que la IP está dividida en dos trozos
+
++--------+--------+---||-----+--------+
+|00001010|00000001|000||00010|00000100| IP
++--------+--------+---||-----+--------+
+|11111111|11111111|111||00000|00000000| Masc.
++--------+--------+---||-----+--------+
+   255      255      2  2 4      0
+
+En una IP hay dos trozos: ID de red y el ID de host
+
+En el caso que vemos, esta máquina podrá comunicarse con todas aquellas cuya IP en binario empiece por 
+
+|00001010|00000001|000||xxxxx|xxxxxxxx| IP
+
+¿Podrá comunicarse con la 10.1.205.73?
+
+Para saberlo, habrá que convertir 10.1.205.73 a binario
+Los dos primeros bytes de la máscara van todos a uno. Convertimos 205 a binario
+
+11001101
+
+Si los tres primeros bits (110) son iguales a los tres primeros bit del byte 2 la conexión funcionará (2 en binario es 00000010). Como no son iguales, la conexión no funciona
+
+
+Dada la máscara 255.255.192.0 ¿podrá un equipo con la IP 163.91.84.101 comunicar con el 163.91.13.7?
+
+Convertimos TODO A BINARIO
+
++--------+--------+--------+--------+
+|10100101|01011011|01010100|01100101| IP1
++--------+--------+--------+--------+
+|11111111|11111111|11000000|00000000| MASC
++--------+--------+--------+--------+
+|10100101|01011011|00001101|00000111| IP2
++--------+--------+--------+--------+
+
+Dividimos en dos usando las máscara
+
++--------+--------+--||------+--------+
+|10100101|01011011|01||010100|01100101| IP1
++--------+--------+--||------+--------+
+|11111111|11111111|11||000000|00000000| MASC
++--------+--------+--||------+--------+
+|10100101|01011011|00||001101|00000111| IP2
++--------+--------+--||------+--------+
+
+Una máquina solo puede comunicar con otra que tenga la primera parte (parte de red) EXACTAMENTE IGUAL.
+En este ejemplo la IP1 y 2 son así
+
+10100101.01011011.01  010100.01100101 IP1
+10100101.01011011.00  001101.00000111 IP2
+                   ^
+                   |
+                 ¡Bit distinto!
+
+Conclusión: Estas dos IP no se ven sin un router que los interconecte.
+
+
+
+Enunciado: Se desea tener dos redes con dos máquinas cada una. Una de las redes tendrá IPs como 10.1.1.1 y 10.1.1.2
+
+La otra tendra 11.1.1.1 y 11.1.1.2
+
+Queremos que ambas redes puedan verse.
+
+10.1.1.1 en binario
+00001010.00000001.00000001.00000001
+
+
+11.1.1.1 en binario
+00001011.00000001.00000001.00000001
+
+Enunciado: Se desea tener dos redes con dos máquinas cada una. Una de las redes tendrá IPs como 10.1.1.1 y 10.1.1.2 y la otra tendrá las direcciones 20.5.67.68 y la 20.7.21.49
+
+Pasamos a binario las IP
+
+10.1.1.1
+00001010.00000001.00000001.00000001
+
+10.1.1.2
+00001010.00000001.00000001.00000010
+
+
+20.5.67.68
+00010100.00000101.01000011.01000100
+
+20.7.21.49
+00010100.00000111.00010101.00110001
+
+Los tres primeros bits son comunes a todos. Si ponemos una mascara que tenga los tres primeros bit a uno, todos ellos pertenecerán a la misma red.
+
+Utilizando los tres primeros bits de la máscara, nosotros, como administradores de redes estamos haciendo que los cuatros equipos tengan una parte en común y por tanto formen parte de la misma red, y se verán.
+
+La máscara usada es (en decimal)
+224.0.0.0
+
+Enunciado: Se desea que estos tres grupos de equipos formen parte de la misma red.
+
+10.15.1.1
+10.13.1.2
+
+10.17.1.1
+10.17.1.2
+
+10.3.1.1
+10.3.1.2
+
+Si se desea ajustar al máximo la solución hay que buscar una parte común en los segundos bytes (15, 13, 17 y 3).
+15 en binario es 00001111
+13 en binario es 00001101
+17 en binario es 00010001
+3  en binario es 00000011
+
+La mascara es
+11111111.11100000.00000000.00000000
+  255   .  224   .    0   .  0
+
+
+
+La máscara será todos unos en el primer byte
+Pero en el segundo partiremos asi
+000 || 01111
+000 || 01101
+000 || 10001
+000 || 00011
+
+Por tanto la mascara (en binario) es
+
+11111111.11100000.00000000.00000000
+
+Que en decimal es 255.224.0.0
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Enunciado: Se desea conseguir que los siguientes conjuntos de direcciones IP puedan comunicarse entre ellos
+
+10.6.1.1
+10.6.1.2
+
+10.7.60.1
+10.7.60.2
+
+10.7.120.1
+10.7.120.2
+
+El primer byte de la mascara va todo a uno.
+
+El segundo byte de las direcciones es lo que necesitaremos analizar
+6 en binario es 00000110
+7 en binario es 00000111
+
+Si nos fijamos bien, veremos que el primer bit distinto (empezando desde la izquierda) ES EL ÚLTIMO
+
+En el segundo byte la mascara tiene 7 unos y 1 cero
+
+Resultado
+
+11111111.11111110.00000000.00000000
+
+3. Enrutamiento
+---------------
+
+Es la capacidad que tienen los router para ser capaces de enviar los datos al destinatario final encontrando el camino a lo largo de un conjunto de redes.
+
+El enrutamiento puede ser de dos formas
+1) Estático: el administrador inserta en los router las posibles rutas
+2) Dinamico: los router aprenden solos.
+
+Los router en Internet COLABORAN ENTRE ELLOS.
+
+3.1 Enrutamiento estatico
+-------------------------
+
+Lo primero que hay que saber es que un router no se sabe todas las IP que hay en su red. El router trata al conjunto de maquinas como una dirección que termina en 0.
+
+En segundo lugar, ningún router se sabe todo el camino para llevar datos de un sitio. De hecho, nadie en Internet conoce caminos completos. Se ejecuta un procedimiento llamado "siguiente salto".
+
+(En los apuntes interactivos, en el tema 5, apartado 5.3.2 se puede ver una animación del proceso de enrutamiento)
+
+
+Veamos un ejemplo de configuración de enrutamiento para dos redes
+
++------+      /------\   /------\   +-----+
+| PC1  |------|R1    |---|  R2  |---| PC2 |
++------+      \------/   \------/   +-----+
+
+
+En la parte izquierda está el conjunto de PC1+R1
+
+En la parte derecha tenemos PC2+R2
+
+En primer lugar debemos tener direcciones
+PC1:	10.1.1.1 255.0.0.0
+Router1:10.1.1.2 255.0.0.0
+
+
+Cuando se configuran redes, todo PC debe tener 3 parámetros
+1) Dirección IP
+2) Máscara
+3) Router=Puerta de enlace=Gateway
+
+Red derecha
+PC2: 	20.1.1.1 255.0.0.0
+Router:	20.1.1.2 255.0.0.0
+
+El router R1 y el router R2 no saben qué hacer con los paquetes con destinatarios remotos y los tiran. Necesitan tener una tabla de rutas
+
+Una tabla de rutas tiene tres partes
+En R2
++-------------+-------------+---------------+
+| Red destino | Mascara     | Siguiente     |
++-------------+-------------+---------------+
+| 10.0.0.0    | 255.0.0.0   | 30.1.1.1      |
++-------------+-------------+---------------+
+
+En R1
++-------------+-------------+---------------+
+| Red destino | Mascara     | Siguiente     |
++-------------+-------------+---------------+
+| 20.0.0.0    | 255.0.0.0   | 30.1.1.2      |
++-------------+-------------+---------------+
+
+Repetir este ejemplo con las direcciones de red
+
+100 para la red izquierda
+
+105 para la interna (entre routers)
+
+110 para la derecha
+
+Repetimos de nuevo con las direcciones de red siguientes
+
+80 para la red izquierda
+90 para la red central
+100 para la red derecha.
+
+Solución
+--------
+
++------+      /------\   /------\   +-----+
+| PC1  |------|R1    |---|  R2  |---| PC2 |
++------+      \------/   \------/   +-----+
+
+
+Router R1
++---------------|--------------------------+
+|IP izq		|	80.0.0.1	   |
++---------------|--------------------------+
+|Mascara	|	255.0.0.0	   |
++---------------|--------------------------+
+|IP derecha	|	90.0.0.1	   |
++---------------|--------------------------+
+|Mascara	|	255.0.0.0	   |
++---------------|--------------------------+
+
+PC1
++---------------|--------------------------+
+|IP		|	80.0.0.2	   |
++---------------|--------------------------+
+|Mascara	|	255.0.0.0	   |
++---------------|--------------------------+
+|Puerta enlace  |	80.0.0.1	   |
++---------------|--------------------------+
+
+Router R2
+
++---------------|--------------------------+
+|IP izq		|	90.0.0.2	   |
++---------------|--------------------------+
+|Mascara	|	255.0.0.0	   |
++---------------|--------------------------+
+|IP derecha	|	100.0.0.1	   |
++---------------|--------------------------+
+|Mascara	|	255.0.0.0	   |
++---------------|--------------------------+
+
+
+Tablas de rutas
+
+Router Izquierdo (R1)
++-----------+-----------------+-------------+
+|  Red      |    Mascara      | Siguiente   |
++-----------+-----------------+-------------+
+|100.0.0.0  | 255.0.0.0       | 90.0.0.2    |
++-----------+-----------------+-------------+
+
+
+Router Derecho (R2)
++-----------+-----------------+-------------+
+|  Red      |    Mascara      | Siguiente   |
++-----------+-----------------+-------------+
+| 80.0.0.0  | 255.0.0.0       | 90.0.0.1    |
++-----------+-----------------+-------------+
+
+
+
+Ejercicio
+---------
+Dada esta arquitectura de red asignar direcciones IP, máscaras,puertas de enlace y tablas de rutas
+
+       +-------+    /--------\
+       | PC3   |----|   R3   |
+       +-------+    \--------/
+                        |       
+                 +------
+                 |
++------+      /------\   /------\   +-----+
+| PC1  |------|R1    |---|  R2  |---| PC2 |
++------+      \------/   \------/   +-----+
+
+Solución
+
+ROUTERS
++-------+------------+--------------------+
+|ROUTER | CONEXIÓN   | DIRECCIÓN IP       |
++-------+------------+--------------------+
+|  R1   |  IZQUIERDA |     80.0.0.2       |
++-------+------------+--------------------+
+|  R1   |  DERECHA   |     90.0.0.2       |
++-------+------------+--------------------+
+|  R1   |  ARRIBA    |    110.0.0.1       |
++-------+------------+--------------------+
++-------+------------+--------------------+
+|  R2   |  IZQUIERDA |     90.0.0.1       |
++-------+------------+--------------------+
+|  R2   |  DERECHA   |    100.0.0.2       |
++-------+------------+--------------------+
++-------+------------+--------------------+
+|  R3   |  IZQUIERDA |    120.0.0.2       |
++-------+------------+--------------------+
+|  R3   |  ABAJO     |    110.0.0.2       |
++-------+------------+--------------------+
+
+
+ORDENADORES
++-------+------------+----------------------+
+|EQUIPO | DIRECCIÓN IP    | PUERTA ENLACE   |
++-------+-----------------+-----------------+
+| PC 1  |  80.0.0.1       | 80.0.0.2        |
++-------+-----------------+-----------------+
+| PC 2  | 100.0.0.1       | 100.0.0.2       |
++-------+-----------------+-----------------+
+| PC 3  | 120.0.0.1       | 120.0.0.2       |
++-------+-----------------+-----------------+
+
+
+TABLAS DE RUTAS
+
+R1
++------------------+----------------------+
+| RED DESTINO      | SIGUIENTE SALTO      |
++------------------+----------------------+
+|  100.0.0.0       |    90.0.0.1          |
+|  120.0.0.0       |   110.0.0.2          |
++------------------+----------------------+
+
+R2
++------------------+----------------------+
+| RED DESTINO      | SIGUIENTE SALTO      |
++------------------+----------------------+
+|   80.0.0.0       |    90.0.0.2          |
+|  120.0.0.0       |    90.0.0.2          |
++------------------+----------------------+
+
+R3
++------------------+----------------------+
+| RED DESTINO      | SIGUIENTE SALTO      |
++------------------+----------------------+
+|  100.0.0.0       |   110.0.0.1          |
+|   80.0.0.0       |   110.0.0.1          |
++------------------+----------------------+
+
+
+Ejercicio
+---------
+Dada esta arquitectura de red asignar direcciones IP, máscaras,puertas de enlace y tablas de rutas
+
+       +-------+    /--------\
+       | PC3   |----|   R3   |
+       +-------+    \--------/
+                       |   |       
+                 +-----+   +-- 
+                 |           |
++------+      /------\   /------\   +-----+
+| PC1  |------|R1    |---|  R2  |---| PC2 |
++------+      \------/   \------/   +-----+
+
+
+Solución
+
+ROUTERS
++-------+------------+--------------------+
+|ROUTER | CONEXIÓN   | DIRECCIÓN IP       |
++-------+------------+--------------------+
+|  R1   |  IZQUIERDA |     80.0.0.2       |
++-------+------------+--------------------+
+|  R1   |  DERECHA   |     90.0.0.2       |
++-------+------------+--------------------+
+|  R1   |  ARRIBA    |    110.0.0.1       |
++-------+------------+--------------------+
+
++-------+------------+--------------------+
+|  R2   |  IZQUIERDA |     90.0.0.1       |
++-------+------------+--------------------+
+|  R2   |  DERECHA   |    100.0.0.2       |
++-------+------------+--------------------+
+
++-------+------------+--------------------+
+|  R3   |  IZQUIERDA |    120.0.0.2       |
++-------+------------+--------------------+
+|  R3   |  ABAJO     |    110.0.0.2       |
++-------+------------+--------------------+
+
+
+ORDENADORES
++-------+------------+----------------------+
+|EQUIPO | DIRECCIÓN IP    | PUERTA ENLACE   |
++-------+-----------------+-----------------+
+| PC 1  |  80.0.0.1       | 80.0.0.2        |
++-------+-----------------+-----------------+
+| PC 2  | 100.0.0.1       | 100.0.0.2       |
++-------+-----------------+-----------------+
+| PC 3  | 120.0.0.1       | 120.0.0.2       |
++-------+-----------------+-----------------+
+
+
+TABLAS DE RUTAS
+
+R1
++------------------+----------------------+
+| RED DESTINO      | SIGUIENTE SALTO| MET |
++------------------+----------------------+
+|  100.0.0.0       |    90.0.0.1    |  1  |
+|  100.0.0.0       |    95.0.0.1    |  2  |
+|  120.0.0.0       |   110.0.0.2    |  1  |
+|  120.0.0.0       |    90.0.0.1    |  2  |
++------------------+----------------------+
+
+R2
++------------------+----------------------+
+| RED DESTINO      | SIGUIENTE SALTO| MET |
++------------------+----------------------+
+|   80.0.0.0       |    90.0.0.2    | 1   |
+|   80.0.0.0       |    95.0.0.1    | 2   |
+|  120.0.0.0       |    95.0.0.1    | 1   |
+|  120.0.0.0       |    90.0.0.2    | 2   |
++------------------+----------------------+
+
+R3
++------------------+----------------------+
+| RED DESTINO      | SIGUIENTE SALTO| MET |
++------------------+----------------------+
+|   80.0.0.0       |   110.0.0.1    | 1   |
+|   80.0.0.0       |    95.0.0.2    | 2   |
+|  100.0.0.0       |    95.0.0.2    | 1   |
+|  100.0.0.0       |   110.0.0.1    | 2   |
++------------------+----------------+-----+
+
+
+Enunciado:
+
+Dada la siguiente arquitectura de red, configurar las IP y las rutas de forma que la conexión funcione correctamente
+
+
++------+      /------\   /------\   +-----+
+| PC0  |------|R0    |---|  R1  |---| PC1 |
++------+      \------/   \------/   +-----+
+                 |           |
+                 |           |
+                 |           |                		 |           |
+                 |           |
+                 |           |
++------+      /------\   /------\   +-----+
+| PC2  |------|R2    |---|  R3  |---| PC3 |
++------+      \------/   \------/   +-----+
+Direcciones PC0-->Red 100
+Direcciones PC1-->Red 110
+Direcciones PC2-->Red 120
+Direcciones PC3-->Red 130
+Red R0-R1-->Red 105
+Red R0-R2-->Red 115
+Red R1-R3-->Red 125
+Red R2-R3-->Red 135
+
+Direcciones de los router
+
++---------------------------+
+|R0 IZQ		| 100.0.0.1 |
+|R0 ABAJO	| 115.0.0.10| 
+|R0 DERECHA	| 105.0.0.10|
++---------------------------+
++---------------------------+
+|R1 DER		| 110.0.0.1 |
+|R1 ABAJO	| 125.0.0.11|
+|R1 IZQ		| 105.0.0.11|
++---------------------------+
++---------------------------+
+|R2 IZQ		| 120.0.0.1 |
+|R2 DER		| 115.0.0.12|
+|R2 ARRIBA	| 135.0.0.12|
++---------------------------+
++---------------------------+
+|R3 DER		| 130.0.0.1 |
+|R3 ARRIBA	| 125.0.0.13|
+|R3 IZQ		| 135.0.0.13|
++---------------------------+
+
+Direccion PC
+PC0: 100.0.0.2 GW:100.0.0.1
+PC1: 110.0.0.2 GW:110.0.0.1
+PC2: 120.0.0.2 GW:120.0.0.1
+PC3: 130.0.0.2 GW:130.0.0.1
+
+Tablas de rutas
+
+R0
++---------------+------------+
+|110.0.0.0	| 105.0.0.11
+|120.0.0.0	| 115.0.0.12
+|130.0.0.0	| 105.0.0.11
+|110.0.0.0	| 115.0.0.12
+|120.0.0.0	| 105.0.0.11
+|130.0.0.0	| 115.0.0.12
++---------------+------------+
+
+Incompleto, no dio tiempo a terminar de copiarlo porque teníais examen de XML
+
+Para detectar problemas de enrutamiento se puede utilizar un comando que analiza las rutas seguidas por un paquete. Este comando tiene dos variantes
+
+1) En Windows se llama tracert <destino>
+2) En Linux se llama traceroute <destino>
+
+
+Enunciado:
+
+Dada la siguiente arquitectura de red, configurar las IP y las rutas de forma que la conexión funcione correctamente
+
+
++------+      /------\   /------\   +-----+
+| PC0  |------|R0    |---|  R1  |---| PC1 |
++------+      \------/   \------/   +-----+
+                 |      /    |
+                 |     /     |
+                 |    /      |                		 |   /       |
+                 |  /        |
+                 | /         |
++------+      /------\   /------\   +-----+
+| PC2  |------|R2    |---|  R3  |---| PC3 |
++------+      \------/   \------/   +-----+
+Direcciones PC0-->Red 100
+Direcciones PC1-->Red 110
+Direcciones PC2-->Red 120
+Direcciones PC3-->Red 130
+Red R0-R1-->Red 105
+Red R0-R2-->Red 115
+Red R1-R3-->Red 125
+Red R2-R3-->Red 135
+Red R1-R2-->Red 145
+
+Solución
+--------
+
+Direcciones de los router
+
+R0 IZQ: 100.0.0.1
+R0 DER: 105.0.0.1
+R0 ABA: 110.0.0.1
+
+R1 DER: 110.0.0.1
+R1 ABA: 125.0.0.1
+R1 IZQ: 105.0.0.2
+R1 DIAG:145.0.0.1
+
+R2 IZQ: 120.0.0.1
+R2 DER: 135.0.0.1
+R2 ARR: 115.0.0.2
+R2 DIAG:145.0.0.2
+
+R3 DER: 130.0.0.1
+R3 IZQ: 135.0.0.2
+R3 ARR: 125.0.0.2
+
+PC0: 100.0.0.2 GW: 100.0.0.1
+PC0: 110.0.0.2 GW: 110.0.0.1
+PC0: 120.0.0.2 GW: 120.0.0.1
+PC0: 130.0.0.2 GW: 130.0.0.1
+
+RUTAS R0
+
++-----------------+---------------------+
+|  100.0.0.0      |  
+|  100.0.0.0      |
+|  110.0.0.0      |
+|  110.0.0.0      |
+|  120.0.0.0      |
+|  120.0.0.0      |
+|  130.0.0.0      |
+|  130.0.0.0      |
++-----------------+---------------------+
+
+(Estaba hecho en la pizarra y no me dió tiempo a copiarlo completo)
+
+
+
+Enunciado:
+Dada esta red de routers explica como el algoritmo OSPF encuentra la mejor ruta desde A hasta F
+
+			2
+	+---+			+---+
+     +--| B |-------------------| E |
+    /   +---+			+---+
+  1/        \3                    /
+  /          |                   /  1
++---+	     |      +---+       |
+| A |	     |+-----| D |-------+
++---+		    +---+
+  |           +-----/   \
+  |2         /2          \2
+  |     +---+		  \	+---+
+  +-----| C |		   +----| F |
+	+---+			+---+
+          +         3               + 
+          -------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

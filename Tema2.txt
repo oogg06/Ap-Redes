@@ -1,0 +1,490 @@
+--------------------
+Tema 2: Nivel físico
+--------------------
+
+
+0. Introducción
+---------------
+
+Es la única capa que no es software sino elementos físicos. En general tenemos tres grandes categorías de medios físicos
+
+1) Cobre
+2) Fibra
+3) Pulsos EM.
+
+1. Función
+----------
+La capa física se encarga de transportar bits convirtiéndolos primero al tipo de señal correspondiente al medio físico y luego extrae de esos medios físicos los bits.
+
+Esta tarea requiere de varios elementos:
+
+a) Medio físico 
+b) Mecanismo de representación (p. ej 0V->bit 0, 5V->1)
+c) Circuitería electrónica: esto supone que habrá un coste.
+d) Mecanismos de codificación (p. ej, asignación de bloques).
+
+Se llama señalización al proceso de conversión de una secuencia de bits en una secuencia de impulsos.
+
+1.1 Modulación/demodulación.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Se llama modulación al proceso de modificación de una señal para que transporte bits. Toda señal tiene una amplitud y una frecuencia. Se llama Amplitud al punto más alto (o bajo) de una señal. Se llama frecuencia al número de ondas completas que transcurren en un segundo.
+
+Tanto la amplitud como la frecuencia se pueden modular lo que nos lleva a los dos procesos fundamentales de modulación: AM y FM
+
+1.1.1 Modulacion AM
+^^^^^^^^^^^^^^^^^^^
+
+La modulación en amplitud permite alcances mucho mayores y se basa en la alteración de la amplitud o altura de la señal
+
+.. image:: img/t1/ModulacionAM.png
+   :align: center
+   :alt: Ejemplo de modulación de amplitud
+
+Utilizando lápiz y papel dibuja la señal generada utilizando un esquema de modulacion AM de 4 señales que envíe la cadena de bits 0111.0010
+
+Solucion
+
+1111		|		|
+1110		|		|
+1101		|		|
+1100		|		|
+1011		|		|
+1010		|		|
+1001		|		|
+1000		|		|
+0111		|		|
+0110		|		|
+0101		|		|
+0100		|		|
+0011		|		|
+0010		|		|
+0001		|		|
+0000		|		|
+----------------+---------------+--------------
+0000		|		|
+0001		|		|
+0010		|		|
+0011		|		|
+0100		|		|
+0101		|		|
+0110		|		|
+0111		|		|
+1000		|		|
+1001		|		|
+1010		|		|
+1011		|		|
+1100		|		|
+1101		|		|
+1110		|		|
+1111		|		|
+
+
+
+
+La creación de señales tiene una serie de principios básicos:
+
+a) Todos los tiempos son iguales: todos los intervalos de tiempo deben ser igual de anchos.
+b) Si me dicen que hay 4 niveles, es porque se van a enviar bits de 4 en 4. Se deben crear todas las combinaciones de 4 (desde 0000, 0001....1111)
+c) Toda señal debe alcanzar la máxima y mínima altura por encima y por debajo del eje de las X.
+d) Debemos escribir todas las combinaciones por arriba y por debajo del eje de las X
+e) Divido la cadena en bloques de 4. Si me hace falta añado ceros por la izquierda.
+
+Para practicar en casa
+^^^^^^^^^^^^^^^^^^^^^^
+
+Utilizando un esquema de 2 bits enviar la cadena 00100101
+
+Utilizando un esquema de 3 bits enviar la cadena 101001011
+
+Utilizando un esquema de 4 bits enviar la cadena 0010010101101
+
+
+
+1.1.2 Modulación FM
+^^^^^^^^^^^^^^^^^^^
+La modulación FM es un mecanismo basado en modificar el número de ondas por tiempo.
+
+Solo hay que elegir un esquema de codificación basándonos en el número de ondas. P.ej:
+
+
+000--->1 onda
+001--->2 ondas
+010--->3 ondas
+011--->4 ondas
+100--->5 ondas
+101--->6 ondas
+110--->7 ondas
+111--->8 ondas
+
+
+1.1.3 Modulación PM/PSK o modulación de fase.
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+La modulación en fase se basa en modificar el punto en el que empieza una onda. Al final, todas las ondas empiezan y acaban en el mismo punto y además todas hacen dos "crestas": una en el máximo y otra en el mínimo.
+
+Se debe tener en cuenta que en todos los mecanismos de modulación se cumple la misma regla:
+
+"Cuantos más estados de modulación (divisiones) más bits por onda y por tanto más velocidad. Sin embargo, las señales se vuelven mucho más complicadas de manejar."
+
+1.1.4 Sistemas mixtos.
+^^^^^^^^^^^^^^^^^^^^^^
+
+En la vida real, es muy extraño encontrar dispositivos que solo usen AM, FM o PM. Lo más normal es que se combinen varios mecanismos para intentar aprovechar las ventajas de todos ellos.
+
+En un sistema que combinara 2 niveles de AM con dos de FM tendríamos cuatro posibles formas de onda
+
+Onda 00: Amplitud 1 y Frecuencia 1
+Onda 01: Amplitud 1 y Frecuencia 2
+Onda 10: Amplitud 2 y Frecuencia 1
+Onda 11: Amplitud 2 y Frecuencia 2
+
+Se pueden combinar los tres sistemas en un formato denominado QAM (Quadrature Amplitude Modulation)
+
+Para el próximo día se propone crear el esquema que combina: 4 fases, 2 frecuencias, 4 alturas
+
+2. Transmisión/recepción en analógico o digital.
+------------------------------------------------
+
+Se dice que una señal es analógica cuando se acepta que tome cualquier valor en un intervalo dado.
+
+Una señal es digital cuando solo se aceptan ciertos valores de la señal. La señal digital más básica es aquella que solo utiliza dos niveles correspondientes a los bits 0 y 1.
+
+Las señales analógicas emitidas no pueden ser procesadas "demasiado bien" por el receptor, ya que al fin y al cabo todo es posible.
+
+Sin embargo, las señales digitales pueden ser procesadas por el receptor y reconstruidas al saber que no todo es posible, por lo tanto la señal original se puede reconstruir "casi" a la perfección.
+
+
+Cuando una señal analógica se convierte a digital SE PIERDE INFORMACIÓN.
+
+
+3. Transmisión o recepción síncrona/asíncrona.
+----------------------------------------------
+
+Cuando alguien envía una señal digital, surge un problema importante. ¿Donde empieza y acaba un bit?.
+
+Para resolver este problema hay dos soluciones:
+
+a) Transmisión síncrona: el emisor envía una señal junto a la señal de datos que marca los comienzos y los finales. Es decir, que nos envía dos cosas a la vez, la señal de sincronismo y la de datos.
+
+b) Transmisión asíncrona: solo nos envía una cosa. Primero se envía una señal por delante que sean unos y ceros consecutivos. Esta señal le sirve al receptor para saber como de largos son los pulsos. Despues, el emisor envía datos, y el receptor ya sabe como de largos son los bits y sabe "por donde cortar".
+
+4. Transmisión en serie o en paralelo
+-------------------------------------
+
+Una transmisión en serie es una transmisión/recepción que solo utiliza un cable. Los datos se envían uno tras otro. Se ahorra cobre pero la velocidad es más pequeña.
+
+Una transmisión en paralelo utiliza muchos cables a la vez para enviar muchos bits a la vez. Se utiliza más cobre pero la velocidad se multiplica.
+
+5. Codificaciones/Descodificaciones
+-----------------------------------
+
+La codificación es el mecanismo por el cual un flujo de datos se convierte en una secuencia de unos y ceros. Por ejemplo, una secuencia como 011 puede que se envíe dentro del cable como 01011.
+
+¿Por qué se hace esto?
+
+¿Como funciona la codificación de bloques en los CD?
+
+5.1. Estándares
+~~~~~~~~~~~~~~~
+
+Un estándar es una norma: dicha norma puede ser obligatoria o recomendable. En el primer caso se dice que es "de iure" y en el segundo de facto.
+
+Algunos países imponen normas a las transmisiones dentro de su territorio y en otros casos los fabricantes deciden adoptar un sistema común con el fin de tener interoperabilidad.
+
+Las tarjetas de red siguen casi al 100% el estándar Ethernet ("de facto").
+
+En España el organismo regulador es AENOR (pertenece a la ISO)
+
+
+Hay otros estándares internaciones emitidos por otros organismos como el IEEE (Institute of Electrical and Electronic Engineers). Algunas de las normas que emite el IEEE son seguidas en todo el mundo, como por ejemplo las normas de la serie IEEE 802.11 (wi-Fi).
+
+En relación con esto hay otros estándares como los de IEEE 802.3 (Ethernet).
+
+6. Conceptos habituales en física
+---------------------------------
+
+a) Ancho de banda: Todo medio tolera una frecuencia mínima y una máxima. La diferencia entre los dos es el ancho de banda. ¡Esto significa que el ancho de banda es una medida de capacidad y no tiene por qué ser la velocidad máxima!. De forma similar a una tubería de agua, el ancho de banda es el ancho del tubo, y no la velocidad del agua dentro del tubo.
+El ancho de banda se mide en potencias de 10, y no de 2.
+Es decir 10Mbps son 10^6 bits por segundo
+Un GByte de RAM son 1024 Megas, pero 1Gbps son 1000 Mbits.
+
+
+b)Throughput: Productividad. Esto se mide en porcentaje. Es una medida del uso real de una conexión. Se debe recordar que al enviar algo, cada capa añade información, y esa información consume ancho de banda. El throughput nos indica el porcentaje real que se usa para enviar nuestra información y no la de las cabeceras.
+Si genero 1000 bytes, mi máquina enviará esos 1000 bytes + 30 bytes de direcciones y otras cosas, por lo que tengo una productividad de 1000/1030. La productividad se mide en porcentaje y a veces también se llama "rendimiento".
+
+c) Capacidad de transferencia útil, es una medida del ancho de banda descontando la productividad. Si tengo un ancho de banda de 6 Mbps y la productividad media es del 80%, mi capacidad útil es 4'8 Mbps. Es decir, se multiplica a*b.
+
+
+
+
+7. Medios físicos.
+------------------
+
+7.1 Basados en cobre.
+~~~~~~~~~~~~~~~~~~~~~
+
+7.1.1 10BaseT
+^^^^^^^^^^^^^
+
+10 Base T
+|   |   |
+|   |   +-->Trenzado
+|   +------>Emite en banda base
++---------->Ancho de banda
+
+El cable de par trenzado utiliza parejas de cables entrelazados para reducir las interferencias mutuas debidas al magnetismo.
+
+7.1.2 100BaseT
+^^^^^^^^^^^^^^
+100Base T
+|   |   |
+|   |   +-->Trenzado
+|   +------>Emite en banda base
++---------->Ancho de banda
+
+7.1.3 1000BaseT
+^^^^^^^^^^^^^^^
+
+1000BaseT
+|   |   |
+|   |   +-->Trenzado
+|   +------>Emite en banda base
++---------->Ancho de banda
+
+7.1.4 100BaseF
+^^^^^^^^^^^^^^
+
+100Base F
+|   |   |
+|   |   +-->Fibra
+|   +------>Emite en banda base
++---------->Ancho de banda
+
+Se puede poner en entornos industriales, con maquinaria pesada, etc.. sin sufrir interferencias.
+
+7.1.4 100BaseC
+^^^^^^^^^^^^^^
+
+100Base C
+|   |   |
+|   |   +-->Coaxial
+|   +------>Emite en banda base
++---------->Ancho de banda
+
+Tiene cierta tolerancia a las interferencias.
+
+
+En general, todos ellos tienen un tamaño máximo de segmento. Es decir, el cable que va de un equipo a otro no puede ser mayor de cierta longitud. Esta longitud oscila entre los 100 m y los kilómetros.
+
+
+7.2 Medios inalámbricos
+~~~~~~~~~~~~~~~~~~~~~~~
+
+7.2.1 Bluetooth
+^^^^^^^^^^^^^^^
+
+Muy poco alcance y muy poca velocidad: 56-64 kbps. Pensada para dispositivos de todo tipo que se conectan uno con uno, y no uno con muchos.
+
+
+7.2.2 Wi-Max
+^^^^^^^^^^^^
+
+Redes de muy gran alcance (80km) y con una velocidad media de 50-100 Mbps.
+
+7.2.3 Infrarrojos.
+^^^^^^^^^^^^^^^^^^
+
+Son impulsos cuyo longitud de onda está justo por debajo de lo que ve el ojo humano. Pueden obtener bastante velocidad pero el alcance es muy bajo. Además, es absolutamente necesario que los dispositivos se vean físicamente (uno enfrente del otro).
+
+La señal de infrarrojos se ve muy afectada por el calor ambiental, que siempre está presente. De ahí, que al alejar los dispositivos la velocidad o incluso el funcionamiento se vean afectados.
+
+7.2.4 Wi-Fi
+^^^^^^^^^^^
+
+Se denomina Wi-Fi a una tecnología que utiliza frecuencias en torno a los 2,4 Ghz y que está pensada para redes domésticas. Esta clase de señales con frecuencias tan altas permiten velocidades de un rango aceptable para un ordenador (alrededor de 54 Mbps).
+
+Las señales del rango Wi-Fi se ven muy afectadas por la humedad ambiental.
+
+
+7.2.5 HSDPA
+^^^^^^^^^^^
+
+High Speed Downlink Packet Access (Acceso a una red de paquetes con enlace de bajada de alta velocidad). HSDPA utiliza unas frecuencias que permiten alcances bastante grandes (50-80 km) y velocidades de hasta 14 MBps. Está pensada para ser ofrecida por compañías de telefonía móvil.
+
+También se conoce como "Internet por UMTS" (Universal Mobile Telephone System).
+
+
+HSDPA utiliza las distintas frecuencias asignadas para descargar pero de una forma distinta a sistemas como GPRS. Tradicionalmente la transmisión se ha hecho reservando frecuencias a los distintos participantes de una red. Este sistema se llama FDMA (Frequency Division Multiple Access o acceso múltiple mediante división de frecuencias).
+
+Sin embargo HSDPA asigna una misma banda a todo el mundo. Para evitar el solapamiento de datos cada dispositivo tiene un código asignado que se envía junto con sus datos. Este sistema de asignación de códigos se llama WCDMA (Wideband Code Division Multiple Access o acceso múltiple por división de códigos en (redes de) banda ancha)
+
+
+
+8. Cableado estructurado
+------------------------
+
+8.1 Organización del cable
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+En general en todas las instalaciones nos vamos a encontrar cable de cobre de par trenzado no apantallado.
+
+El cable de par trenzado se denomina de 8 vías por tener 8 pequeños cables de colores en su interior. No es igual que el del teléfono (que tiene 4).
+
+Para montar un cable es importante saber que los pequeños cables del interior siempre van en el mismo orden. Al montar los cables dentro de los conectores se debe hacer lo siguiente
+
+
+Se debe poner el conector con los pin metálicos mirando hacia nosotros. Los pin se conectan de izquierda a derecha del 1 al 8. Hay 8 cables cuyos colores son los siguientes
+
+Blanco/Naranja
+Naranja
+
+Blanco/Verde
+Verde
+
+Blanco/Azul
+Azul
+
+Blanco/Marron
+Marron
+
+Crimpadora 20-45 Euros
+Pelacables 8 euros
+
+Cable Normal (o directo)
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Punta 1
+
+Tx+   Tx-  Rx+            Rx-
+1     2    3    4    5    6    7    8
+Bl/N  N    B/V  A    B/A  V    B/M  M
+
+Punta 2
+1     2    3    4    5    6    7    8
+Bl/N  N    B/V  A    B/A  V    B/M  M
+
+Cable Cruzado
+^^^^^^^^^^^^^
+
+Se puede crear un tipo de cable que se denomina cruzado poniendo en una punta del cable los colores que hemos dicho y en la otra modificando el orden.
+
+
+
+Punta 1
+Tx+   Tx-  Rx+            Rx-
+1     2    3    4    5    6    7    8
+Bl/N  N    B/V  A    B/A  V    B/M  M
+
+Punta 2
+Rx+   Rx-  
+1     2    3    4    5    6    7    8
+Bl/V  V    B/N  A    B/A  N    B/M  M
+
+
+
+
+Se puede crear un tipo de cable que se denomina cruzado poniendo en una punta del cable los colores que hemos dicho y en la otra modificando el orden.
+
+8.2 Montaje de salas
+~~~~~~~~~~~~~~~~~~~~
+
+En salas de ordenadores es normal que los cables no vayan directamente del PC al switch, sino que haya conexiones intermedias con el fin de ofrecer flexibilidad en la organización de la sala. Los paneles de parcheo y las rosetas permiten ampliar la red o modificar la organización con cierta 
+
+
+
+
+
+8.3 Seguridad en los cables de cobre.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+8.3.1 Interferencias.
+^^^^^^^^^^^^^^^^^^^^^
+
+El cable de cobre es sensible a los campos electromagnéticos debido a un fenómeno llamado inducción. Estas interferencias pueden provenir de muchos sitios: máquinas, cables eléctricos e incluso de otros cables de datos. Cuando dos cables de datos se hacen interferencia mutua se denomina al resultado como "diafonía" (conversaciones cruzadas) o en inglés "crosstalk"
+
+8.3.2 Riesgos para la salud.
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Un cable(s) mal hechos podría llegar a ser un posible origen de foco de incendio. Cerca de toda instalación eléctrica debería haber extintores.
+
+
+Hay extintores para distintos usos:
+
+-Fuego por combustión química
+-Fuego de origen eléctrico.
+-Combustión de maderas, tejidos o papeles.
+
+
+La fibra óptica utiliza a menudo luces láser de alta intensidad que pueden quemar la retina.
+
+
+8.3.3 Riesgos específicos de la electricidad
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+-En toda instalación, las conexiones deberían estar compartimentadas en tramos.
+
+-La instalación debería tener conexiones a tierra.
+
+9. Otros medios físicos
+-----------------------
+
+
+9.1 Cable STP
+~~~~~~~~~~~~~
+
+El cable Shielded Twisted Pair (par trenzado apantallado) es como el UTP (par trenzado no apantallado) con la salvedad de que dispone de un revestimiento extra de aluminio para proteger de interferencias EM.
+
+El inconveniente de dicho cable es que su precio es superior al UTP
+
+9.2 Cable coaxial.
+~~~~~~~~~~~~~~~~~~
+
+Es bastante robusto, lleva protección metálica, su velocidad es similar, pero sin embargo no ha sido elegido por la industria. Esto se debe a que es menos versátil que el par trenzado.
+
+9.3 Fibra óptica
+~~~~~~~~~~~~~~~~
+
+La fibra óptica es muy rápida, pero bastante compleja de montar.
+
+Hay dos tipos de fibra:
+
+9.3.1 Monomodo.
+~~~~~~~~~~~~~~~
+
+Utiliza una sola luz que circula en línea recta. Al ir en línea recta, la luz NO SE DISPERSA y se pueden conseguir las mayores velocidades. Sin embargo, se necesita una luz láser (que es más cara)
+
+9.3.2 Multimodo.
+~~~~~~~~~~~~~~~~
+La luz se dispersa. Eso conlleva que las velocidades son un poco menores. Sin embargo, al permitir la dispersión podemos usar luces LED (más baratas)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,169 @@
+Tema 4: Ethernet
+================
+
+0.- Introducción
+----------------
+
+La historia de Ethernet se remonta a los años 80. Intel, Digital y Xerox se unieron para crear un dispositivo de red. El protocolo que funciona por debajo se llamó Ethernet.
+
+Las primeras redes no utilizaban ningún dispositivo.
+
+Estas primeras redes tenían una topología física en bus y también lógica en bus. Las conexiones se hacían mediante empalmes y la transmisión/recepción era muy inestable.
+
+En los segundos tipos de redes se utilizaban dispositivos que conectaban todos los equipos. Estos dispositivos eran cajas que simplemente repetían las señales y se llamaron hub o concentradores.
+
+
+Por la misma época IBM inventó una arquitectura de red llamada SNA. El modelo OSI de la ISO copió este modelo SNA y lo hizo público, lo cual perjudicó a IBM pero favoreció a los consumidores.
+
+1.- Ethernet
+------------
+
+1.1- Switches
+-------------
+
+Un switch es un dispositivo capaz de aprender datos. Al ser capaz de aprender es mejor en ciertas tareas. Su modelo de aprendizaje es el siguiente.
+
+
+Cuando llega una trama al switch, se mira la dirección de origen y el puerto por donde viene. Se apuntan la dirección y el puerto en la memoria RAM. Cuando no se sabe qué hacer con un paquete, el paquete se reenvía por todos los puertos. Pero si conozco donde está el destinatario, el switch lo envía SOLO AL DESTINATARIO CORRECTO.
+
+Este modelo de funcionamiento AHORRA MUCHAS COLISIONES, con lo cual el rendimiento mejora mucho.
+
+Se dice que un switch convierte un dominio de colisiones grande en muchos dominios pequeños. Si yo divido un conjunto grande de equipos en varios grupos pequeños la probabilidad de colisión disminuye.
+
+1.2 Novedades de Ethernet
+-------------------------
+
+Aunque Ethernet se pensó para redes LOCALES, hoy en día se utiliza para muchos otros tipos de red como redes MAN o WAN. Esto se debe a que Ethernet utiliza velocidades muy altas que permiten interconectar a muchos usuarios. Hoy en día cualquier red Ethernet soporta 1 Gbps.
+
+No está muy claro si Ethernet se impondrá en estos nuevos mercados.
+
+1.3 Subcapa LLC
+---------------
+
+En el pasado hemos hablado de las colisiones. La subcapa MAC de Ethernet se encarga de resolverlas. Sin embargo Ethernet hace más cosas aparte de arreglar problemas de colisiones.
+
+Una de estas tareas es el control del enlace (comprobar si hay errores...). Hay una subcapa llamada LLC que hace esto. LLC viene de Logical Link Control.
+
+En el mercado hay dos tipos básicos de redes Ethernet.
+-Alámbricas: siguen el estándar 802.3
+-Inalámbricas: siguen el 802.11n (hasta 300 mbps con unos 80 de media)
+
+
+1.4 Algoritmo STP
+-----------------
+
+Hay que averiguar como funciona: Está en el estándar.
+
+En general, el algoritmo STP resuelve el problema pero si deseamos que la solución converja a otros switches podemos modificar la prioridad de un switch para que tenga un valor menor. Para ver como el algoritmo avanza paso a paso hay unas transparencias aparte que se pueden consultar.
+
+Cuando un switch tiene una prioridad muy baja gana todos los pasos del algoritmo y se convierte en raíz.
+
+Para modificar dicha prioridad debemos hacer lo siguiente
+
+>enable
+#configure terminal
+(config)#spanning-tree vlan 1 priority 4096
+
+Para ver quien gana el algoritmo podemos usar este comando en los switches
+#show spanning-tree
+
+Recordemos que los switches tienen las ip 192.168.0.202 y 192.168.0.201 por lo que para entrar en ellos nos bastará con
+
+>telnet 192.168.0.201
+
+
+En clase hemos practicado con un pequeño ciclo como este
+
+	+-----------+   CABLE 1	+-----------+
+	|	    |-----------|	    |
+	|	    |		|	    |
+	| SWITCH 1  |		| SWITCH 2  |
+	|	    |	CABLE 2	|	    |
+	|	    |-----------|	    |
+	+-----------+		+-----------+
+
+Al unir con dos cables los mismos switches se forma un ciclo que el STP resuelve. Si se desea hacer que sea un switch distinto el que gane se puede asignar una prioridad menor (ya que los switches suelen traer de fábrica una prioridad muy alta)
+
+2. MAC en Ethernet
+------------------
+
+2.1 Administración del cable
+----------------------------
+
+En Ethernet se ejecuta un algoritmo llamado CSMA/CD que significa
+
+Carrier
+Sense
+Multiple
+Access
+/(With)
+Collision
+Detection
+
+Que en español se traduciría por Acceso Múltiple con Detección de Portadora (con Detección de Colisiones).
+
+
+
+
+Este algoritmo es así
+
+1) Antes de envíar podemos comprobar el cable para ver si alguien está transmitiendo. Si hay algo es porque hay una señal portadora de datos de otro equipo.
+
+	1.a) Si hay portadora, esperamos.
+	1.b) Si no hay portadora, enviamos.
+
+2) Si dos envían a la vez es muy posible que haya una colisión.
+
+3) Si hay colisión, hay que esperar un tiempo al azar. Al principio el intervalo de espera está entre 0 y 1. Si seguimos sufriendo colisiones es entre 0 y 2, despues 0 y 4, 0 y 8, 0 y 16....
+
+
+2.2 Administración de las direcciones.
+--------------------------------------
+
+En Ethernet las direcciones tienen 48 bits, o 6 bytes. Los 3 primeros bytes indican el fabricante de la tarjeta, y los tres últimos el número de la tarjeta.
+
+Para ver nuestra MAC hay muchos mecanismos, el más básico en Windows es ipconfig/all (En Linux usaríamos ifconfig). Cada tarjeta tiene una sola MAC.
+
+En Ethernet hay una dirección especial que es la FF-FF-FF-FF-FF-FF y que significa "DIFUNDIR"
+
+
+2.3 Protocolo ARP
+-----------------
+
+Su nombre proviene de Address Resolution Protocol. Este protocolo permite convertir IP en direcciones Ethernet, es decir si una máquina desea enviar datos a una IP como 195.235.6.5 el protocolo le contestará con una respuesta como 00-aa-43-56-fc-14
+
+
+El ARP tiene un problema y es que genera muchas difusiones.
+
+Difusiones=Colision=Ralentización
+
+
+Cuando un equipo, quiere enviar algo, utiliza una IP. La tarjeta Ethernet no puede usar IPs, tiene que "traducir" esta IP en una MAC.
+
+
+
+Para averiguar la MAC, el emisor envia una difusión. Si nos contestan, apuntamos la correspondencia entre IP del destinatario y MAC del destinatario. Despues se envía el mensaje a la MAC del destinatario.
+
+Para evitar problemas de seguridad y mejorar el rendimiento en las redes podemos apuntar de forma estática la traducción ARP entre direcciones IP y direcciones MAC.
+
+Otro problema que hay es que ARP genera difusiones y eso significa que hay colisiones.
+
+3.- Direccionamiento en Ethernet
+--------------------------------
+
+3.1 Tipos de direcciones
+------------------------
+
+En la tecnología podemos encontrar 3 tipos de direcciones
+
+
+-Unicast: Dirección que habla de UN SOLO DESTINATARIO.
+
+-Broadcast: Dirección que se refiere a TODOS LOS EQUIPOS DE LA RED LOCAL (en Ethernet es la dirección ff:ff:ff:ff:ff:ff)
+
+-Multicast: Dirección para enviar datos A UN CONJUNTO. Las direcciones Unicast son direcciones Ethernet como estas 
+		01-00-5e-xx-xx-xx
+
+
+
+

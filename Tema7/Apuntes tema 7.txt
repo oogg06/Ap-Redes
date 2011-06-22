@@ -1,0 +1,166 @@
+Tema 7: Capa de transporte
+==========================
+
+1.- Introducción
+================
+
+En la capa de transporte se gestionan los puertos y la confiabilidad.
+
+Los puertos permiten que haya muchos programas enviando a través de una sola tarjeta.
+
+La confiabilidad permite que los errores sean reparados automáticamente.
+
+1.1 Funciones del transporte
+----------------------------
+
+1.1.1 Segmentación
+------------------
+
+La capa de transporte divide los datos en trozos del tamaño que más le convenga.
+
+
+1.1.2 Reordenación
+------------------
+Los datos pueden llegar desordenados. La capa de transporte mantiene búfferes en memoria para ir almacenando los bloques, reordenarlos y entregarlos completos.
+
+1.1.3 Identificación de programas
+---------------------------------
+
+Cada programa que envía o recibe datos tiene asignado un puerto que nadie más puede usar. El SO utiliza ese número para saber a quien debe entregar los datos que llegan
+
+1.2 Control de tráfico
+----------------------
+
+El protocolo TCP se adapta a la velocidad existente en la línea.
+
+Gracias a esta característica se puede hacer "traffic shaping" que permite ajustar la velocidad de distintas máquinas que compartan una línea y evitar así problemas de saturación.
+
+1.3 Confiabilidad
+-----------------
+Hoy en día podemos elegir dos protocolos
+
+*TCP: Fiable pero más lento.
+*UDP: No fiable pero más rápido.
+
+2. Mecanismos de TCP
+--------------------
+
+En la transparencia 9 se pueden ver los distintos campos de un bloque TCP.
+
+Uno de estos campos llamado "Acuse de recibo" es una confirmación que se envía cada vez que un bloque (o grupo de bloques) llega bien. Este envío de confirmaciones es una de las razones por las que TCP es más lento.
+
+Además, antes de enviar algo TCP se asegura de que el receptor está preparado. Para ello se intercambian mensajes de conexión.
+
+Esta conexión es un intercambio de 3 mensajes
+-SYN ¿Puedes? (Synchrony)
+-ACK ¡Sí! (Acknowledge)
+-SYN-ACK ¡De acuerdo, empecemos!
+
+
+Toda comunicación TCP o UDP utiliza estos parametros
+
+* IP de origen
+* Puerto de origen
+* IP de destino
+* Puerto de destino.
+
+
+Esto da lugar a un proceso importantísimo
+
+1) No es lo mismo tráfico entrante que saliente
+2) Los router ADSL siempre autorizan tráfico saliente PERO NO ACEPTAN CONEXIONES ENTRANTES
+3) Los router no aplican las mismas reglas al tráfico entrante y al saliente.
+4) Cuando se habla de puertos abiertos, nos referimos a autorizar conexiones entrantes cuyo puerto de destino sea el de un programa que tenemos en un ordenador. Si un puerto no está "abierto" eso significa que una conexión desde fuera no se podrá iniciar correctamente, y por lo tanto no llegará a buen fin.
+
+
+
+
+2.1 Reensamblaje
+----------------
+
+Los segmentos de datos pueden llegar desordenados, sin embargo, TCP mantiene siempre en memoria una pequeña memoria que actúa de búffer en la que se van almacenando los datos. Si algo llega desordenado TCP lo reordenará y reensamblará de forma que los datos siempre llegan correctamente.
+
+2.2 Acuses de recibo con ventanas.
+----------------------------------
+
+Se llama "ventana" al máximo que alguien puede recibir sin enviar confirmaciones. Cuanto más grande sea la ventana, menos confirmaciones hay que enviar, y por lo tanto, más rápido se trabaja.
+El protocolo permite usar hasta 2 a la 10.
+
+2.3 Retransmisión
+-----------------
+
+Es la capacidad que tiene TCP para reenviar solamente los segmentos que se han perdido.
+
+
+
+3. UDP
+------
+
+Es un protocolo cuyo principal objetivo es maximizar el rendimiento, sin preocuparse de la fiabilidad. Su nombre proviene de User Datagram Protocol. Sus principales usos son:
+
+*Videoconferencia
+*Telefonía IP
+*DNS
+*Juegos on-line (En algunos operadores se puede entrar en la página del operador y activar el "modo fast-path")
+
+Algunas de las características propias de UDP
+
+* No hay reensamblaje ni reordenación.
+* No hay un proceso de conexión. Los datos se envían sin preocuparse de si el receptor está preparado (y ni siquiera si está encendido)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

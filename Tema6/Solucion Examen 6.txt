@@ -1,0 +1,92 @@
+112.65.87.223/27
+
+Al pasarla a binario vemos que eso empieza por 0. Es de CLASE A
+
+Al pasarla a binario también se observa que los bits de host van todos a uno: ES DE DIFUSIÓN.
+
+La máscara que se deduce es
+255.255.255.224
+
+Al pasarla a binario se deduce que se han hecho subredes por ser de clase A y tener una máscara más "ancha".
+
+Se pueden indicar las primeras y las últimas IP de su subrango. 
+
+Por ser de clase A y tener 5 bits de host tenemos hasta 30 máquinas por red con un total de 2 a la 16 subredes (-2)
+
+
+
+Ejercicio 2: 5 salas y 4 equipos
+
+4 equipos requieren 3 bits de host
+5 salas requieren 3 bits de subred.
+
+Máscara
+ 11111111.11111111.11111111.11 111 000
+    255     255        255     2 4 8 
+
++-----------------------------|---|----+
+|00000001.00000001.00000001.00 SSS HHH |
++-----------------------------|---|----+
+                               001 000    1.1.1.8   
+                               001 001    1.1.1.9
+                               001 110    1.1.1.14
+                               --------------------
+                               010 000    1.1.1.16
+                               010 001    1.1.1.17
+                               010 110    1.1.1.22
+                               --------------------
+                               101 000    1.1.1.40
+                               101 001    1.1.1.41
+                               101 110    1.1.1.46
+                               ---------------------
+                               110 000    1.1.1.48
+                               110 001    1.1.1.49
+                               110 110    1.1.1.54   
+
+Ejercicio 3: Prefijo 10.0.0.0 1024 redes y 66 equipos
+
+7 bits de host
+11 bits de subred
+
+  
+  255      255     255            128
+  11111111.111111 11.11111111.1 0000000
++----------------|-------------|--------+
+| 00001010.000000|SS.SSSSSSSS.S|HHHHHHH |
+-----------------|-------------|--------+
+                  00.00000000.1|0000000    10.0.0.128
+                  00.00000000.1|0000001    10.0.0.129
+                  00.00000000.1|1111110    10.0.0.254
+                  ------------------------------------
+                  00.00000001.0|0000000    10.0.1.0
+                  00.00000001.0|0000001    10.0.1.1
+                  00.00000001.0|1111110    10.0.1.126
+                  ------------------------------------
+                  11.11111110.1|0000000    10.3.254.128
+                  11.11111110.1|0000001    10.3.254.129
+                  11.11111110.1|1111110    10.3.254.254
+                  -------------------------------------
+                  11.11111111.0|0000000    10.3.255.0
+                  11.11111111.0|0000001    10.3.255.1
+                  11.11111111.0|1111110    10.3.255.126
+
+Ejercicio 4
+
+IPv6 donde se han resumido bloques de ceros DOS VECES, lo que está prohibido.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

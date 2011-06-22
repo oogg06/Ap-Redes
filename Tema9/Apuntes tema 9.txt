@@ -1,0 +1,621 @@
+===============================
+Tema 9: Consideraciones finales
+===============================
+
+
+0. Introducción
+---------------
+Existen tres tareas básicas de cualquier administrador de redes que deben analizarse con cuidado
+
+a) Planificación de la red
+b) Diagnóstico y reparación de averías
+c) Aseguramiento de los datos de la red. 
+
+
+Un técnico de redes debe asumir tareas de presupuestado, planificado, diseño, implantación y reparación.
+
+
+1. Medios de red
+----------------
+
+Los medios de red más usados hoy en día se clasifican en guiados y no guiados
+
+
+
+1.1 Cable de cobre
+------------------
+Barato, fácil, velocidad media/buena
+
+1.2 Cable de fibra
+------------------
+Cara, rápida y compleja
+
+1.3 Coaxial
+-----------
+Conexiones inestables
+
+2. No guiados
+
+2.1 Wi-Fi
+Alcance pequeño, velocidad media (85 metros, y hasta 200mbps). La señal suele ser inestable e impredecible.
+
+2.2 Bluetooth
+Sin comentarios
+
+2.3 Redes sobre móviles (3G)
+High
+Speed
+Datalink
+Packet
+Access
+
+Tienen una cobertura bastante buena pero por ahora su precio es alto.
+
+
+
+1.1 Dispositivos de red
+-----------------------
+
+1.1.1 Hubs
+----------
+Difíciles de encontrar hoy en día. Se caracterizan por reenviar todo por todos los puertos: esto los hace inseguros y además ralentizan la velocidad media de la red.
+
+1.1.2 Switches
+--------------
+Son dispositivos que cuando reciben una trama, la analizan y si pueden aprender una MAC nueva y asociarla a un puerto lo harán
+
+1.1.3 Switches gestionables y no gest.
+--------------------------------------
+Se dice que un switch es gestionable cuando podemos modificar aspectos de su configuración. Estos switches también permiten construir VLANS.
+
+Los switches no gestionables simplemente aprenden MACs y reenvían al punto correcto.
+
+1.2 Factores para planificar una red
+------------------------------------
+
+Los factores básicos son
+
+a) Precio
+b) Capacidad de la red
+c) Capacidad de ampliación.
+d) Facilidad de administración.
+e) Otros servicios
+
+1.3 Tipos de conexión
+---------------------
+
+1.3.1 Conexión al patch
+-----------------------
+Es el cable que une el equipo a la roseta.
+
+1.3.2 Conexión horizontal
+-------------------------
+Cable de la roseta al panel de parcheo (o "patch panel")
+
+1.3.3 Conexión backbone
+-----------------------
+Conexión que lleva tráfico de muchos dispositivos. Normalmente de un dispositivo como un switch a otro switch o router. Este cable de backbone soporta mucho tráfico, por ello debería ser de mayor capacidad que el horizontal. Por ejemplo, si el horizontal usa 100Mb el backbone debería ser de 1G
+
+1.3.4 Estructura del cableado de par trenzado
+---------------------------------------------
+
+
+1.3.4.1 Cable normal
+--------------------
+
+TX+   TX-  RX+            RX-
+ 1     2    3    4     5   6    7     8
+B/N    N   B/V   A    B/A  V   B/M    M
+
+B/N    N   B/V   A    B/A  V   B/M    M
+ 1     2    3    4     5   6    7     8
+TX+   TX-  RX+            RX-
+
+1.3.4.2 Cable cruzado
+---------------------
+TX+   TX-  RX+            RX-
+ 1     2    3    4     5   6    7     8
+B/N    N   B/V   A    B/A  V   B/M    M
+
+B/V    V   B/N   A    B/A  N   B/M    M
+ 1     2    3    4     5   6    7     8
+RX+   RX-  TX+            TX-
+
+
+2. Direccionamiento
+-------------------
+
+2.1 Direccionamiento por clases
+--------------------------------
+
+a) Clase A: aquellas cuyo primer bit es 0. Utilizaban 8 bits para la red y 24 para los host. Eso daba 2 a la 7 posibles redes con 2 a la 24 posibles host cada una.
+b) Clase B: empezaban por 10. Usaban 16 bits para la red y 16 bits para el host. Esto daba 2 a la 14 (-2) posibles redes con 2 a la 16 (-2) posibles host.
+c) Clase C: empezaban por 110. Usaban 24 bits de red y 8 de host. Es decir, 2 a la 21 (-2) posibles redes con 2 a la 8 (-2) posibles host.
+
+2.2 Sin clases
+---------------
+
+En este sistema el administrador solicita un prefijo de red con "x" bits de red y "z" bits de host. De esta forma se ahorró mucho espacio en las redes.
+
+
+2.3 Redes IP privadas
+---------------------
+
+Usando NAT se permite repetir direcciones en casas y empresas con tal de que el router externo tenga una IP pública.
+
+* Clase A: 10.0.0.0 hasta 10.255.255.255
+
+* Clase B: 172.16.0.0 hasta 172.31.255.255
+
+* Clase C: 192.168.0.0 hasta 192.168.255.255
+
+2.4 VLSM
+--------
+Variable Length Subnet Masks es una técnica utilizada para ahorrar IPs en redes. Consiste en asignar direcciones por rangos que se van dividiendo por la mitad en función de los grupos y necesidades
+
+
+3. Seguridad en redes
+---------------------
+NO ENTRA EN EL EXAMEN FINAL CISCO
+
+3.1 Introducción
+----------------
+Con el auge de Internet el interés económico en las redes ha crecido mucho. Al amparo de este crecimiento también han surgido potenciales problemas que pueden causar perjuicios económicos.
+
+En general, la seguridad en redes se clasifica de acuerdo a dos criterios: física y la lógica.
+
+
+3.2 Seguridad física
+--------------------
+
+3.2.1 Seguridad de acceso
+-------------------------
+
+Se refiere a la posibilidad de imposibilitar a un atacante el que pueda acceder a un equipo de una red.
+
+Soluciones: 
+
+a)candados en CPUs
+b)Control de acceso con personal de seguridad
+c)Biometría
+
+3.2.2 Riesgos físicos
+---------------------
+
+3.2.2.1 Incendios
+-----------------
+Solución: Extintor, detectores de humo, uso de material ignífugos. Puertas aislantes
+
+
+3.2.2.2 Agua/Inundaciones
+-------------------------
+Solución: Planificar la ubicación de los equipos para proteger los ordenadores de inundaciones. Esto implica huir de plantas bajas y sótanos.
+
+3.2.2.3 Seguros
+---------------
+A modo de contingencia se debe disponer de un seguro que permita reemplazar equipos o instalaciones en el menor tiempo posible y con el menor coste.
+
+3.2.2.4 Riesgos eléctricos
+--------------------------
+
+El mayor problema de la electricidad viene aparejado con la falta de estabilidad del voltaje: las subidas y bajadas de tensión bruscas pueden estropear los equipos.
+
+
+Solución: Sistemas de Alimentación Ininterrumpida. Fuentes de alimentación con capacidad de estabilización.
+
+3.2.2.5 Personal interno de la empresa
+--------------------------------------
+
+Los problemas causados por el personal pueden ser de muchos tipos. El principal esté asociado al robo de datos.
+
+
+Solución: Limitar el uso de redes y dispositivos de acceso.
+
+La LOPD exige al "responsable" que regule el acceso a los datos. Este acceso suele establecerse por medio de usuarios y contraseñas en la base de datos. Asimismo el administrador debe controlar qué usuarios acceden a qué tablas.
+
+3.2.2.6 Territorialidad
+-----------------------
+
+Marca el hecho de que a veces los datos de un usuario del país A están almacenados en un servidor en un país B y son procesados por una compañía en un país C
+
+Existe un organismo denominado Interpol que aglutina servicios policiales de todo el mundo y que puede permitir actuar en una situación como esta, a partir de la denuncia de un servicio de policía nacional.
+
+
+3.2.3 Riesgos lógicos
+---------------------
+
+Una de las primeras medidas que se debe tomar es cifrar las comunicaciones.
+
+3.2.3.1 Cifrado César
+---------------------
+
+Consiste simplemente en desplazar las letras del alfabeto y transcribir los mensajes
+
+ABCDEFGHIJKLMNÑOPQRSTUWXYZ   H  O  L  A
+DEFGHIJKLMNÑOPQRSTUWXYZABC   K  R  Ñ  D
+
+3.2.3.2 Cifrado por transposición
+---------------------------------
+
+En este cifrado se toma un mensaje, se divide en bloques, se reordena y se reescribe
+
+
+ATACAREMOS AL AMANECER-->
+
+ATA
+CAR
+EMO
+S A
+L A
+MAN
+ECE
+R
+
+Si este mensaje se lee de arriba a abajo queda
+ACESLMERTAM--AC-AROAANE-
+
+
+3.2.3.3 Cifrados asimétricos.
+-----------------------------
+En estos sistemas hay una clave para cifrar y otra distinta para descifrar.Estas claves también se llaman "pública" y "privada".
+
+La idea es que una de las claves se la podemos dar a todo el mundo para que cifre cosas con ella. Sin embargo, la otra clave la conservamos y solo nosotros podremos descifrar cosas.
+
+
+3.2.3.4 "ARP Poisoning" o envenamiento ARP
+------------------------------------------
+
+Cuando una máquina quiere conectar con otra de la red local ejecuta ARP. ARP traduce desde direcciones IP a direcciones físicas.
+
+¿Qué ocurriría si alguien se dedica a inyectar respuestas falsas en la red local?
+
+El ARP puede ayudar a eliminar el problema. Por desgracia puede suponer mucho trabajo manual. Aparte de esto, también hay programas que detectan este mal comportamiento por parte de usuarios.
+
+3.2.3.5 "IP Spoofing" o suplantación de IP
+------------------------------------------
+
+En general, todos los sistemas operativos detectan la duplicidad de direcciones. Cualquier duplicidad de este tipo debe investigarse de inmediato.
+
+Para averiguar quien se dedica a suplantar IP se puede utilizar un "sniffer".
+
+3.2.3.6 Errores de software
+---------------------------
+
+Siempre deben estar instaladas las actualizaciones del sistema operativo.
+
+a)SQL Injection
+Se denomina al proceso por el cual un atacante escribe en un formulario web una combinación de palabras o sentencias que son código ejecutable válido en SQL y que es ejecutado a ciegas por el programa que instalamos.
+
+b) XSS o "Cross Site Scripting"
+
+Consiste en que alguien, utilizando normalmente un sistema de foros o comentarios, inyecta código HTML o Javascript que se ejecutará cuando un cliente vuelva a descargar la página.
+
+c) XSRF "Cross site request forgery"
+Básicamente consiste en enviar comandos desde un sitio web a otro sitio sin que el usuario se entere.
+En general, el sitio cve.mitre.org publica todos los días un listado de programas y las vulnerabilidades que sufren.
+
+Aparte de eso, para todos los programadores se recomienda seguir los consejos de OWASP, que es un sitio dedicado a la promoción de consejos de seguridad a la hora de construir sitios web.
+
+
+4. VLAN
+-------
+
+4.1 Introducción
+----------------
+
+Las VLAN intentan dar solución a un problema consistente en que a veces ordenadores de una misma sala no forman parte de la misma red.
+
+Supongamos dos salas con 4 PCs cada una. Sus nombres son estos
+
+S1-PC1 S1-PC2 S1-PC3 S1-PC4-Switch 1
+				|
+				|
+			     Router
+				|
+				|
+S2-PC1 S2-PC2 S2-PC4 S2-PC4-Switch 2
+
+Problema: ¿Como hacer que S1-PC1, S1-PC2, S2-PC1 y el S2-PC FORMEN UNA RED PROPIA Y CERRADA?
+
+Es decir, deseamos hacer a nivel virtual algo como esto
+
++-----------------+
+|		  |
+|	S1-PC1	  |
+|       S1-PC2    |
+|       S2-PC1    |
+|	S2-PC2    |
+|		  |
+|		  |
++-----------------+
+Es decir, queremos una red virtual formada por ordenadores que están en sitios distintos.
+
+La solución a este problema son las VLANs (Virtual Local Area Network).
+
+4.2 Implementación de una VLAN
+------------------------------
+En primer lugar es IMPRESCINDIBLE disponer de hardware que soporte VLANs.
+
+1) Se debe entrar en el switch y crear las distintas VLANs (con un número).
+
+2) Se deben asignar puertos del switch a esas VLAN. Estos puertos se denominan "puertos de acceso". Es importante recordar que las VLAN están unidas a los puertos del switch. Si tiramos del cable y se conectar ese cable de ordenador a otro puertos, habremos sacado al ordenador de su VLAN.
+
+3) A menudo las VLAN deben pasar por varios switches. Habrá puertos que transporten tráfico de varias VLANs. Estos puertos se denominan "troncos" o "puertos troncales". Se debe avisar al switch de los puertos que actuarán como troncales.
+
+Ejercicio de la transparencia 14.
+--------------------------------
+"Una empresa tiene tres salas con tres equipos cada una. Toda la red tiene la IP 10.0.0.0/8 y sin embargo se desea separar el tráfico. Los primeros equipos de cada sala deben estar en una VLAN separada de los demás. Los segundos y los terceros también tienen su VLAN propia.No hay router."
+
+La solución sería la siguiente:
+
+Descargando el fichero del servidor llamado "Ejemplo 2 sin VLAN", deberíamos aplicar las siguientes configuraciones". Si no, se deberán crear 3 switches con 3 PC cada uno, poner direcciones 10.0.0.xxx a cada uno con máscaras 255.0.0.0 e interconectar los tres switches.
+
+Recuérdese que quizá los puertos fastethernet no tengan los mismos números en el Packet Tracer, pero si es así, la solución sería
+
+Switch 1, 2 y 3
+enable
+configure terminal
+vlan 10
+exit
+vlan 20
+exit
+vlan 30
+exit
+interface fastethernet 0/1
+switchport mode access
+switchport access vlan 10
+exit
+interface fastethernet 0/2
+switchport mode access
+switchport access vlan 20
+exit
+interface fastethernet 0/3
+switchport mode access
+switchport access vlan 30
+exit
+interface fastethernet 0/4
+switchport mode trunk
+switchport trunk allowed vlan add 10
+switchport trunk allowed vlan add 20
+switchport trunk allowed vlan add 30
+exit
+interface fastethernet 0/5
+switchport mode trunk
+switchport trunk allowed vlan add 10
+switchport trunk allowed vlan add 20
+switchport trunk allowed vlan add 30
+
+Ejercicio:
+
+Hay 4 clases con dos ordenadores cada uno. Las clases están conectadas en circulo 
+
+Clase A: PC1 y PC2 con VLAN 10 y 20
+Clase B: PC3 y PC4 con VLAN 30 y 40
+Clase C: PC10 y PC20 con VLAN 20 y 10 respectivamente
+Clase D: PC30 y PC40 con VLAN 40 y 30 respectivamente
+
+Switch A
+switch1>enable
+switch#configure terminal
+vlan 10
+exit
+vlan 20
+exit
+interface fastethernet 0/x
+switchport mode access
+switchport access vlan 10
+exit
+interface fastethernet 0/y
+switchport mode access
+switchport access vlan 20
+exit
+interface fastethernet 0/troncal1
+switchport mode trunk
+switchport trunk allowed vlan add 10
+switchport trunk allowed vlan add 20
+switchport trunk allowed vlan add 30
+switchport trunk allowed vlan add 40
+exit
+
+interface fastethernet 0/troncal2
+switchport mode trunk
+switchport trunk allowed vlan add 10
+switchport trunk allowed vlan add 20
+switchport trunk allowed vlan add 30
+switchport trunk allowed vlan add 40
+
+¡ATENCIÓN!
+En ocasiones, un puerto troncal transportará tráfico de VLANs que no tienen relación con él, ya que quizá vengan de switches remotos. Es importante permitir a esos puertos troncales que transporten datos de dichas VLANs remotas, ya que sino dichas VLANs remotas no podrán comunicarse entre ellas por un simple detalle.
+
+
+5. Configuración y diagnóstico
+------------------------------
+
+Se denomina CLI a todos los interfaces que funcionan por comandos. Su nombre proviene de Command Line Interface.
+
+Existen muchos dispositivos que tienen un S.O en su interior. Sin embargo, a simple vista no siempre se distinguen. Sus capacidades pueden ser muy distintas (tener o no STP, tener o no capacidades de VLAN...).
+
+En la actualidad, algunos router ADSL soportan OpenWRT que es una distribución Linux que se puede meter dentro con el fin de ampliar sus capacidades y funcionamiento.
+
+En cuanto al hardware, los dispositivos profesionales pueden ampliarse para que tengan más puertos, conexiones a otros tipos de redes,etc...
+
+El problema más común con un router Cisco es conectarlo al ADSL. Para poder establecer esta conexión hay que comprar una WAN Interface Card (WIC).
+
+5.1 Configuración de acceso a un Cisco
+--------------------------------------
+
+5.1.1 Cable consola
+-------------------
+
+Es un cable que en un extremo tiene un puerto serie y en el otro uno de red.
+
+Una vez conectado el cable, se debe ir al Hyperterminal y proceder con estos pasos
+
+1. Indicar el puerto a configurar
+2. Configurar los parámetros físicos de velocidad a utilizar para comunicarse con el dispositivo Cisco.
+	2.1 Bps: 9600 (hasta 115200)
+	2.2 Bloque: 8 bits
+	2.3 Paridad: No se usa (ninguno)
+	2.4 Bits de parada: 1
+3. Encender el dispositivo y esperar a que aparezcan los mensajes de arranque en el HyperTerminal
+
+5.1.2 Cable Ethernet
+--------------------
+En este caso, la velocidad no se tiene que configurar. Sin embargo, al reiniciar un dispositivo Cisco, dicho dispositivo nos dará una dirección por DHCP. Por ello, debemos configurar nuestro SO para que obtenga una IP automáticamente.
+
+Normalmente, los dispositivos Cisco utilizan la red 10.0.0.0
+
+5.2 Archivos de configuración
+-----------------------------
+
+En los dispositivos Cisco hay dos archivos importantísimos
+
+5.2.1 running-config
+--------------------
+
+Este archivo almacena la configuración que se está ejecutando en ese mismo momento. Cada vez que hacemos un cambio en la configuración, dicho archivo recoge automáticamente tales cambios.
+
+5.2.2 startup-config
+--------------------
+Es el archivo que almacenará la configuración que ejecutará el dispositivo al ser reiniciado. Si deseamos hacer permanente una configuración cambiada se debe ejecutar
+
+switch#copy running-config startup-config
+
+Si deseamos reestablecer el dispositivo a su configuración de fabrica se puede hacer
+
+switch#erase startup-config
+
+5.3 Modos del IOS
+-----------------
+
+**Importante** No podemos lanzar cualquier comando en cualquier punto. Se debe ir entrando en distintos "modos" o "secciones" y lanzar los comandos en el punto adecuado. Despues, con "exit" podemos volver al modo anterior
+
+Existen tres modos básicos para un dispositivo Cisco
+
+a) No privilegiado o modo usuario
+b) Privilegiado (usando enable)
+c) Configuración global (configure terminal)
+
+5.4 Comandos de verificación IOS
+--------------------------------
+Estos comandos están disponibles desde el modo privilegiado. Una buena pista es escribir show ?
+
+a. show version
+b. show process
+c. show vtp status
+d. show running-config 
+e. show startup-config
+f. show memory
+g. show spanning-tree
+
+5.5 Nombrado de dispositivos
+----------------------------
+
+En general, se recomienda encarecidamente asignar un nombre a todos los dispositivos de la organización. Esto facilita el uso de nombres comunes entre administradores y ahorra el trabajo necesario para memorizar direcciones MAC o IP.
+
+Una buena técnica es utilizar nombres provenientes de una misma zona semántica. O al menos elegir una convención
+
+El estándar RFC 1178 ofrece consejos para elegir nombres buenos en los dispositivos de una red.
+
+
+5.6 Uso de claves
+-----------------
+
+Se recomienda proteger con una clave todos aquellos dispositivos susceptibles de estropear las comunicaciones en una empresa.
+
+Sobre dichas claves se recomienda aplicar las siguientes reglas
+
+a) Distintas en todos los dispositivos
+b) Distintas dentro de cada dispositivo
+	b.1) Una contraseña para telnet
+	b.2) Una distinta para enable
+c) Difíciles de adivinar: mezclar letras, números, mayúsculas, minúsculas y signos. Además, su longitud debería ser de al menos 8-10 caracteres
+d) Las contraseñas deben renovarse periódicamente y NO DEBEN REUTILIZARSE.
+
+5.7 Copia de seguridad en Cisco
+-------------------------------
+
+Las copias de seguridad de los archivos de configuración del hardware de Cisco se hace a través de otro ordenador que disponga de un servicio de TFTP.
+
+a) Es importante que todos los dispositivos pertenezcan a la misma red IP
+b) Se debe disponer de un servidor TFTP instalado
+
+enable
+configure terminal
+interface vlan 1
+ip address 10.0.0.99 255.0.0.0
+no shutdown
+exit
+line vty 0 4
+password cisco
+login
+exit
+enable password class
+
+Supongamos que alguien configura la IP de un switch, le pone la clave "cisco" al telnet y le pone "class" al modo privilegiado.
+
+Para hacer una copia de seguridad, se debe hacer
+copy running-config tftp:
+
+Para recuperar una copia de seguridad podemos hacer algo como esto
+
+copy tftp: startup-config
+
+5.8 Interfaces Cisco
+--------------------
+
+5.8.1 FastEthernet
+------------------
+Se denominan interfaces a todos aquellos puntos de conexión susceptibles de ser configurados para que transporten datos.
+
+a. Interfaces FastEthernet
+Suelen tener una numeración como 0/0 0/1 0/2, que se refiere a tarjetas integradas.
+Si utilizamos ampliaciones, dichas conexiones de la tarjeta de ampliación usarán cosas como 1/0, 1/1, 1/2, 0/1/0
+
+Estos interfaces se pueden apagar y encender con los comandos "shutdown" y "no shutdown". Es importante recordar que muchas conexiones vienen inactivas "de fábrica", por lo que habrá que usar explícitamente el "no shutdown".
+
+En los router, si se desea cambiar una IP primero se debe entrar en ese interfaz y luego lanzar el comando "ip address <IP> <Mascara>"
+
+5.8.2 Interfaces Serie
+----------------------
+Se utilizan para conectar un router Cisco a una linea serie que dé acceso a una WAN. Para ello, habrá que añadir tarjetas WIC-2T que permitan acceso a líneas telefónicas y poder así enlazar con sitios remotos.
+
+
+Estos interfaces se suelen llamar Serial 0/0/0, 0/1/0.
+
+
+Para dichos interfaces, se debe usar "clock rate <velocidad>" **EN AMBOS INTERFACES**
+
+
+5.8.3 Interfaz console
+----------------------
+
+Se accede a él con el comando siguiente:
+
+line console 0
+
+En dicho interfaz de consola se recomienda poner una clave para evitar que un usuario traiga cables de consola de su casa y reconfigure el dispositivo.
+
+Para ponerle contraseña a esta línea usaríamos
+
+password class
+login
+
+5.8.4 Interfaces telnet
+-----------------------
+Controlan el acceso remoto desde un programa de telnet. Se configura dicho acceso telnet mediante "terminales virtuales" llamados "vty"
+
+Podemos seleccionarlos y cambiar contraseñas y accesos con
+
+line vty 0 4
+
+
+Ejercicio: Crear dos redes con un switch y dos PC cada una. Interconectar las redes mediante una línea serie.
+
+
+6. Función del router
+---------------------
+
+Su tarea es muy simple: almacena tablas de rutas que indican por donde entregar un paquete entrante. Si no hay ninguna ruta que coincida con el camino que necesitamos se entregará por una "ruta por defecto" (o "gateway por defecto")
+
+Ejercicio: Crear tres redes con un switch y dos PC cada una. Las redes forman un ciclo.Interconectar las redes mediante una línea serie.

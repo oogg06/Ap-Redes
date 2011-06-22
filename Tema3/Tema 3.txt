@@ -1,0 +1,341 @@
+Tema 3: Nivel de enlace
+=======================
+
+0. Introducción
+===============
+
+La capa de enlace es la capa 2 del modelo OSI. Se encargaba de "entregar datos entre vecinos inmediatos".
+
+1. Servicios
+============
+
+1.1 Descripción de los servicios
+--------------------------------
+
+
+La capa de enlace tiene dos subtareas fundamentales:
+
+
+a) Proteger a la capa de red (que está arriba) de los detalles de la transmisión física
+
+b) Ayuda a resolver el problema de la entrega en una red local en la cual todo el mundo comparte el cable.
+
+1.2 Terminología
+----------------
+
+Se llama "trama" a un bloque de datos manejado en la capa de enlace.
+
+Se llama "medio físico" al sistema utilizado para la transmisión de bits (a veces será un cable de cobre, otras fibra óptica).
+
+1.3 Necesidad de la capa de enlace
+----------------------------------
+
+
+¿Por qué hace falta una capa de enlace?.
+
+Respuesta: Hay muchos tipos de medios físicos. Cada uno de ellos tiene distintas características.
+
+Por ejemplo, un enlace por satélite puede ser muy rápido, pero el comienzo de la transmisión puede ser muy lento (lo que llamamos "ping" o "latencia".)
+
+Se podría decir que la latencia es la "aceleración de un coche" (por ejemplo, pasar de 0 a 100 en 4 o en 12 segundos). Sin embargo, la velocidad de una red es como decir que un coche puede ir de forma sostenida a 110 o a 190Km/h.
+
+La capa de enlace, se preocupa de resolver los problemas de latencia y ancho de banda de los distintos medios que puede cruzar un paquete.
+
+Cuando enviamos un email de aquí a Japón, ese email puede cruzar muchos tipos de redes (ver animación). Cuando el paquete llega por ejemplo a mi router, puede que mi router al ir conectado por fibra óptica a mi compañía decida confiar en el medio para así ir más deprisa. Sin embargo, al llegar ese email a un satélite, es posible que la capa de enlace de ese satélite decida activar todos los controles de errores para evitar problemas.
+
+**La regla general es que en función del medio que usemos, usaremos distintas capas de enlace adaptadas a las peculiaridades de ese medio, lo que supone que la capa de enlace incluso podría hacer cambios en el formato del mensaje (por ejemplo, cifrando, o haciendo trozos más pequeños o activando la comprobación de errores)**
+
+1.4 Entramado
+-------------
+
+Para poder ver la estructura de tramas descargaremos e instalaremos el analizador de red Wireshark.
+
+Toda la información que circula por una red tiene una estructura claramente determinada. El uso de determinadas conexiones implica el uso de distintos protocolos de enlace. 
+
+**Las conexiones más utilizadas de lejos hoy en día son las basadas en par trenzado conectadas a tarjetas Ethernet.**
+
+Las normativas para construir tarjetas de red Ethernet son públicas y se denominan estándares de la serie 802.xxxx. Las tarjetas basadas en cable corresponden a la serie 802.3 y las Wi-Fi a la 802.11
+
+A esta estructuración de la información se le llama entramado. En general, las tramas Ethernet tienen un esquema como este
+
+
+
++--------------+-------------+---+-----------+-------+
+| Destino      |   Origen    | O | Datos     |Trailer|
++--------------+-------------+---+-----------+-------+ 
+
+
+Los distintos enlaces (Wi-Fi, Ethernet, Fibra óptica...) utilizan distintas estructuras de trama. Esto supone que si un router tiene una conexión de fibra y una Ethernet, habrá que convertir un formato de trama en el otro.
+
+
+1.5 Acceso al medio.
+--------------------
+
+Se denomina "método de acceso al medio" al procedimiento que ejecuta una capa de enlace para resolver el problema de la compartición de cables por parte de varios usuarios.
+
+Hay muchos mecanismos MAC (Medium Access Control) pero el MAC elegido por Ethernet está basado fundamentalmente en el azar.
+
+1.6 Información incluida en las tramas
+--------------------------------------
+
+¿Qué campos hay en una trama?
+
+Todas las capas de enlace suelen enviar marcas de inicio y final de trama, pero los sniffer no suelen mostrarlas.
+
+a) Dirección de destino
+b) Dirección de origen
+c) Datos enviados
+d) Información de control: Se pueden marcar tramas de alta prioridad, y cosas por estilo.
+e) Tráiler: Puede incluir varias cosas, pero la más fundamental es el campo Checksum.
+
+Supongamos este mensaje
+  Destino    Origen     C      Datos        Trailer
++----------+----------+--+----------------+---------+
+| 0c-02-0a | 0b-0c-02 |  |   H O L A      |         |
++----------+----------+--+----------------+---------+
+
+Si convertimos los datos a números obtenemos cosas como por ejemplo
+H: 73
+O: 84
+L: 76
+A: 65
+------
+  298
+
+La suma se mete en el tráiler y se envía esta trama
+
+  Destino    Origen     Datos             Trailer
++----------+----------+-------------------+---------+
+| 0c-02-0a | 0b-0c-02 |   H O L A         |   298   |
++----------+----------+-------------------+---------+
+
+Supongamos que el receptor recibe esto (se corrompe la O y se convierte en Q)
+
+  Destino    Origen     Datos             Trailer
++----------+----------+-------------------+---------+
+| 0c-02-0a | 0b-0c-02 |   H Q L A         |  298    |
++----------+----------+-------------------+---------+
+
+
+El receptor vuelve a calcular la suma
+
+H: 73
+Q: 87
+L: 76
+A: 65
+------
+  300
+
+La suma que calcula el receptor no coincide con la enviada por el emisor. ¡Se ha descubierto un error!
+
+
+Existen diversos protocolos y estándares para la capa de enlace, pero de lejos, el más utilizado es el sistema Ethernet
+
+Ethernet utiliza direcciones de 6 bytes (48 bits). Además, los distintos fabricantes tienen asignados distintos bloques de forma que es posible conocer el fabricante de una cierta tarjeta
+
+       3 bytes	            3 bytes
++---------------------+---------------------
+|  Pref. fabricante   |   Dirección        |
++---------------------+---------------------
+
+Un ejemplo de dirección Ethernet sería 00:22:CD:2A:5A:F1.
+
+Se puede ver la dirección Ethernet de un equipo utilizando el comando ipconfig /all. A la dirección de enlace también se le conoce por el nombre de "dirección MAC" o "dirección física".
+
+Al fabricar tarjetas, cada fabricante utiliza direcciones asignadas por un consorcio que centraliza la asignación de direcciones. ¡Nunca debería ocurrir que dos tarjetas tengan la misma MAC!.
+
+
+2.- El control del acceso al medio
+===================================
+
+En una red, siempre ocurre lo siguiente
+
+
+		+---------------+
+		| Dispositivo   |--------Exterior
+		+---------------+
+			|
+			|
+			|
+			|
+			|
+
+	+-----+       +-------+      +------+
+	| PC  |	      | PC    |      | PC   |
+	+-----+       +-------+      +------+ 
+
+Es decir, hay varios cables conectados a un mismo dispositivo. Todos los PC pueden enviar y/o recibir a la vez, entonces ¿como podemos resolver el tema de "quién utiliza el cable al exterior"?
+
+Esta pregunta se puede resolver con distintos mecanismos. Estos mecanismos se llaman mecanismos de "CONTROL DE ACCESO AL MEDIO" (o Medium Access Control o MAC)
+
+
+¿Qué posibles mecanimos podríamos utilizar?
+1) Por turnos 1-2-3-1-2-3-1-2-3....
+2) Por prioridad
+3) Por tipo de tráfico (primero HTTP y luego email)
+4) Otros sistemas
+
+
+
+
+
+Por curioso que resulte, el MAC en Ethernet se basa en el azar. Para enviar algo ocurre lo siguiente:
+
+1) Si alguien quiere enviar, mira el cable
+	1.1) Si el cable está libre, envía (o recibe)
+	1.2) Si no está libre, espera
+2) Al enviar (o recibir) pueden pasar dos cosas
+	2.1) No hay ningún problema
+	2.2) Nuestra trama choca con otra (colisión)
+	Una colisión es el resultado de la
+	destrucción de dos tramas que se
+	interfieren mutuamente.
+
+
+Cuando hay una colisión, los que la sufren deciden esperar a que haya menos congestión, pero ¿cuanto hay que esperar?.
+
+No se puede esperar un tiempo fijo, porque volveríamos a colisionar. Lo que ocurre es que las máquinas esperan un tiempo al azar, sin embargo el mecanismo es el siguiente
+
+1) Espero un tiempo al azar entre 0 y 1.
+2) Intento reenviar
+3) Si hay mucho tráfico quiza mi reenvío tambien sufra una colisión
+4) Hay que volver a esperar, pero ahora se elige un tiempo al azar entre 0 y 2
+5) Si vuelve a haber colisiones, se espera más tiempo pero eligiendo entre 0 y 4
+6) Entre 0 y 8
+7) Entre 0 y 16
+
+Ethernet se dice que es "no determinista" es decir no predetermina a nadie a una situación de envío o espera concretas
+
+3.- Tipos de transmisión
+========================
+
+3.1 Símplex
+-----------
+Se denomina símplex a un sistema en el cual una máquina solo recibe o solo transmite. Solo puede hacer una cosa.
+
+3.2 Semidúplex o half-dúplex
+----------------------------
+Sistema en el cual uno emite y luego recibe, pero no hace las dos cosas a la vez.
+
+3.3 Dúplex
+----------
+Sistema en el cual los participantes pueden enviar y recibir simultáneamente.
+
+3.4 Autonegociados
+------------------
+No tiene nada que ver con los anteriores. Un switch o router se dice que tiene autonegociación cuando es capaz de detectar si hemos conectado un cable cruzado o uno directo o un switch o un PC.
+
+Si al conectar dos dispositivos los dos tienen capacidades de negociación el orden de los colores de los cables pierde su importancia, ya que a nivel interno los dispositivos intercambian sus conexiones para que todo funcione correctamente.
+
+4. Topologías
+=============
+
+
+Se denomina topología al orden en que se disponen los cables y los equipos. Las más utilizadas hoy en día son la siguientes
+
+4.1 Punto a punto
+-----------------
+
+Es una topología en la que un nodo solo se conecta con otro nodo.
+
+4.2 Multiacceso o en bus
+------------------------
+Es la utilizada en las tarjetas Ethernet. Estas tarjetas van conectadas a un dispositivo en el cual hay un cable que todas las tarjetas comparten y que se llama bus.
+
+4.2 Anillo
+------------------------
+Los nodos están conectados de dos en dos formando un círculo. En la red se define un "sentido de giro". Así cuando alguien quiere enviar información a otro equipo, lo que hace es pasar el paquete al siguiente en la cadena de turnos.
+
+En este esquema supongamos que los turnos son 
+
+A->B->C->D
+	
+		+-------+
+		|   D   |
+		+-------+
+
+
++-------+			+-------+
+|   A   |			|   C   |
++-------+			+-------+
+
+
+		+-------+
+		|   B   |
+		+-------+
+
+
+Si A quiere enviar a D, se lo pasará a B. B, al ver que no es para él lo pasa al siguiente en la cadena. C, hará lo mismo y lo pasa al siguiente en la cadena. D, al recibirlo lo toma y se completa la transmisión.
+
+Hoy en día, la fibra óptica utiliza anillos pero de dos en dos. Uno de los anillos se usa para enviar y el otro para recibir.
+
+
+4.4 Topologías lógicas
+----------------------
+
+Una topología ya montada en una cierta estructura (por ejemplo, bus) puede reprogramarse para actuar como si fuera otra (por ejemplo, topología en anillo).
+
+En estos casos diríamos que la topología FÍSICA es en bus, aunque hay una topología LÓGICA de anillo.
+
+
+
+5.-Entramado
+============
+
+Ya hemos hablado un poco de las tramas. En las tramas hay una pregunta importante ¿por qué no se usa el mismo formato de tramas en todas las redes?
+
+Respuesta: Porque no todas las redes son iguales. En una red de fibra, la fiabilidad es altísima y no necesitamos añadir mucha información de control de transmisión. Sin embargo, las redes basadas en satélites son muy inestables, por eso necesitan añadir muchas cosas para asegurar que todo llegue.
+
+
+
+6.- Dispositivos
+================
+
+En la capa de enlace existen dos dispositivos básicos: hubs y switch.
+
+Un hub es un dispositivo que reenvía todo lo que recibe. Esto no es muy eficiente ya que es muy fácil que dos máquinas generen colisiones en el resto de máquinas de una red.
+
+Los switches no se comportan así. En primer lugar, tienen una memoria RAM y además tienen "capacidad de aprendizaje". Un switch siempre se fija en la MAC de origen. Si el switch no conocía esa MAC se la apunta y se apunta el puerto por donde vino.
+
+En poco tiempo, el switch construye una tabla de MACs y puertos y es capaz de enviar los mensajes solo al destinatario correcto. Para ello, el switch analiza las tramas recibidas y se fija en la MAC de origen. Una vez que el switch ha aprendido las MAC de los PC que tiene conectados es capaz de hacer comunicaciones directas sin colisiones. Al ser capaz de ahorrar montones de colisiones, la comunicación con switches es muchísimo más eficiente.
+
+
+Si llega información al switch que le diga que tiene que cambiar algo en la tabla, el switch lo hace
+
+
+
+Comandos
+--------
+
+
+(Usuario->Administrador) enable
+(Administrador->Config. global) configure terminal
+(Cambia el nombre)  hostname ejemplo
+(Config. global->Administrado) exit
+(Copiar config.) copy running-config startup-config
+reload
+
+Switch>enable
+Switch#configure terminal
+Switch(Config)#line console 0
+switch(config-line)#pasword pepito
+switch(config-line)#login
+switch(config-line)#exit
+switch(config)#exit
+switch#copy running-config startup-config
+switch#reload
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,885 @@
+Tema 6: Direcciones IP
+======================
+
+0.- Introducción
+----------------
+
+Las direcciones IPv4 tienen 32 bits organizadas en grupos decimales de 4 elementos.
+
+¿Cuantas direcciones IP puede haber? Hay aproximadamente unos 4300 millones de IP. Sin embargo se asignaban en bloques muy grandes, lo que conllevó un desperdicio muy grande.
+
+IPv6 intenta solventar el problema de la asignación de direcciones utilizando 128 bits para las IP.
+
+Un ISP es un Internet Service Provider (Proveedor de servicios Internet)
+
+1. Estructura de IP
+===================
+
+Toda máquina necesita estos parámetros para poder trabajar en red
+
+	a) Dirección IP
+	b) Máscara
+Con estos dos parámetros basta. Si además deseamos ser capaces de comunicar con otras redes lejanas, necesitaremos además una puerta de enlace o router.
+	
+
+Una dirección IP tiene 32 bits. Los bits se agrupan de 8 en 8 y escriben en decimal como números separados por puntos.
+
+
+
+Esto significa que una dirección como 10.15.21.96 en realidad es procesada por la máquina como
+
+00001010.00001111.00010101.01100000
+(Se recuerda que el punto no existe, lo ponemos por comodidad). Como solo con esto no se puede saber cual es la parte de red y cual la de host hace falta un elemento más: la máscara.
+
+Supongamos que quiero crear una red con 220 equipos. ¿Cuantos bit requieren las IP de los host?
+
+Si reserváramos 4 bits para la parte de red de las direcciones podríamos tener 2 a la 4 (16 máquinas).
+
+Si utilizáramos 16 bits tendríamos 2 a la 16 posibles máquinas que es 65536.
+
+Se debe recordar que en una red todos los ordenadores deben tener igual el bloque de bits de la parte de red.
+
+
+Ejercicio:Convertir a binario la dirección IP 161.65.89.45
+
+Ejercicio convertir a decimal la dirección IP 10010101.01110111.00001100.11001111
+
+
+
+
+Solución: 161.65.89.45 en binario es la secuencia siguiente
+
++--------+--------+--------+--------+
+|10100001|01000001|01011001|00101101|
++--------+--------+--------+--------+
+
+Solución: 10010101.01110111.00001100.11001111 en decimal es
+10010101= 2^7 + 2^4 + 2^2 + 2^0
+          128+  16 +  4  +  1 = 149
+01110111= 2^6 + 2^5 + 2^4 + 2^2 + 2^1 +2^0
+           64 +  32 +  16 +  4  +  2  + 1=119
+00001100= 2^3 + 2^2 
+           8  +  4  =12
+11001111= 2^7 + 2^6 + 2^3 + 2^2 + 2^1 + 2^0
+          128+  64 +  8  +  4  +  2  +  1=207
+
+El resultado es 149.119.12.207
+
+
+2.Clasificación de direcciones
+==============================
+
+2.1 Por tipo
+------------
+
+Toda dirección tiene una máscara asociada que le permite saber cual es la parte de red y cual es la parte de host.
+
+A la hora de poner partes de host podemos poner cosas muy diversas que dan lugar a distintos tipos de direcciones
+
+Ejemplo: Supongamos esta máscara y esta IP
+
+IP:     00001010.00000001.00000001.00000001
+Máscara:11111111.11111111.00000000.00000000
+
+
+a) Si en la parte de host ponemos todo a uno tendremos lo que se llama la dirección de difusión o de broadcast. En este caso la IP sería
+                          !!!!!!!!.!!!!!!!!   
+                          ¡ TODO A UNOS   !
+                          !!!!!!!!.!!!!!!!!
+IP:     00001010.00000001.11111111.11111111
+Máscara:11111111.11111111.00000000.00000000
+
+En decimal eso es la IP 10.1.255.255 con máscara 255.255.0.0
+
+El protocolo PROHIBE PONER A NINGÚN EQUIPO UNA DIRECCIÓN DE DIFUSIÓN.
+
+La dirección de difusión es una dirección especial que ponen los ordenadores cuando quieren difundir algún mensaje de importancia.
+
+
+b) La combinación de host con todo a ceros tampoco está permitida. Es la llamada dirección de red
+
+                          !!!!!!!!.!!!!!!!!   
+                          ¡ TODO A CERO   !
+                          !!!!!!!!.!!!!!!!!
+IP:     00001010.00000001.00000000.00000000
+Máscara:11111111.11111111.00000000.00000000
+
+Esto en decimal sería 10.1.0.0 con máscara 255.255.0.0
+
+c) Cualquier otra combinación sí es válida y se llamaría dirección de host.
+
+
+
+
+Ejercicio: Para esta asignación 134.62.38.175/28 encuentre las primeras y las últimas direcciones válidas. Encuentre la dirección de red y la de difusión.
+
+
+La máscara de /28 es esta
++--------+--------+--------+--------+
+|11111111|11111111|11111111|11110000|
++--------+--------+--------+--------+
+(en decimal es 255.255.255.240)
+
+
+La IP en binario es esta
++--------+--------+--------+--------+
+|10000110|00111110|00100110|10101111|IP
++--------+--------+--------+--------+
+|11111111|11111111|11111111|11110000|Masc
++--------+--------+--------+--------+
+
+La máscara marca el "corte" entre la parte de red y la de host
+
+ RRRRRRRR RRRRRRRR RRRRRRRR RRRR  HHHH
++--------+--------+--------+----||----+
+|10000110|00111110|00100110|1010||1111|IP
++--------+--------+--------+----||----+
+|11111111|11111111|11111111|1111||0000|Masc
++--------+--------+--------+----||----+
+
+
+
+La dirección de red es la que lleva la parte de host TODO A CERO
++--------+--------+--------+----||----+
+|10000110|00111110|00100110|1010||0000|IP-RED
++--------+--------+--------+----||----+
+Que en decimal es 134.62.38.160
+
+
+¿Cual es la dirección de difusión? La que lleva todo a unos en la parte de host. ¡La que nos han dado!:134.62.38.175
+
+
+¿Qué posibles direcciones se pueden poner en esa red?
++--------+--------+--------+----||----+
+|10000110|00111110|00100110|1010||0001|
+|10000110|00111110|00100110|1010||0010|
+|10000110|00111110|00100110|1010||0011|
+|10000110|00111110|00100110|1010||0100|
+|10000110|00111110|00100110|1010||0101|
+|10000110|00111110|00100110|1010||0110|
+|10000110|00111110|00100110|1010||0111|
+|10000110|00111110|00100110|1010||1000|
+|10000110|00111110|00100110|1010||1001|
+|10000110|00111110|00100110|1010||1010|
+|10000110|00111110|00100110|1010||1011|
+|10000110|00111110|00100110|1010||1100|
+|10000110|00111110|00100110|1010||1101|
+|10000110|00111110|00100110|1010||1110|
++--------+--------+--------+----||----+
+
+La primera IP es 134.62.38.161
+La segunda IP es 134.62.38.162
+La tercera IP es 134.62.38.163
+......
+La última IP es 134.62.38.174
+
+Repetir el ejercicio con esta combinación
+10.35.48.55/17
+
+
+La máscara (en binario) es esta
+
+ 11111111.11111111.10000000.00000000
+                   ^
+                   |
+                 ¡Cuidado!
+
+
+Pasamos a binario la IP para ver los 17 primeros bits
+
+10 en binario 00001010
+35 en binario 00100011
+48 en binario 00110000
+
+
+Así que nuestra parte de red es
+
+ 	R=> Bit de la parte de red
+	H=> Bit de la parte de host
+
+   RRRRRRRR.RRRRRRRR.RHHHHHHH.HHHHHHHH
+   00001010.00100011.0xxxxxxx.xxxxxxxx
+
+La dirección de difusión es esta (lleva los bit de host a uno)
+
+   RRRRRRRR.RRRRRRRR.R  HHHHHHH.HHHHHHHH
+   00001010.00100011.0  1111111.11111111
+
+En decimal esto da 10.35.127.255
+
+La dirección de red (la que usarán los routers) es esta
+
+
+   RRRRRRRR.RRRRRRRR.R  HHHHHHH.HHHHHHHH
+   00001010.00100011.0  0000000.00000000
+
+En decimal es 10.35.0.0
+
+¿Cuales son la primera y última IP?
+
+   RRRRRRRR.RRRRRRRR.R  HHHHHHH.HHHHHHH
+   00001010.00100011.0  0000000.0000001
+   00001010.00100011.0  0000000.0000010
+   00001010.00100011.0  0000000.0000011
+   00001010.00100011.0  0000000.0000100
+   00001010.00100011.0  0000000.0000101
+   00001010.00100011.0  0000000.0000110
+   00001010.00100011.0  0000000.0000111
+   00001010.00100011.0  0000000.0001000
+   00001010.00100011.0  0000000.0001001
+   00001010.00100011.0  0000000.0001010
+
+	... (continúa)
+   00001010.00100011.0  1111111.1111110
+
+La primera IP es 10.35.0.1 y la última es 10.35.127.254
+
+
+
+Repetir el ejercicio para esta combinación
+
+10.48.192.193/26
+
+La máscara para el /26
+
+11111111.11111111.11111111.11000000
+
+En decimal es 255.255.255.192
+
+La IP de difusión requiere que primero convirtamos la IP que nos han dado
+
+ 10 en binario es 00001010
+ 48 en binario es 00110000
+192 en binario es 11000000
+193 en binario es 11000001
+
+
+La base es esta
+
+   00001010.00110000.11000000.11xxxxxx
+
+
+La IP de difusión es esta
+
+   00001010.00110000.11000000.11  111111
+
+
+Que en decimal es 10.48.192.255
+
+
+La IP de red es esta
+
+   00001010.00110000.11000000.11  000000
+
+que en decimal es 10.48.192.192
+
+Las combinaciones de IP son estas
+
+   00001010.00110000.11000000.11  000001
+   00001010.00110000.11000000.11  000010
+   00001010.00110000.11000000.11  000011
+   00001010.00110000.11000000.11  000100
+.......
+   00001010.00110000.11000000.11  111110
+
+La primera es 10.48.192.193
+La segunda es 10.48.192.194
+....
+La última es 10.48.192.254
+
+Un tipo de problemas parecido es el siguiente
+
+
+En una red hay 36 equipos. Dada la red 10.0.0.0/8 ¿qué máscara y qué direcciones de red podremos asignar?
+
+
+Hay que manipular bits de host, lo malo es que no sabemos cuantos. Habrá que ir probando
+
+Si yo tuviera 3 bits de host podría tener 2 elevado a 3 (-2) direcciones IP. Es decir habría 8-2=6 posibles IP
+
+Si yo tuviera 4 bits de host podría tener 2 elevado a 4 (-2) direcciones IP. Es decir habría 16-2=14 posibles IP
+
+Si yo tuviera 6 bits de host podría tener 2 elevado a 6 (-2) direcciones IP. Es decir habría 64-2=62 posibles IP
+
+Necesitamos 6 bits de host.
+
+Si hay 6 bits de host ¿cuantos hay de de red?. Habrá 26 de red.
+
+La máscara que me darán será
+
+11111111.11111111.11111111.11000000 
+   255  .  255   .  255   . 192
+
+
+Y sobre el prefijo de red 10.0.0.0 habría que calcular la IP de difusión, la de red, la primera, la última
+
+
+
+Ejercicio: Si necesitamos 133 host ¿cuantos bits de host necesitaremos? Suponiendo que nos podemos inventar el prefijo de red que queremos ¿cuales serán las IP?
+
+Respuesta: Necesitaremos 8 bits de host
+
+Máscara
+11111111.11111111.11111111.00000000
+  255      255      255      0
+
+
+Me invento el prefijo
+
+00000001.00000001.00000001.xxxxxxxx
+
+
+La IP de difusión:	1.1.1.255
+La IP de red:		1.1.1.0
+La primera IP:		1.1.1.1
+La última IP:		1.1.1.254
+
+
+
+
+2.2 Por uso
+-----------
+
+Las direcciones IP se pueden usar para tres cosas
+
+1) Envío unicast
+2) Envío multicast
+3) Envío broadcast
+
+1) Un envío unicast es un envío a una sola máquina.
+
+2) Envío broadcast es un envío a todas las máquinas de la red. Para hacer esto el remitente debe enviar cosas a una dirección cuya parte de host tiene todos los bit a uno
+
+3) Envío multicast es un envío a UNOS CUANTOS (son direcciones que empiezan por 224)
+
+
+2.3 Direcciones especiales
+--------------------------
+
+Hay una serie de direcciones que tienen un uso muy especial.
+
+Supongamos que soy una compañía de redes. Tengo 100 clientes. Esto significa que deberíamos tener 100 direcciones compradas y preparadas. Sin embargo puede que no me las puedan dar porque no queden.
+
+Para resolver esto puede que la compañía solo tenga 50 direcciones.
+
+La compañía programa sus router para que hagan NAT. El NAT consiste en hacer que el router pueda cambiar la IP de origen por la suya en lugar de la del usuario.
+
+Las direcciones reservadas para que los administradores las asignen repetidas dentro de distintas redes son estas
+
+Desde 192.168.0.0 hasta la 192.168.255.255
+Desde la 172.16.0.0 hasta la 172.31.255.255
+Desde la 10.0.0.0 hasta la 10.255.255.254
+
+
+El NAT tiene sus problemas:
+
+1) Un usuario que quiera poner un servidor y ofrecer algo en Internet tiene un problema grave ya que no siempre tendrá la misma IP
+
+2) En general las máquinas que hacen NAT suelen tener puertos cerrados por lo que hacer funcionar ciertos programas requiere que se abran dichos puertos previamente (lo cual puede ser difícil para usuarios no experimentados).
+
+2.4 Direcciones y clases
+------------------------
+
+Aunque ya no se hace así, las direcciones IP estaban organizadas por clases.
+
+2.4.1 Clase A
+-------------
+
+Todas las IP cuyo primer bit es 0 son de clase A. En estas direcciones los 8 primeros bit siempre son de red y los 24 restantes de host
+
+0 0001010.0000001.0000001.00000001
+R RRRRRRR.HHHHHHH.HHHHHHH.HHHHHHHH
+
+Supongamos que compramos un prefijo de clase A como este 
+
+00010000.xxxxxxxx.xxxxxxxx.xxxxxxxx.
+
+Estos 24 bit estarían reservados solo para mí (es decir 2 a la 24)
+
+00010001.xxxxxxxx.xxxxxxxx.xxxxxxxx.
+
+2.4.2 Clase B
+-------------
+
+Todas aquellas que empiezan por la pareja de bits 10. En esta clase, los 16 primeros son de red y los 16 siguientes de host
+
+Así un prefijo como este
+
+10 000001.00000001.xxxxxxx.xxxxxxxx
+
+conlleva la máscara
+
+11 111111.11111111.00000000.00000000 
+(255.255.0.0)
+
+Los 16 bits de host me dan 2 a la 16 posibles direcciones IP (65536 direcciones)
+
+
+2.4.3 Clase C
+-------------
+
+Son todas las direcciones que empiezan por el trío de bits 110.
+En estas direcciones los 24 primeros bits son de red y los 8 últimos de host
+
+Así, este prefijo
+
+110 00001.00000001.00000001.xxxxxxxx
+
+
+2.4.4 Clase D
+-------------
+
+Son las que empiezan por el prefijo binario 1110. Esas direcciones son las que se usan para hacer multicast
+
+
+
+2.4.5 Clase E
+-------------
+Son las que empiezan por 11110. Se reservaron para experimentos y por tanto NO PUEDEN USARSE.
+
+
+
+3. Asignacion de direcciones
+----------------------------
+
+3.1 Manual vs Automática
+------------------------
+
+Al asignar IPs a los equipos de una red hay dos técnicas básicas
+
+a) Manual
+b) Automática
+
+En cualquier caso, hay otro "problema" relacionado con esto: ¿Debemos usar IP privadas o públicas?. Una razón muy primaria para usar privadas es que no cuestan dinero. Al usar privadas, debe haber máquinas que traduzcan (NAT) las direcciones de origen y eso supone una sobrecarga. Además de eso, cuando se usa NAT es necesario indicar a la máquina traductora que a veces querremos abrir puertos.
+
+
+Para configurar el DHCP en un dispositivo Cisco se usan estos comandos
+
+enable
+configure terminal
+ip dhcp pool RED-INSTI
+network 192.168.1.0 255.255.255.0
+default-router 192.168.1.1
+dns-server 8.8.8.8
+exit
+exit
+copy running-config startup-config
+
+
+
+3.2 Organismos
+--------------
+
+IANA es el organismo mundial de asignación de números (Internet Assigned Number Authority).
+
+RIPE es el organismo europeo
+
+ES-NIC es el organismo español
+
+Afri-NIC
+
+AP-NIC Asia
+
+ARIN- Mexico-Canada-EEUU
+
+
+3.3 Direcciones IPv6
+--------------------
+Estas direcciones tienen 128 bits.Como en las direcciones habrá muchos bloques de bit a 0 es posible construir un "resumen"
+
+Las IP se escriben como bloques hexadecimales de 4 simbolos como por ejemplo esta
+
+fe80:0000:0000:0000:0000:0000:a000:cd00
+
+Cuando haya bloques de ceros los podemos omitir y escribir simplemente dos veces el simbolo ":"
+
+Es decir esta IP sería
+fe80:0000:0000:0000:0000:0000:a000:cd00
+fe80::a000:cd00
+
+Evidentemente, la máquina puede calcular los que faltan.
+
+¡Cuidado!: Los resúmenes solo se pueden hacer una vez
+
+fe80:0000:0000:0001:0000:0000:a000:cd00
+Esto solo puede ser asi
+fe80::0001:0000:0000:a000:cd00
+o asi
+fe80:0000:0000:0001::a000:cd00
+
+¿Por qué solo se puede resumir una vez? Porque la máquina no sabría cuantos bits hay en cada resumen
+
+Otro sistema de escribir direcciones el "integrado con IPv4".
+
+Un ejemplo seria este
+
+fe80::192.168.1.12
+16b     32b ---------> 48 bits
+Faltan bits 0 hasta   128 bits (es decir 80 bits a 0)
+
+
+
+En IPv6 NO SE UTILIZAN TANTO LAS MÁSCARAS. No se necesitan ya que las IP están divididas en TROZOS FIJOS.
+
+La movilidad de IP está contemplada en los estándares. Lo mismo ocurre con el cifrado.
+
+
+¿Transición?.En Europa hay una directiva que emplaza a los países miembros a implantar IPv6.
+
+
+
+
+
+
+
+
+
+
+
+
+4. Subredes
+-----------
+
+Las subredes son una división de las redes IP en trozos más pequeños para poder aprovechar mejor el espacio.
+
+Por ejemplo, supongamos una empresa que tiene 5 salas con 20 máquinas cada una. Eso hace un total de 100 máquinas. Técnicamente, podríamos usar 
+5 bits serían 2 a la 5 -2 = 30 máquinas
+6 bits serían 2 a la 6 -2 = 62 máquinas
+7 bits serían 2 a la 7 -2 = 126 máquinas
+
+
+Supongamos que nos asignan 7 bits de host y el prefijo de red que nos vende la compañía
+00001010.00000001.00000010.0xxxxxxx
+
+
+La máscara en principio sería esta
+11111111.11111111.11111111.10000000
+  255      255      255     128
+
+
+Tenemos 5 salas: Cada una de ellas va a recibir bits que permitan "numerarlas". Esos bits los tomaremos de la parte que nos da el proveedor
+
+
+00001010.00000001.00000010.0 SSS HHHH
+
+
+Por ejemplo si la primera subred recibe la secuencia 001, las IP que se permiten en esa sala serían
+
+00001010.00000001.00000010.0 001 0001
+00001010.00000001.00000010.0 001 0010
+00001010.00000001.00000010.0 001 0011
+00001010.00000001.00000010.0 001 0100
+...
+00001010.00000001.00000010.0 001 1110
+
+La máscara, como va a 0 en la parte de host y a unos en lo demás hacen que la máscara de estos equipos sea
+
+11111111.11111111.11111111.1 111 0000
+  255       255      255      240
+
+
+Las IP que tienen los equipos de esta sala (en decimal)
+10.1.2.17
+10.1.2.18
+10.1.2.19
+...
+10.1.2.30
+
+
+La segunda subred 
+00001010.00000001.00000010.0 010 0001
+
+00001010.00000001.00000010.0 010 0010
+00001010.00000001.00000010.0 010 0011
+...
+00001010.00000001.00000010.0 010 1110
+                             ^^^
+                             |||
+                        ¡¡BITS DE SUBRED!!
+
+En decimal, esto da
+
+10.1.2.33
+10.1.2.34
+10.1.2.35
+....
+10.1.2.47
+
+
+La tercera subred usaría el prefijo de subred con los bit a 
+00001010.00000001.00000010.0 011 0001
+00001010.00000001.00000010.0 011 0010
+00001010.00000001.00000010.0 011 0011
+00001010.00000001.00000010.0 011 0100
+...
+00001010.00000001.00000010.0 011 1110
+En decimal
+10.1.2.49
+10.1.2.50
+10.1.2.51
+10.1.2.51
+...
+10.1.2.63
+
+¡¡SE DEBE RECORDAR QUE ESTA ASIGNACIÓN NO ESTÁ RESOLVIENDO EL PROBLEMA INICIAL YA QUE TENÍAMOS 5 REDES DE 20 MÁQUINAS CADA UNA!!
+
+Hay que volver a calcular lo que necesitamos.
+
+Necesitamos 5 bits de host para poder direccionar 20 máquinas. Se necesitan 3 bits de subred para direccionar las 5 subredes. Necesitamos un total de 8 bits y pedir 24 bits de red a un proveedor.
+
+Supongamos que el prefijo que nos dan es este
+
+00001010.01000000.11000000.XXXXXXXX
+ 10        64      192     SSSHHHHH
+
+La máscara de estos equipos es
+
+11111111.11111111.11111111.11100000
+RRRRRRRR.RRRRRRRR.RRRRRRRR.SSSHHHHH
+    255    255     255      224
+                   
+              ==============
+              PRIMERA SUBRED
+              ==============
+
+
+                             SSS HHHHH
++---------------------------|---|-----+
+|00001010.01000000.11000000.|001|00001|.33
+|00001010.01000000.11000000.|001|00010|.34
+|00001010.01000000.11000000.|001|00011|.35
+|   ...                     |...|.....|
+|00001010.01000000.11000000.|001|11110|.62
++---------------------------|---|-----+
+
+              ==============
+              SEGUNDA SUBRED
+              ==============
+
+
+                             SSS HHHHH
++---------------------------|---|-----+
+|00001010.01000000.11000000.|010|00001|.65
+|00001010.01000000.11000000.|010|00010|.66
+|00001010.01000000.11000000.|010|00011|.67
+|   ...                     |...|.....|
+|00001010.01000000.11000000.|010|11110|.94
++---------------------------|---|-----+
+
+
+
+
+              ==============
+              TERCERA SUBRED
+              ==============
+
+
+                             SSS HHHHH
++---------------------------|---|-----+
+|00001010.01000000.11000000.|011|00001|.97
+|00001010.01000000.11000000.|011|00010|.98
+|00001010.01000000.11000000.|011|00011|.99
+|   ...                     |...|.....|
+|00001010.01000000.11000000.|011|11110|.126
++---------------------------|---|-----+
+
+
+Se necesita asignar direcciones en una red en la cual hay 7 salas con 35 máquinas cada una. Construir una arquitectura de subredes inventándose el prefijo binario de red.
+
+Para direccionar 35 máquinas, necesitamos 6 bits (2 a la 6 -2 = 62 máquinas)
+
+Para direccionar 7 salas se necesitan al menos 4 bits (2 a la 4 -2=14 subredes)
+
+En total, necesitamos que el operador nos asigne 4+6 bits que configuraremos nosotros
+
+
+
++------------------------|-----|------+
+|RRRRRRRR.RRRRRRRR.RRRRRR|SS.SS|HHHHHH|
++------------------------|-----|------+
+             ^
+             |
+ ¡Bits de red asignados por el proveedor!
+
+La máscara es la siguiente
++------------------------|-----|------+
+|11111111.11111111.111111|11.11|000000|
++------------------------|-----|------+
+|  255      255          255. 192     |
++------------------------|-----|------+
+
+Ahora calculamos las subredes
+
+Me invento un prefijo cómodo
+
+ 00000001.00000001.000000
++------------------------|-----|------+
+|RRRRRRRR.RRRRRRRR.RRRRRR|00.01|000001|.65
+|RRRRRRRR.RRRRRRRR.RRRRRR|00.01|000010|.66
+|RRRRRRRR.RRRRRRRR.RRRRRR|00.01|000011|.67
+|       ...                           |
+|RRRRRRRR.RRRRRRRR.RRRRRR|00.01|111110|126
+
+Las IP que salen son
+1.1.0.65
+1.1.0.66
+...
+1.1.0.126
+
+La segunda subred es así
+
+00000001.00000001.000000
++------------------------|-----|------+
+|RRRRRRRR.RRRRRRRR.RRRRRR|00.10|000001|.129
+|RRRRRRRR.RRRRRRRR.RRRRRR|00.10|000010|.130
+|RRRRRRRR.RRRRRRRR.RRRRRR|00.10|000011|
+|       ...                           |
+|RRRRRRRR.RRRRRRRR.RRRRRR|00.10|111110|.190
++------------------------|-----|------+
+
+Las IP son
+1.1.0.129 / 255.255.255.192
+1.1.0.130 / 255.255.255.192
+...
+1.1.0.190 / 255.255.255.192
+
+La tercera subred es así
+
+00000001.00000001.000000
++------------------------|-----|------+
+|RRRRRRRR.RRRRRRRR.RRRRRR|00.11|000001|.193
+|RRRRRRRR.RRRRRRRR.RRRRRR|00.11|000010|.194
+|RRRRRRRR.RRRRRRRR.RRRRRR|00.11|000011|.195
+|       ...                           |
+|RRRRRRRR.RRRRRRRR.RRRRRR|00.11|111110|.254
++------------------------|-----|------+
+
+Las Ip de esta tercera subred son
+1.1.0.193
+1.1.0.194
+...
+1.1.0.254
+
+
+La cuarta subred es así
+
+00000001.00000001.000000
++------------------------|-----|------+
+|RRRRRRRR.RRRRRRRR.RRRRRR|01.00|000001|.1
+|RRRRRRRR.RRRRRRRR.RRRRRR|01.00|000010|.2
+|RRRRRRRR.RRRRRRRR.RRRRRR|01.00|000011|.3
+|       ...                           |
+|RRRRRRRR.RRRRRRRR.RRRRRR|01.00|111110|.62
++------------------------|-----|------+
+
+Las IP son estas
+1.1.1.1 (¡atención, el tercer byte es 1!)
+1.1.1.2
+1.1.1.3
+...
+1.1.1.62
+
+1.1.1.63/255.255.255.192
+
+
+La quinta subred
+
+
+00000001.00000001.000000
++------------------------|-----|------+
+|RRRRRRRR.RRRRRRRR.RRRRRR|01.01|000001|.65
+|RRRRRRRR.RRRRRRRR.RRRRRR|01.01|000010|.66
+|RRRRRRRR.RRRRRRRR.RRRRRR|01.01|000011|.67
+|       ...                           |
+|RRRRRRRR.RRRRRRRR.RRRRRR|01.01|111110|.126
++------------------------|-----|------+
+
+Las IP son
+1.1.1.65
+1.1.1.66
+1.1.1.67
+...
+1.1.1.126
+
+
+PARA CASA:
+
+Hacer los cálculos de subredes para
+
+3 subredes con 13 máquinas cada una
+9 subredes con 19 máquinas cada una
+67 redes con 65 máquinas cada una
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
++---------------------------|---|-----+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

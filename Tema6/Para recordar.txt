@@ -1,0 +1,11 @@
+1) Recordad poner en el Virtual Box las tarjetas en modo Bridge (Puente)
+
+2) Si Linux no detecta alguna se puede probar el comando
+	ifconfig eth1 up
+
+3) ¡Cuidado! Si en el Virtual Box poneis eth0 como la tarjeta secundaria y eth1 como la integrada os haréis un lío
+
+4) Al usar un router usaremos tres cables
+	-El de consola para configurar
+	-Uno cruzado que lleva al PC de atrás
+	-Uno cruzado que lleva al PC de delante

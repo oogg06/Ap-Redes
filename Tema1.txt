@@ -1,0 +1,782 @@
+---------------------
+Tema 1: Introducción
+---------------------
+
+0. Aproximación.
+----------------
+
+¿Ventajas de la comunicación instantánea?
+
+* Facilidad de comunicación de ideas.
+
+* Agilizar trámites
+ 
+* Información comercial y bancaria.
+
+Un inconveniente de muy alto nivel es el de la privacidad.
+
+1. Características de algunas herramientas
+------------------------------------------
+
+1.1 Mensajería instantánea o IM.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+- Instantánea: facilita mucho la comunicación.
+- Proporcionan audio y vídeo.
+- Herramientas gratuitas.
+- Multi-usuario.
+
+1.2 Blogs (weblog o bitácoras).
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+- Alcance universal.
+- Libertad editorial.
+- Anonimato.
+- Suele haber plataformas gratuitas.
+
+1.3 Podcasts
+~~~~~~~~~~~~
+Es como un blog sonoro. Consiste simplemente en la difusión de charlas o audio por medio de ficheros de sonido.
+
+Sus ventajas son esencialmente las mismas que las de los blogs.
+
+1.4 Wiki
+~~~~~~~~
+
+Un wiki es una página web modificable por cualquiera (o por casi cualquiera). Al sumar el esfuerzo de muchas personas se puede obtener información muy completa y de muy alta calidad. El inconveniente es que puede haber "vandalismo".
+
+1.5 Herramientas de aprendizaje.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+La enseñanza a distancia se ha visto reforzada y mejorada por las redes de datos. Es mucho más sencillo proporcionar información académica, tutorías, ejercicios, exámenes y demás mediante el uso de ciertos programas.
+
+1.6 Cambios en la vida diaria
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+- Pago por tarjeta.
+- Cajeros automáticos
+- Centralitas completas en casa.
+
+1.7 Ocio
+~~~~~~~~
+- Búsqueda de hoteles/viajes/vuelos...
+- Juegos on-line
+- Chats/Grupos de interés.
+- Vídeo de distribución general
+- Vídeo bajo demanda (Imagenio)
+
+2. Función y componentes de redes de datos
+------------------------------------------
+
+2.1 Características básicas
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Que en una hipotética comunicación siempre se debe empezar por tener unas reglas comunes que todo el mundo respeta. A pesar de que se envíe una información nunca hay garantías de que llegue, puede que sea necesario reenviarla.
+
+Además, es muy posible que también haya que tener mecanismos para mejorar la eficiencia de la comunicación.
+
+2.2 Funcionamiento
+~~~~~~~~~~~~~~~~~~
+Las redes de datos se basan en una jerarquía. Cada miembro de la jerarquía solo conoce un pequeño conjunto de la información total. Al colaborar todas juntas, se consigue el trasiego de información entre puntos muy lejanos.
+
+En esencia, la funcion de las redes es transportar datos de un sitio a otro. Para ello, pueden utilizar mecanismos muy diversos. Sin embargo, casi todos los mecanismos suelen basarse en los mismos principios.
+
+2.3 Elementos en redes:
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+2.3.1 Dispositivos
+^^^^^^^^^^^^^^^^^^
+
+Hay dispositivos que no son de uso directo pero son necesarios, como los router.
+
+2.3.2 Medios
+^^^^^^^^^^^^
+* Medios inalámbricos: IR, Bluetooth y Wi-Fi
+* Medios alámbricos: Cobre, fibra....
+
+
+Los inalámbricos son más inestables e inseguros pero dan soporte a usuarios móviles. Entre ellos, hay muchas diferencias en cuanto a la capacidad en relación con la distancia.
+
+
+2.3.3 Reglas o protocolos.
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+Acuerdos establecidos que los fabricantes respetan con el fin de garantizar la interoperabilidad.
+
+2.3.4 Mensajes
+^^^^^^^^^^^^^^
+Los mensajes en las redes de datos pueden ser convertidos a distintos medios muchas veces, sin embargo todos los dispositivos pueden volver al formato original de forma que se pueda recuperar la información.
+
+2.4 Redes convergentes
+~~~~~~~~~~~~~~~~~~~~~~
+La tendencia actual es utilizar redes IP para todos los servicios que hay o que pueda haber. Se denomina red convergente a aquella en la que tienen cabida todos los tipos de servicios que se basan en una única infraestructura.
+
+
+3. Arquitectura de las redes.
+-----------------------------
+
+Las redes informáticas se han construido en base a una serie de principios básicos:
+
+3.1. Principios
+~~~~~~~~~~~~~~~
+
+3.1.1 Tolerancia a fallas
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Es la capacidad de la red para recuperarse automáticamente de fallos en determinados puntos de la red.
+
+¿Como se consigue?. Por medio de enlaces redundantes que permiten tomar varios caminos a un mismo destino.
+
+3.1.2 Escalabilidad
+^^^^^^^^^^^^^^^^^^^^
+Es la capacidad para aumentar de tamaño o prestaciones sin que el conjunto del sistema se vea ralentizado o degradado.
+
+¿Como se consigue?. Se consigue haciendo que el diseño no implique el uso de puntos centrales.
+
+3.1.3 Calidad de servicio
+^^^^^^^^^^^^^^^^^^^^^^^^^
+Es la garantía de que la red ofrece el mejor servicio posible.
+
+¿Como se consigue?. Forzando el uso de protocolos que fomentan la colaboración entre máquinas.
+
+3.1.4 Seguridad
+^^^^^^^^^^^^^^^
+
+Es la certeza de que la información es procesada solo por quien corresponde.
+
+¿Como se consigue?: Mecanismos de cifrado.
+
+3.2 Redes basadas en conmutación de paquetes
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Una red de paquetes se basa en que todo mensaje se trocea. Cada trozo se envía y procesa por separado. Si un paquete se pierde, se reenvía solo ese paquete. Esto permite que:
+
+a) Si el receptor está ocupado procesando un paquete, el emisor queda libre para enviar otras cosas a otros nodos.
+
+b) Si el emisor falla al enviar un paquete, el receptor no tiene que volver a pedir un archivo completo. Esto mejora mucho la eficiencia.
+
+c) Si algo falla en la red que no sea el emisor ni el receptor, no habrá ningún problema porque se pueden volver a enviar solo los paquetes que se pierdan.
+
+d) Se obtiene una cierta seguridad ya que cada paquete puede viajar por una ruta distinta.
+
+3.3 Redes basadas en conmutación de circuitos.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Se basan en que una vez que un usuario inicia una comunicación el cable (o circuito) es para él solo, aunque no lo aproveche al 100%
+
+a) Si un emisor o receptor quieren tener garantía absoluta de poder enviar o recibir, se puede alquilar una línea que esté a nuestra disposición todo el tiempo.
+
+b) La eficiencia es mayor que en las redes de paquetes. Aunque todo el mundo esté enviando una línea alquilada pertenece solo a su dueño.
+
+3.4 Características específicas de Internet.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+3.4.1 Es jerárquica.
+^^^^^^^^^^^^^^^^^^^^
+Significa que hay un orden en cuanto a la organización de los participantes en la red. Este orden suele ser así:
+
+
+a) Usuarios: se limitan a consumir y generar datos.
+
+b) ISP: Internet Service Provider o Proveedor de acceso. Son empresas que proporcionan a los usuarios finales los datos necesarios para poder acceder a Internet.
+
+c) Intercambiadores de datos o puntos neutros.
+
+Permiten la interconexión de proveedores.
+
+3.4.2 Estándares comunes
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+Un estándar es una norma cuyo cumplimiento ayuda a la interoperabilidad. Los estándares suelen ser gratuitos y cualquiera puede ceñirse a ellos. Los protocolos de Internet son publicos y gratuitos.
+
+El hecho de que los estandares sean comunes ha dado lugar a muchisima competencia y por tanto un mayor desarrollo de Internet.
+
+3.4.3 Protocolos comunes
+^^^^^^^^^^^^^^^^^^^^^^^^
+El desarrollo de protocolos o estandares es un proceso abierto a la comunidad. CUALQUIERA PUEDE INTENTAR MEJORAR UN PROTOCOLO O HACER UNO NUEVO.
+
+Este mecanismo es muy bueno, porque lo unico que se verifica es que un protocolo sea tecnicamente superior, sin importar de donde viene.
+
+
+3.5 Calidad del servicio
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+Las redes hoy en dia transportan trafico de muchos tipos. No todo el trafico es tiene los mismos requisitos: existen mecanismos para intentar que todo el mundo obtenga lo que necesite.
+
+
+
+
+
+3.6 Seguridad
+-------------
+
+¿Por qué las redes deben ser seguras?.
+
+1) Porque por ellas circula información que no debería caer en personas no relacionadas con ella.
+
+2) La información podría ser modificada
+
+3) Se podría modificar la autoría de un mensaje.
+
+Hay otros factores ligados a lo económico. (Phishing)
+
+En cualquier caso lograr un cierto grado de seguridad sí es posible. Para ello es muy recomendable utilizar mecanismos de cifrado.
+
+
+3.7 Integridad en redes.
+------------------------
+La integridad es la propiedad que "garantiza" que un mensaje no ha sido modificado por error técnico o humano.
+
+En general, para tener la máxima disponibilidad en una red, se suele recurrir a la redundancia, es decir, disponer de más de un mecanismo o dispositivo para que funcione como respaldo del principal.
+
+
+4. Sistemas de numeración.
+--------------------------
+
+Las máquinas digitales utilizan señales eléctricas para la comunicación. El sentido habitual de los términos utilizados es el siguiente
+
+* **NO HAY PULSO ELÉCTRICO:** Se usa un 0
+
+* **SI HAY PULSO ELÉCTRICO:** Se usa un 1
+
+Esto da lugar a un problema: las personas utilizan numeración basada en 10 cifras (del 0 al 9). Es necesario establecer mecanismos de conversión
+
+4.1 Conversión de decimal a binario
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Nos dan una cifra como 156 (en base 10) y queremos conocer la representación que hace la máquina (en base 2, en binario)
+
+
+El procedimiento consiste en ir dividiendo entre dos hasta que no podamos seguir. Despues, se toma el último cociente y todos los restos de final a principio. Esa secuencia de 0 y 1 es el número binario buscado
+
+156:2	Cociente: 78	Resto: 0
+
+78:2	Cociente: 39	Resto: 0
+
+39:2	Cociente: 19	Resto: 1
+
+19:2	Cociente:  9	Resto: 1
+
+9:2	Cociente:  4	Resto: 1
+
+4:2	Cociente:  2	Resto: 0
+
+2:2	Cociente:  1	Resto: 0
+
+Tomamos el último cociente y el último resto y escribimos los restos hacia arriba
+
+10011100 es en binario el número decimal 156
+
+
+**Ejercicio** 195 en base decimal necesita ser convertido a binario
+
+195:2	Cociente: 97	Resto: 1
+97:2	Cociente: 48	Resto: 1
+48:2	Cociente: 24	Resto: 0
+24:2	Cociente: 12	Resto: 0
+12:2	Cociente:  6	Resto: 0
+6:2	Cociente:  3	Resto: 0
+3:2	Cociente:  1	Resto: 1
+
+El resultado es 1100.0011
+
+**Ejercicio** 231 debe pasarse a binario
+
+231:2	Cociente: 115	Resto: 1
+115:2	Cociente:  57	Resto: 1
+57:2	Cociente:  28	Resto: 1
+28:2	Cociente:  14	Resto: 0
+14:2	Cociente:   7	Resto: 0
+7:2	Cociente:   3   Resto: 1
+3:2	Cociente:   1	Resto: 1
+
+La solución es 1110.0111
+
+**Ejercicio propuesto** 466 debe pasarse a binario (El resultado debe ser 0001.1101.0010)
+
+Hacer las siguientes conversiones
+
+* 567
+* 890
+* 1030
+* 2044
+* 4767 (Solución 1.0010.1001.1111)
+* 6904 (Solución 1.1010.1111.1000)
+
+
+4.2 Conversión de binario a decimal
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Para hacer el proceso inverso debemos escribir las potencias de 2 encima de los bits. Estas potencias se escriben de derecha a izquierda y empezando por 0.
+
+Después se multiplican los bits por las potencias, y estas multiplicaciones se suman. Se debe recordar que algo elevado es 1
+
+Si por ejemplo, nos dan la secuencia 101011, el proceso es el siguiente
+
++---+---+---+---+---+---+
+|2^5|2^4|2^3|2^2|2^1|2^0|
++---+---+---+---+---+---+
+| 1 | 0 | 1 | 0 | 1 | 1 |
++---+---+---+---+---+---+
+
+2^5 + 2^3 + 2^1 + 2^0 = 32 + 8 + 2 + 1 = 43
+
+
+Otro ejemplo: Convertir 1001.0011
+
++---+---+---+---+---+---+---+---+
+|2^7|2^6|2^5|2^4|2^3|2^2|2^1|2^0|
++---+---+---+---+---+---+---+---+
+| 1 | 0 | 0 | 1 | 0 | 0 | 1 | 1 |
++---+---+---+---+---+---+---+---+
+
+
+2^7 + 2^4 + 2^1 + 2^0 = 128 + 16 + 2 + 1 = 147
+
+4.3 Conversión desde decimal a hexadecimal
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+El sistema hexadecimal trabaja con 16 símbolos: 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, A, B, C, D, E, F
+
+Se debe tener presente que los símbolos A-F tienen valores internos como estos:
+
+* A = 10
+* B = 11
+* C = 12
+* D = 13
+* E = 14
+* F = 15
+
+Para convertir de decimal a hexadecimal debemos dividir por 16 hasta que no se pueda más. Despues se toma el último cociente y todos los restos desde el final hasta el principio.
+
+
+**¡CUIDADO!: LOS RESTOS DE LAS DIVISIONES TENDRÁN VALORES COMO 0, 1...7, 8, 9, 10, 11, 12, 13 14 O 15.CUANDO UN RESTO SEA 10, 11, 12, 13, 14 O 15 ESCRIBIREMOS LOS SÍMBOLOS A(10), B(11), C(12), D(13), E(14) O F(15)**
+
+
++-----------+-----------------------------+
+| Paso 1    |65535 : 16 4095 y resto 15   |
++-----------+-----------------------------+
+| Paso 2    | 495: 16 255 y resto 15      |
++-----------+-----------------------------+
+| Paso 3    |  255:16 15 y resto 15       |
++-----------+-----------------------------+
+| Paso 4    |   15:16 0 y resto 15        |
++-----------+-----------------------------+
+
+65535 EN HEXADECIMAL ES FFFF
+
+4.4 Conversión desde hexadecimal a decimal
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Al igual que antes, se utilizan potencias y sumas. El proceso es exactamente el mismo: se ponen las potencias arriba, de derecha a izquierda, se multiplican y se suman. Sin embargo hay un par de diferencias
+
+1) La potencia de base es 16
+2) Si encontramos una A, B, C...F debemos utilizar como multiplicador su valor correspondiente.
+
+Ejemplo: Convertir a decimal FFFA
+
++-------+-------+-------+-------+
+| 16^3  | 16^2  | 16^1  |  16^0 |
++-------+-------+-------+-------+
+|  F    |   F   |  F    |  A    |
++-------+-------+-------+-------+
+
+Esto es 
+
++--------+-------------------------------------------+
+| Paso 1 | F*(16^3) + F*(16^2) + F*(16^1) + A*(16^0) |
++--------+-------------------------------------------+
+| Paso 2 | F*(4096) + F*(256) + F*(16) + A*(1)       |
++--------+-------------------------------------------+
+| Paso 3 | 15*(4096) + 15*(256) + 15*(16) + 10*(1)   |
++--------+-------------------------------------------+
+| Paso 4 | 61440 + 3840 + 240 + 10= **65530**        |
++--------+-------------------------------------------+
+
+
+
+4.5 Conversión de hexadecimal a binario y viceversa
+
+Para efectuar estas conversiones se necesitan hacer una tabla binaria. Una tabla binaria se construye poniendo 1 y 0 de forma alternativa y en bloques de 0, 1, 2, 4, 8, 16... (en potencias de 2)
+
++-----+-----+-----+-----+-----+
+|  0  |  0  |  0  |  0  |  0  |
++-----+-----+-----+-----+-----+
+|  0  |  0  |  0  |  1  |  1  |
++-----+-----+-----+-----+-----+
+|  0  |  0  |  1  |  0  |  2  |
++-----+-----+-----+-----+-----+
+|  0  |  0  |  1  |  1  |  3  |
++-----+-----+-----+-----+-----+
+|  0  |  1  |  0  |  0  |  4  |
++-----+-----+-----+-----+-----+
+|  0  |  1  |  0  |  1  |  5  |
++-----+-----+-----+-----+-----+
+|  0  |  1  |  1  |  0  |  6  |
++-----+-----+-----+-----+-----+
+|  0  |  1  |  1  |  1  |  7  |
++-----+-----+-----+-----+-----+
+|  1  |  0  |  0  |  0  |  8  |
++-----+-----+-----+-----+-----+
+|  1  |  0  |  0  |  1  |  9  |
++-----+-----+-----+-----+-----+
+|  1  |  0  |  1  |  0  |  A  |
++-----+-----+-----+-----+-----+
+|  1  |  0  |  1  |  1  |  B  |
++-----+-----+-----+-----+-----+
+|  1  |  1  |  0  |  0  |  C  |
++-----+-----+-----+-----+-----+
+|  1  |  1  |  0  |  1  |  D  |
++-----+-----+-----+-----+-----+
+|  1  |  1  |  1  |  0  |  E  |
++-----+-----+-----+-----+-----+
+|  1  |  1  |  1  |  1  |  F  |
++-----+-----+-----+-----+-----+
+
+Si queremos convertir de hexadecimal a binario el numero C2D7 solo tenemos que convertir elemento a elemento por bloques de 4 bits.
+
+Para convertir desde binario a hexadecimal tenemos que coger los bits de 4 en 4 y empezando por la derecha. Despues cada bloque de 4 bits, se convierte por el elemento de la derecha de la tabla binaria
+
+Por ejemplo, para convertir 1001010010 a hexadecimal tengo que dividir asi: 10.0101.0010. Si un bloque se queda aislado por la izquierda, se pueden añadir ceros para completar hasta 4 bits. El numero binario queda 0010.0101.0010. En informatica, el proceso de rellenar se llama tambien "padding".
+
+
+
+Ejercicios
+^^^^^^^^^^
+
+1) De decimal a binario los numeros 46744, 103221
+2) De hexadecimal a binario los numeros DE353 y A1B2C3
+3) De binario a decimal y hexadecimal 1001.0101.1010.0000 y 1001.1111.0000.1101.1111
+
+
+Ejemplo típico de examen
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+Haz las siguientes conversiones
+
+
+* 0110010110 a decimal
+* 1875 está en decimal y hay que pasarlo a binario
+* 1875 está en hexadecimal y hay que pasarlo a binario
+* 45509 está de decimal y hay que pasarlo a hexadecimal
+* CADE está en hexadecimal y hay que pasarlo a binario
+
+
+
+
+Solución seleccionada
+^^^^^^^^^^^^^^^^^^^^^
+
+01.1001.0110 a decimal
+Bits 8 7  4  21
+
+2**8 + 2**7 + 2**4 + 2**2 + 2**1
+256  + 128  + 16   + 4    + 2=406
+
+
+
+Solucion seleccionada
+^^^^^^^^^^^^^^^^^^^^^
+
+1875 esta en decimal y hay que pasarlo a binario
+
+Lo vamos a convertir primero a hexadecimal
+
+1875 en hexadecimal es 753 y en binario queda
+		0111.0101.0011
+
+
+Solución:
+
+103221 en binario es 0001.1001.0011.0011.0101
+
++----+----+----+----+----+----+
+|A   | 1  | B  | 2  | C  |3   |
++----+----+----+----+----+----+
+|1010|0001|1011|0010|1100|0011|
++----+----+----+----+----+----+
+       
+
+Solucion seleccionada
+^^^^^^^^^^^^^^^^^^^^^
+
+1001.1111.0000.1101.1111 a decimal
+
+Convierto primero a hexadecimal
+
++----+----+----+----+----+
+|1001.1111.0000.1101.1111|
++----+----+----+----+----+
+| 9  |  F |  0 | D  | F  |
++----+----+----+----+----+
+
+Y ahora convertimos a decimal
+9*16^4 + 15*16^3 + 13*16^1 + 15*16^0 = 651487
+
+
+5 Estructura general de una red.
+--------------------------------
+Toda red tiene un conjunto de elementos que interoperan entre ellos.
+
+Supongamos que una máquina con XP desea enviar un mensaje como "Hola" a través de Internet a una máquina que usa Linux.
+
+
+* Origen: es la máquina que envía el mensaje.
+
+* Codificación: La A en el origen se representa con un binario, como por ejemplo 1000.0001
+
+* Transmisor: Por ejemplo, un router basado en cable.
+
+* Medio: Elemento pasivo por el cual circulan los mensajes.
+
+* Receptor: Por ejemplo, un router inalámbrico.
+
+* Descodificación: Se recoge el 1000.0001 y se convierte (por ejemplo erróneamente) a "ú"
+
+* Destinatario: La máquina que recibe el mensaje (en este caso "ú"
+
+En general, en cualquier red informática la información se envía troceada. Este troceado se denomina "segmentación". 
+
+Al trocear la información podemos "compartir" líneas de forma que cada uno la utilice "un poco". Este compartición se denomina multiplexación. Para que todo funcione correctamente es imprescindible que cada trozo o segmento lleve una numeración o marca que lo identifique y que permita al receptor reconstruir el mensaje inicial.
+
+
+5.1 Componentes de una red
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+5.1.1 Componentes hardware
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+Son los elementos físicos que intervienen en la comunicación: router, módem, switches, proxies....
+
+
+5.1.2 Componentes software
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Son programas que se ejecutan en un hardware con el fin de ofrecer un servicio. Ej: DNS, TCP/IP
+
+En los componentes software, no todos los elementos actúan de la misma manera.
+
+- Clientes: un programa que solicita una tarea directamente relacionada con el usuario final.
+
+- Servidores: no interactúan el usuario, sino con programas clientes.
+
+- A veces, hay programas que pueden hacer las dos tareas a la vez, aunque no son tan frecuentes.
+
+5.2 Intermediarios.
+~~~~~~~~~~~~~~~~~~~
+Se denomina dispositivos intermediarios a todos aquellos que no están bajo nuestro control pero que efectúan tareas de encaminamiento de la información.
+
+Se puede usar el comando tracert www.google.com (o cualquier otro sitio) para verificar si un problema está en nuestra red o no.
+
+Estos dispositivos intermediarios pueden tomar decisiones en cuanto a los caminos más apropiados para enviar un segmento a su destino. También son capaces de solicitar retransmisiones y detectar errores.
+
+
+5.3 Medios
+~~~~~~~~~~
+Los medios, que eran elementos pasivos, se pueden clasificar en tres grandes tipos.
+
+1) Cobre
+2) Fibra óptica
+3) Pulsos EM.
+
+5.3.1 Cobre
+^^^^^^^^^^^
+El cobre es un "relativamente bueno" conductor de electricidad. Así, podemos enviar 1 y 0's a lo largo de un cable de cobre por medio de impulsos eléctricos.
+
+5.3.2 Fibra óptica
+^^^^^^^^^^^^^^^^^^
+Se basa en conducir impulsos lumínicos. Debido a que la luz es el elemento más rápido conocido la velocidad que alcanzan estos cables suele ser mucho mayor. El problema de la fibra es el coste.
+
+Hay dos formas de usar fibra:
+
+- Monomodo: el rayo de luz avanza en línea recta. Más rápido, pero se requiere una luz más intensa (láser).
+
+- Multimodo: permite que varios rayos de luz crucen el cable. Se puede usar un diodo LED normal.
+
+5.3.3 Electromagnetismo
+^^^^^^^^^^^^^^^^^^^^^^^
+El estándar más popular es Wi-Fi. Permite una comodidad mayor para el usuario. El problema de las redes inalámbricas es doble: la seguridad y el otro la variabilidad de la señal.
+
+5.3.4 Consideraciones generales
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+A la hora de elegir un medio para nuestra red se deben tener en cuenta estos tres factores
+
+- Ancho de banda
+- Coste
+- Entorno (movilidad o no, industriales)
+
+5.4 Tipos de red
+~~~~~~~~~~~~~~~~
+
+5.4.1 Red local o LAN (Local Area Network)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Es una red de alcance pequeño: una sala o un edificio.
+
+5.4.2 Red metropolitana o MAN (Metropolitan AN)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Un barrio o una ciudad
+
+
+5.4.3 Redes de area amplia o WAN (Wide AN)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Cubren áreas geográficas muy grandes: países e incluso continentes. Los proveedores de servicios internet o Internet Service Providers son los únicos que implantan redes de área amplia. Con ello, ofrecen sus servicios a usuario locales que desean estar interconectados con otros usuario.
+
+
+5.5 Internet
+~~~~~~~~~~~~
+Internet es el resultado de interconectar redes aisladas. El hardware necesario lo proporcionan las compañías de teléfono. El software de IP ES GRATIS. 
+
+
+En Internet cada uno puede hacer lo que quiera DENTRO DE SU LAN. La conexion al exterior de esa LAN es del proveedor. En ese punto "fronterizo" se deben respetar todos los estándares. El hecho de que sea el software el principal "pegamento" de distintas redes es lo que permite que un usuario con conexión inalámbrica se conecte con uno que usa ADSL en otro punto del mundo cruzando distintos tipos de línea.
+
+
+5.6 Intranet
+~~~~~~~~~~~~
+Es una red privada de una compañía que usa Internet. Normalmente, para ver documentos o archivos de esa empresa será necesario un usuario y una contraseña.
+
+
+
+6 Protocolos
+------------
+Un protocolo es un conjunto de reglas que hay que respetar para conseguir que la comunicación funcione.
+
+Los protocolos de red necesitan poner de acuerdo a las máquinas en cosas como:
+
+- Formato: p.ej ¿qué tamaño de segmento se usará?
+- Proceso: p.ej forzando a las máquinas a colaborar
+- Errores: unificando los códigos de error.
+- Terminación: determinando como se debe terminar.
+
+7. Conjuntos de protocolos
+--------------------------
+
+A menudo, los protocolos no se han diseñado de forma aislada. Es más frecuente que los protocolos se diseñen e implementen como un conjunto. Por ejemplo, TCP/IP son solo dos protocolos de una familia.
+
+Hay dos grandes familias de protocolos: OSI y TCP/IP
+
+
+En una familia de protocolos hay distintas funciones. Esto se debe a que la comunicación es una tarea MUY compleja. Para hacerlo más sencillo, se divide la tarea en subtareas.
+
+
+7.1 OSI
+~~~~~~~
+En OSI los protocolos se organizan en "capas". La idea subyacente es que podamos cambiar capas fácilmente. En OSI hay 7 capas.
+
++-------------------------------+
+|   Aplicación                  |
++-------------------------------+
+|   Presentación                |
++-------------------------------+
+|   Sesión                      |
++-------------------------------+
+|   Transporte                  |
++-------------------------------+
+|   Red                         |
++-------------------------------+
+|   Enlace                      |
++-------------------------------+
+|   Física                      |
++-------------------------------+
+
+7.1.1 Física
+^^^^^^^^^^^^
+Se encarga de las normas sobre forma de los conectores, voltajes en los cables
+
+7.1.2 Enlace
+^^^^^^^^^^^^
+Se encarga de regular los envíos de datos entre vecinos inmediatos. Por ejemplo, en las redes locales Ethernet el enlace utiliza segmentos de 1500 bytes. Otro ejemplo es que en la capa de enlace se pueden enviar datos y despues el receptor debe CONFIRMARNOs de alguna forma que los datos llegan.
+
+7.1.3 Red
+^^^^^^^^^
+Regula la transmisión entre vecinos lejanos. Un ejemplo de elemento regulado son las direcciones que todo el mundo debe tener.
+
+7.1.4 Transporte
+^^^^^^^^^^^^^^^^
+Se ocupa de que una misma conexión se pueda usar por muchos programas en el mismo ordenador. La capa de transporte permite multiplexar el cable por medio de una numeración especial que llamamos "puertos".
+
+7.1.5 Sesión
+^^^^^^^^^^^^
+Regula los procedimientos para iniciar y cerrar conexiones: uso de contraseñas, cifrados, tarificación.
+
+7.1.6 Presentación
+^^^^^^^^^^^^^^^^^^
+Que regula cosas como ¿qué número se va a utilizar para representar cada letra?. Por ejemplo, la A usará el código 65
+
+7.1.7 Aplicación
+^^^^^^^^^^^^^^^^
+Son los programas que utiliza el usuario final. Se regulan cosas como intercambio de archivos, de páginas HTML
+
+
+
+7.2 TCP/IP
+~~~~~~~~~~
+Es más sencillo. Elimina diversas capas y triunfó gracias a que funcionó desde el primer momento y a que era gratuito.
+
+
++-------------------------------+
+|	Aplicación		|
++-------------------------------+
+|	Transporte		|
++-------------------------------+
+|				|
+|	Interred		|
+|				|
++-------------------------------+
+|	Física			|
++-------------------------------+
+
+7.2.1 Física
+^^^^^^^^^^^^
+TCP/IP NO REGULA NADA DE CAPA FÍSICA
+
+7.2.2 Interred
+^^^^^^^^^^^^^^
+Es una mezcla de la de red y enlace OSI. El protocolo más usado es IP
+
+7.2.3 Transporte
+^^^^^^^^^^^^^^^^
+El protocolo más usado es TCP y despues UDP. Se encarga de lo mismo que la de transporte OSI.
+
+7.2.4 Aplicación
+^^^^^^^^^^^^^^^^
+Dan libertad a los programadores de aplicaciones para que creen sus propios protocolos.
+
+
+7.3 Independencia de la tecnología
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Los protocolos en las redes son independientes del tipo de medio físico, cable, pulso EM o lo que sea. Es así porque si en el futuro aparecen tecnologías nuevas podría ocurrir que los protocolos quedasen obsoletos junto a los viejos "cables".
+
+
+8. Consideraciones en los modelos de capas
+------------------------------------------
+Los modelos basados en capas son muy populares, pero ¿por qué diseñar software basándonos en esta arquitectura?. Hay varias razones
+
+- Es más fácil diseñar algo al poder trocear las partes y ocuparnos cada uno de una parte.
+
+- Fomentar la competencia haciendo que muchos fabricantes ofrecieran distintas versiones de los mismos protocolos haciendo que el precio bajara y la calidad subiera.
+
+- Se pretendía que fuera fácil sustituir unos protocolos por otros. Esto facilita la vida de los usuarios.
+
+- Se pretendía tener un conjunto de términos comunes para definir todos los conceptos.
+
+8.1 Encapsulación
+~~~~~~~~~~~~~~~~~
+
+Encapsulación es el proceso por el cual las capas cogen datos de sus capas vecinas SIN MIRAR PARA NADA LO QUE HAY. Procesan dichos datos y añaden la información necesaria para los destinatarios. La idea es tratar la información que llega como una cápsula que no podemos abrir ni tocar.
+
+En relación con esto se definen distintas PDU. Una PDU es una "Protocol Data Unit" o "Unidad de datos de protocolo". Cada capa recibe una PDU (o bloque), la toma, le añade lo que sea necesaria y eso se convierte una PDU nueva que se pasa hacia abajo. Los distintos nombres de las PDU son estos
+
+- Trama: Bloque de capa de enlace.
+- Datagrama: Bloque de capa de red.
+- Segmento: Bloque de capa de transporte.
+- Paquete: Capa de aplicación.
+
+Cada PDU tiene su propia información especial: por ejemplo los segmentos necesitan los números de puerto, los datagramas necesitan las IP de origen y destino.
+
+
+
+8.2 Direccionamiento
+~~~~~~~~~~~~~~~~~~~~
+
+Cada capa puede tener su propia dirección especial. Es importante recalcar que las direcciones NO VAN ASOCIADAS A LOS EQUIPOS, sino a SUS CONEXIONES. Por tanto, si un equipo tiene varias tarjetas, podría tener varias direcciones.
+
+Algunos ejemplo de direcciones serían los siguientes
+
+* Dirección DNS: 	www.google.com (1024 caract)
+* Dirección de TCP: 	Puerto 80 (16 bits)
+* Dirección IP: 	66.249.92.104 (32 bits)
+* Dirección Ethernet:	01:DC:43:23:99:7B (48 bits)	
