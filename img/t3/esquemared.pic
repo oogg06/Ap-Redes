@@ -1,0 +1,74 @@
+.PS
+scale=2.54
+anchopc=2.5
+altopc=1
+anchorouter=anchopc
+altorouter=altopc
+anchoswitch=anchopc
+altoswitch=altopc
+colorrelleno=0.3
+anchoflecha=0.5
+altoflecha=0.25
+
+define pc { [
+        box width $1 ht $1 fill colorrelleno
+        box fill colorrelleno-0.2 rad 0.2 with .top at last box .top -(0,0.5) width $1-0.75 ht $1-0.75 "PC"$3
+        line down $1/4 left $1/2 at 2nd last box .sw
+        line right $1
+        line up $1/4 right $1/2
+        Caja: 2nd last box
+] }
+
+define unpc{[
+        Area:pc(anchopc,altopc, $1)
+]}
+
+define parpcs{[
+        if ($3=="abajo") then { down;}
+        PC1:unpc($1)
+        if ($3=="abajo") then { move;}
+        PC2:unpc($2)
+]}
+
+
+define router { [
+        ellipse wid $1 ht $2 fill colorrelleno $3
+        line down $2-0.5 at last ellipse .w
+        spline down $1/4 then right $1 then up $1/4
+        line up $2-0.5
+        Circulo: last ellipse
+        
+] }
+
+define unrouter {[
+        router(anchorouter, altorouter, $1)
+]}
+
+
+
+define cubo { [
+        Caja: box width $1 ht $2 $3 fill colorrelleno
+        line from Caja.nw to Caja.nw+($1/3, $2/3)
+        Cima:line from last line.end to Caja.ne+($1/3, $2/3)
+        line from last line.end to Caja.ne
+        
+        line from Caja.se to Caja.se+($1/3, $2/3)
+        line from last line.end to 2nd last line
+] }
+define unswitch{[
+        Bloque:cubo(anchoswitch, altoswitch, $1)
+        line width anchoflecha ht altoflecha -> from last[].Cima.start+(0,0.5) to last[].Cima.end+(0,0.5)
+        line width anchoflecha ht altoflecha <- from last line.start+(0,0.5) to last line.end+(0,0.5)
+]}
+define unhub{[
+        Bloque:cubo(anchoswitch, altoswitch, $1)
+        line width anchoflecha ht altoflecha <-> from last[].Cima.start+(0,0.25) to last[].Cima.end+(0,0.25)
+ 
+]}
+
+
+unswitch("Switch")
+down
+move
+parpcs("PC1", "PC2", "derecha")
+.PE

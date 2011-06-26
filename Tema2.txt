@@ -41,9 +41,10 @@ Utilizando lápiz y papel dibuja la señal generada utilizando un esquema de modul
 
 Solucion
 
-.. image:: img/t2/SolucionEjercicio1FM.png
+.. image:: img/t2/ModulacionAM.png
    :align: center
-   :alt: Ejemplo de modulación de amplitud
+   :scale: 65%
+   :alt: Ejemplo de modulación de la frecuencia
 
 
 
@@ -73,55 +74,82 @@ La modulación FM es un mecanismo basado en modificar el número de ondas por tiem
 Solo hay que elegir un esquema de codificación basándonos en el número de ondas. P.ej:
 
 
-000--->1 onda
-001--->2 ondas
-010--->3 ondas
-011--->4 ondas
-100--->5 ondas
-101--->6 ondas
-110--->7 ondas
-111--->8 ondas
+* 000--->1 onda
+* 001--->2 ondas
+* 010--->3 ondas
+* 011--->4 ondas
+* 100--->5 ondas
+* 101--->6 ondas
+* 110--->7 ondas
+* 111--->8 ondas
+
+.. image:: img/t2/ModulacionFM.png
+   :align: center
+   :scale: 65%
+   :alt: Ejemplo de modulación de frecuencia
+
 
 
 1.1.3 Modulación PM/PSK o modulación de fase.
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-La modulación en fase se basa en modificar el punto en el que empieza una onda. Al final, todas las ondas empiezan y acaban en el mismo punto y además todas hacen dos "crestas": una en el máximo y otra en el mínimo.
+La modulación en fase se basa en modificar el punto en el que empieza una onda. Al final, todas las ondas empiezan y acaban en el mismo punto y además todas pasan por el punto más alto y por el punto más bajo.
 
-Se debe tener en cuenta que en todos los mecanismos de modulación se cumple la misma regla:
+Se debe tener en cuenta que en todos los mecanismos de modulación se cumple la misma regla:*"Cuantos más estados de modulación (divisiones) más bits por onda y por tanto más velocidad. Sin embargo, las señales se vuelven mucho más complicadas de entender y de generar"* Esto se ilustra en la imagen donde se ven la emisión de bits. Es estas emisiones pueden meterse muchos bits por onda, o muy pocos.
 
-"Cuantos más estados de modulación (divisiones) más bits por onda y por tanto más velocidad. Sin embargo, las señales se vuelven mucho más complicadas de manejar."
+
+.. image:: img/t2/TresModulacionesPM.png
+   :align: center
+   :scale: 45%
+   :alt: Ejemplo de modulación de frecuencia
+
+Dibujar las fases y comprender como funcionan puede ser complejo. Para facilitarlo se muestran en la figura siguiente unas ilustraciones explicativas en las que se pueden ver como el ángulo de "desfase" marca el punto donde la onda empezará y terminará así como si empezará subiendo o bajando. Mirando los dibujos de derecha a izquierda y de arriba a abajo se pueden ver las ondas con desfases de 0, 45, 90, 135, 180, 215, 270 y 315 grados. Como se puede apreciar, este esquema, al utilizar 8 ondas posibles puede enviar grupos de 3 bits de una sola vez. Si se desearan enviar grupos de 4 bits por onda habría que "dividir" el círculo en 16 fases utilizar cada una de ellas para enviar 0000, 0001, 0010, 0011, ..., 1110 y 1111
+
+.. image:: img/t2/EsquemaFases.png
+   :align: center
+   :width: 80%
+   :alt: Ejemplo de modulación de frecuencia
+
+
+   
 
 1.1.4 Sistemas mixtos.
 ^^^^^^^^^^^^^^^^^^^^^^
 
-En la vida real, es muy extraño encontrar dispositivos que solo usen AM, FM o PM. Lo más normal es que se combinen varios mecanismos para intentar aprovechar las ventajas de todos ellos.
+En la vida real, es muy extraño encontrar dispositivos que solo usen AM, FM o PM. Lo más normal es que se combinen varios mecanismos para intentar aprovechar las ventajas de cada uno ellos.De hecho, se pueden combinar los tres sistemas a la vez mezclando modulación de frecuencias, fases y amplitudes
 
 En un sistema que combinara 2 niveles de AM con dos de FM tendríamos cuatro posibles formas de onda
 
-Onda 00: Amplitud 1 y Frecuencia 1
-Onda 01: Amplitud 1 y Frecuencia 2
-Onda 10: Amplitud 2 y Frecuencia 1
-Onda 11: Amplitud 2 y Frecuencia 2
+* Onda 00: Amplitud 1 y Frecuencia 1
+* Onda 01: Amplitud 1 y Frecuencia 2
+* Onda 10: Amplitud 2 y Frecuencia 1
+* Onda 11: Amplitud 2 y Frecuencia 2
 
-Se pueden combinar los tres sistemas en un formato denominado QAM (Quadrature Amplitude Modulation)
 
-Para el próximo día se propone crear el esquema que combina: 4 fases, 2 frecuencias, 4 alturas
+.. image:: img/t2/ModulacionAM_y_FM.png
+   :align: center
+   :width: 45%
+   :alt: Ejemplo de combinación de modulación de frecuencia y amplitud
+   
+Ejercicio
+#########
+
+
+Para el próximo día se propone crear el esquema que combina 4 fases, 2 frecuencias, 4 alturas.
 
 2. Transmisión/recepción en analógico o digital.
 ------------------------------------------------
 
-Se dice que una señal es analógica cuando se acepta que tome cualquier valor en un intervalo dado.
+Se dice que una señal es analógica cuando se acepta que tome cualquier valor en un intervalo dado. Una señal es digital cuando solo se aceptan ciertos valores de la señal. La señal digital más básica es aquella que solo utiliza dos niveles correspondientes a los bits 0 y 1.
 
-Una señal es digital cuando solo se aceptan ciertos valores de la señal. La señal digital más básica es aquella que solo utiliza dos niveles correspondientes a los bits 0 y 1.
+Las señales analógicas emitidas no pueden ser procesadas "demasiado bien" por el receptor, ya que al fin y al cabo pueden ocurrir muchas cosas que alteren la señal de forma que el receptor no pueda saber la forma original de la señal
 
-Las señales analógicas emitidas no pueden ser procesadas "demasiado bien" por el receptor, ya que al fin y al cabo todo es posible.
+Sin embargo, las señales digitales pueden ser procesadas por el receptor y reconstruidas al saber que no todo es posible, por lo tanto la señal original se puede reconstruir "casi" a la perfección. Aún así se debe tener en cuenta que *cuando una señal analógica se convierte a digital se pierde información.* La imagen siguiente muestra como una señal analógica original se ha muestreado utilizando menos o más bits de forma que la señal digitalizada puede ser menos o más fiel a la original. Sin embargo, más fidelidad requiere más memoria.
 
-Sin embargo, las señales digitales pueden ser procesadas por el receptor y reconstruidas al saber que no todo es posible, por lo tanto la señal original se puede reconstruir "casi" a la perfección.
-
-
-Cuando una señal analógica se convierte a digital SE PIERDE INFORMACIÓN.
-
+.. image:: img/t2/Muestreo.png
+   :align: center
+   :width: 45%
+   :alt: Ejemplo de combinación de modulación de frecuencia y amplitud
 
 3. Transmisión o recepción síncrona/asíncrona.
 ----------------------------------------------
@@ -153,7 +181,7 @@ La codificación es el mecanismo por el cual un flujo de datos se convierte en un
 5.1. Estándares
 ~~~~~~~~~~~~~~~
 
-Un estándar es una norma: dicha norma puede ser obligatoria o recomendable. En el primer caso se dice que es "de iure" y en el segundo de facto.
+Un estándar es una norma: dicha norma puede ser obligatoria o recomendable. En el primer caso se dice que es "de iure" y en el segundo "de facto".
 
 Algunos países imponen normas a las transmisiones dentro de su territorio y en otros casos los fabricantes deciden adoptar un sistema común con el fin de tener interoperabilidad.
 
@@ -192,50 +220,63 @@ c) Capacidad de transferencia útil, es una medida del ancho de banda descontando
 7.1.1 10BaseT
 ^^^^^^^^^^^^^
 
-10 Base T
-|   |   |
-|   |   +-->Trenzado
-|   +------>Emite en banda base
-+---------->Ancho de banda
++----------+-------------+--------------+
+| 10       | Base        |    T         |
++----------+-------------+--------------+
+| Ancho de | Emite en    | Par trenzado |
+| banda    | banda base  |              |
+| (Mbps)   |             |              |
++----------+-------------+--------------+
+ 
 
-El cable de par trenzado utiliza parejas de cables entrelazados para reducir las interferencias mutuas debidas al magnetismo.
+El cable de par trenzado utiliza parejas de cables entrelazados para reducir las interferencias mutuas debidas al magnetismo. El fenómeno por el cual dos cables se interfieren mutuamente debido a los campos magnéticos de cada uno se llama "diafonía".
+
+Por otro lado, se dice que un cable emite en *banda base* cuando solo utiliza una señal en el canal. Sin embargo, cuando se meten dos o más señales en un mismo canal se dice que la banda es "ancha".
 
 7.1.2 100BaseT
 ^^^^^^^^^^^^^^
-100Base T
-|   |   |
-|   |   +-->Trenzado
-|   +------>Emite en banda base
-+---------->Ancho de banda
++----------+-------------+--------------+
+| 100      | Base        |    T         |
++----------+-------------+--------------+
+| Ancho de | Emite en    | Par trenzado |
+| banda    | banda base  |              |
+| (Mbps)   |             |              |
++----------+-------------+--------------+
 
 7.1.3 1000BaseT
 ^^^^^^^^^^^^^^^
 
-1000BaseT
-|   |   |
-|   |   +-->Trenzado
-|   +------>Emite en banda base
-+---------->Ancho de banda
++----------+-------------+--------------+
+| 1000     | Base        |    T         |
++----------+-------------+--------------+
+| Ancho de | Emite en    | Par trenzado |
+| banda    | banda base  |              |
+| (Mbps)   |             |              |
++----------+-------------+--------------+
 
 7.1.4 100BaseF
 ^^^^^^^^^^^^^^
 
-100Base F
-|   |   |
-|   |   +-->Fibra
-|   +------>Emite en banda base
-+---------->Ancho de banda
++----------+-------------+--------------+
+| 10       | Base        |    F         |
++----------+-------------+--------------+
+| Ancho de | Emite en    | Fibra óptica |
+| banda    | banda base  |              |
+| (Mbps)   |             |              |
++----------+-------------+--------------+
 
 Se puede poner en entornos industriales, con maquinaria pesada, etc.. sin sufrir interferencias.
 
 7.1.4 100BaseC
 ^^^^^^^^^^^^^^
 
-100Base C
-|   |   |
-|   |   +-->Coaxial
-|   +------>Emite en banda base
-+---------->Ancho de banda
++----------+-------------+--------------+
+| 100      | Base        |    C         |
++----------+-------------+--------------+
+| Ancho de | Emite en    | Coaxial      |
+| banda    | banda base  |              |
+| (Mbps)   |             |              |
++----------+-------------+--------------+
 
 Tiene cierta tolerancia a las interferencias.
 
@@ -301,17 +342,10 @@ Para montar un cable es importante saber que los pequeños cables del interior si
 
 Se debe poner el conector con los pin metálicos mirando hacia nosotros. Los pin se conectan de izquierda a derecha del 1 al 8. Hay 8 cables cuyos colores son los siguientes
 
-Blanco/Naranja
-Naranja
-
-Blanco/Verde
-Verde
-
-Blanco/Azul
-Azul
-
-Blanco/Marron
-Marron
+* Blanco/Naranja y Naranja
+* Blanco/Verde y Verde
+* Blanco/Azul y Azul
+* Blanco/Marron y Marron
 
 Crimpadora 20-45 Euros
 Pelacables 8 euros
@@ -321,13 +355,24 @@ Cable Normal (o directo)
 
 Punta 1
 
-Tx+   Tx-  Rx+            Rx-
-1     2    3    4    5    6    7    8
-Bl/N  N    B/V  A    B/A  V    B/M  M
++-----+-----+-----+-----+-----+-----+-----+-----+
+|Tx+  | Tx- | Rx+ |     |     | Rx- |     |     |
++-----+-----+-----+-----+-----+-----+-----+-----+
+|  1  | 2   | 3   | 4   | 5   | 6   | 7   | 8   |
++-----+-----+-----+-----+-----+-----+-----+-----+
+|Bl/N | N   | B/V | A   | B/A | V   | B/M | M   |
++-----+-----+-----+-----+-----+-----+-----+-----+
 
 Punta 2
-1     2    3    4    5    6    7    8
-Bl/N  N    B/V  A    B/A  V    B/M  M
+
++-----+-----+-----+-----+-----+-----+-----+-----+
+|Tx+  | Tx- | Rx+ |     |     | Rx- |     |     |
++-----+-----+-----+-----+-----+-----+-----+-----+
+|  1  | 2   | 3   | 4   | 5   | 6   | 7   | 8   |
++-----+-----+-----+-----+-----+-----+-----+-----+
+|Bl/N | N   | B/V | A   | B/A | V   | B/M | M   |
++-----+-----+-----+-----+-----+-----+-----+-----+
+
 
 Cable Cruzado
 ^^^^^^^^^^^^^
@@ -335,21 +380,26 @@ Cable Cruzado
 Se puede crear un tipo de cable que se denomina cruzado poniendo en una punta del cable los colores que hemos dicho y en la otra modificando el orden.
 
 
-
 Punta 1
-Tx+   Tx-  Rx+            Rx-
-1     2    3    4    5    6    7    8
-Bl/N  N    B/V  A    B/A  V    B/M  M
+
++-----+-----+-----+-----+-----+-----+-----+-----+
+|Tx+  | Tx- | Rx+ |     |     | Rx- |     |     |
++-----+-----+-----+-----+-----+-----+-----+-----+
+|  1  | 2   | 3   | 4   | 5   | 6   | 7   | 8   |
++-----+-----+-----+-----+-----+-----+-----+-----+
+|Bl/N | N   | B/V | A   | B/A | V   | B/M | M   |
++-----+-----+-----+-----+-----+-----+-----+-----+
 
 Punta 2
-Rx+   Rx-  
-1     2    3    4    5    6    7    8
-Bl/V  V    B/N  A    B/A  N    B/M  M
 
++-----+-----+-----+-----+-----+-----+-----+-----+
+|Rx+  | Rx- | Tx+ |     |     | Tx- |     |     |
++-----+-----+-----+-----+-----+-----+-----+-----+
+|  1  | 2   | 3   | 4   | 5   | 6   | 7   | 8   |
++-----+-----+-----+-----+-----+-----+-----+-----+
+|Bl/V | V   | B/N | A   | B/A | N   | B/M | M   |
++-----+-----+-----+-----+-----+-----+-----+-----+
 
-
-
-Se puede crear un tipo de cable que se denomina cruzado poniendo en una punta del cable los colores que hemos dicho y en la otra modificando el orden.
 
 8.2 Montaje de salas
 ~~~~~~~~~~~~~~~~~~~~
@@ -376,9 +426,9 @@ Un cable(s) mal hechos podría llegar a ser un posible origen de foco de incendio
 
 Hay extintores para distintos usos:
 
--Fuego por combustión química
--Fuego de origen eléctrico.
--Combustión de maderas, tejidos o papeles.
+- Fuego por combustión química
+- Fuego de origen eléctrico.
+- Combustión de maderas, tejidos o papeles.
 
 
 La fibra óptica utiliza a menudo luces láser de alta intensidad que pueden quemar la retina.
@@ -387,10 +437,10 @@ La fibra óptica utiliza a menudo luces láser de alta intensidad que pueden quema
 8.3.3 Riesgos específicos de la electricidad
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
--En toda instalación, las conexiones deberían estar compartimentadas en tramos.
+- En toda instalación, las conexiones deberían estar compartimentadas en tramos.
 
--La instalación debería tener conexiones a tierra.
-
+- La instalación debería tener conexiones a tierra.
+ 
 9. Otros medios físicos
 -----------------------
 
@@ -410,9 +460,7 @@ Es bastante robusto, lleva protección metálica, su velocidad es similar, pero si
 9.3 Fibra óptica
 ~~~~~~~~~~~~~~~~
 
-La fibra óptica es muy rápida, pero bastante compleja de montar.
-
-Hay dos tipos de fibra:
+La fibra óptica es muy rápida, pero bastante compleja de montar. Hay dos tipos de fibra: monomodo y multimodo
 
 9.3.1 Monomodo.
 ~~~~~~~~~~~~~~~

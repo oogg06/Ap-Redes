@@ -1212,7 +1212,7 @@ Bits 8 7  4  21</p>
 <p>La modulación en amplitud permite alcances mucho mayores y se basa en la alteración de la amplitud o altura de la señal</p>
 <p>Utilizando lápiz y papel dibuja la señal generada utilizando un esquema de modulacion AM de 4 señales que envíe la cadena de bits 0111.0010</p>
 <p>Solucion</p>
-<img alt="Ejemplo de modulación de amplitud" class="align-center" src="img/t2/SolucionEjercicio1FM.png" />
+<img alt="Ejemplo de modulación de la frecuencia" class="align-center" src="img/t2/ModulacionAM.png" style="width: 134.55px; height: 241.8px;" />
 <p>La creación de señales tiene una serie de principios básicos:</p>
 <ol class="loweralpha simple">
 <li>Todos los tiempos son iguales: todos los intervalos de tiempo deben ser igual de anchos.</li>
@@ -1232,41 +1232,50 @@ Bits 8 7  4  21</p>
 <h4>1.1.2 Modulación FM</h4>
 <p>La modulación FM es un mecanismo basado en modificar el número de ondas por tiempo.</p>
 <p>Solo hay que elegir un esquema de codificación basándonos en el número de ondas. P.ej:</p>
-<p>000---&gt;1 onda
-001---&gt;2 ondas
-010---&gt;3 ondas
-011---&gt;4 ondas
-100---&gt;5 ondas
-101---&gt;6 ondas
-110---&gt;7 ondas
-111---&gt;8 ondas</p>
+<ul class="simple">
+<li>000---&gt;1 onda</li>
+<li>001---&gt;2 ondas</li>
+<li>010---&gt;3 ondas</li>
+<li>011---&gt;4 ondas</li>
+<li>100---&gt;5 ondas</li>
+<li>101---&gt;6 ondas</li>
+<li>110---&gt;7 ondas</li>
+<li>111---&gt;8 ondas</li>
+</ul>
+<img alt="Ejemplo de modulación de frecuencia" class="align-center" src="img/t2/ModulacionFM.png" style="width: 133.25px; height: 241.8px;" />
 </div>
 <div class="section" id="modulacion-pm-psk-o-modulacion-de-fase">
 <h4>1.1.3 Modulación PM/PSK o modulación de fase.</h4>
-<p>La modulación en fase se basa en modificar el punto en el que empieza una onda. Al final, todas las ondas empiezan y acaban en el mismo punto y además todas hacen dos &quot;crestas&quot;: una en el máximo y otra en el mínimo.</p>
-<p>Se debe tener en cuenta que en todos los mecanismos de modulación se cumple la misma regla:</p>
-<p>&quot;Cuantos más estados de modulación (divisiones) más bits por onda y por tanto más velocidad. Sin embargo, las señales se vuelven mucho más complicadas de manejar.&quot;</p>
+<p>La modulación en fase se basa en modificar el punto en el que empieza una onda. Al final, todas las ondas empiezan y acaban en el mismo punto y además todas pasan por el punto más alto y por el punto más bajo.</p>
+<p>Se debe tener en cuenta que en todos los mecanismos de modulación se cumple la misma regla:<em>&quot;Cuantos más estados de modulación (divisiones) más bits por onda y por tanto más velocidad. Sin embargo, las señales se vuelven mucho más complicadas de entender y de generar&quot;</em> Esto se ilustra en la imagen donde se ven la emisión de bits. Es estas emisiones pueden meterse muchos bits por onda, o muy pocos.</p>
+<img alt="Ejemplo de modulación de frecuencia" class="align-center" src="img/t2/TresModulacionesPM.png" style="width: 288.45px; height: 175.95px;" />
+<p>Dibujar las fases y comprender como funcionan puede ser complejo. Para facilitarlo se muestran en la figura siguiente unas ilustraciones explicativas en las que se pueden ver como el ángulo de &quot;desfase&quot; marca el punto donde la onda empezará y terminará así como si empezará subiendo o bajando. Mirando los dibujos de derecha a izquierda y de arriba a abajo se pueden ver las ondas con desfases de 0, 45, 90, 135, 180, 215, 270 y 315 grados. Como se puede apreciar, este esquema, al utilizar 8 ondas posibles puede enviar grupos de 3 bits de una sola vez. Si se desearan enviar grupos de 4 bits por onda habría que &quot;dividir&quot; el círculo en 16 fases utilizar cada una de ellas para enviar 0000, 0001, 0010, 0011, ..., 1110 y 1111</p>
+<img alt="Ejemplo de modulación de frecuencia" class="align-center" src="img/t2/EsquemaFases.png" style="width: 80%;" />
 </div>
 <div class="section" id="sistemas-mixtos">
 <h4>1.1.4 Sistemas mixtos.</h4>
-<p>En la vida real, es muy extraño encontrar dispositivos que solo usen AM, FM o PM. Lo más normal es que se combinen varios mecanismos para intentar aprovechar las ventajas de todos ellos.</p>
+<p>En la vida real, es muy extraño encontrar dispositivos que solo usen AM, FM o PM. Lo más normal es que se combinen varios mecanismos para intentar aprovechar las ventajas de cada uno ellos.De hecho, se pueden combinar los tres sistemas a la vez mezclando modulación de frecuencias, fases y amplitudes</p>
 <p>En un sistema que combinara 2 niveles de AM con dos de FM tendríamos cuatro posibles formas de onda</p>
-<p>Onda 00: Amplitud 1 y Frecuencia 1
-Onda 01: Amplitud 1 y Frecuencia 2
-Onda 10: Amplitud 2 y Frecuencia 1
-Onda 11: Amplitud 2 y Frecuencia 2</p>
-<p>Se pueden combinar los tres sistemas en un formato denominado QAM (Quadrature Amplitude Modulation)</p>
-<p>Para el próximo día se propone crear el esquema que combina: 4 fases, 2 frecuencias, 4 alturas</p>
+<ul class="simple">
+<li>Onda 00: Amplitud 1 y Frecuencia 1</li>
+<li>Onda 01: Amplitud 1 y Frecuencia 2</li>
+<li>Onda 10: Amplitud 2 y Frecuencia 1</li>
+<li>Onda 11: Amplitud 2 y Frecuencia 2</li>
+</ul>
+<img alt="Ejemplo de combinación de modulación de frecuencia y amplitud" class="align-center" src="img/t2/ModulacionAM_y_FM.png" style="width: 45%;" />
+<div class="section" id="ejercicio">
+<h5>Ejercicio</h5>
+<p>Para el próximo día se propone crear el esquema que combina 4 fases, 2 frecuencias, 4 alturas.</p>
+</div>
 </div>
 </div>
 </div>
 <div class="section" id="transmision-recepcion-en-analogico-o-digital">
 <h2>2. Transmisión/recepción en analógico o digital.</h2>
-<p>Se dice que una señal es analógica cuando se acepta que tome cualquier valor en un intervalo dado.</p>
-<p>Una señal es digital cuando solo se aceptan ciertos valores de la señal. La señal digital más básica es aquella que solo utiliza dos niveles correspondientes a los bits 0 y 1.</p>
-<p>Las señales analógicas emitidas no pueden ser procesadas &quot;demasiado bien&quot; por el receptor, ya que al fin y al cabo todo es posible.</p>
-<p>Sin embargo, las señales digitales pueden ser procesadas por el receptor y reconstruidas al saber que no todo es posible, por lo tanto la señal original se puede reconstruir &quot;casi&quot; a la perfección.</p>
-<p>Cuando una señal analógica se convierte a digital SE PIERDE INFORMACIÓN.</p>
+<p>Se dice que una señal es analógica cuando se acepta que tome cualquier valor en un intervalo dado. Una señal es digital cuando solo se aceptan ciertos valores de la señal. La señal digital más básica es aquella que solo utiliza dos niveles correspondientes a los bits 0 y 1.</p>
+<p>Las señales analógicas emitidas no pueden ser procesadas &quot;demasiado bien&quot; por el receptor, ya que al fin y al cabo pueden ocurrir muchas cosas que alteren la señal de forma que el receptor no pueda saber la forma original de la señal</p>
+<p>Sin embargo, las señales digitales pueden ser procesadas por el receptor y reconstruidas al saber que no todo es posible, por lo tanto la señal original se puede reconstruir &quot;casi&quot; a la perfección. Aún así se debe tener en cuenta que <em>cuando una señal analógica se convierte a digital se pierde información.</em> La imagen siguiente muestra como una señal analógica original se ha muestreado utilizando menos o más bits de forma que la señal digitalizada puede ser menos o más fiel a la original. Sin embargo, más fidelidad requiere más memoria.</p>
+<img alt="Ejemplo de combinación de modulación de frecuencia y amplitud" class="align-center" src="img/t2/Muestreo.png" style="width: 45%;" />
 </div>
 <div class="section" id="transmision-o-recepcion-sincrona-asincrona">
 <h2>3. Transmisión o recepción síncrona/asíncrona.</h2>
@@ -1289,7 +1298,7 @@ Onda 11: Amplitud 2 y Frecuencia 2</p>
 <p>¿Como funciona la codificación de bloques en los CD?</p>
 <div class="section" id="estandares">
 <h3>5.1. Estándares</h3>
-<p>Un estándar es una norma: dicha norma puede ser obligatoria o recomendable. En el primer caso se dice que es &quot;de iure&quot; y en el segundo de facto.</p>
+<p>Un estándar es una norma: dicha norma puede ser obligatoria o recomendable. En el primer caso se dice que es &quot;de iure&quot; y en el segundo &quot;de facto&quot;.</p>
 <p>Algunos países imponen normas a las transmisiones dentro de su territorio y en otros casos los fabricantes deciden adoptar un sistema común con el fin de tener interoperabilidad.</p>
 <p>Las tarjetas de red siguen casi al 100% el estándar Ethernet (&quot;de facto&quot;).</p>
 <p>En España el organismo regulador es AENOR (pertenece a la ISO)</p>
@@ -1315,45 +1324,121 @@ Si genero 1000 bytes, mi máquina enviará esos 1000 bytes + 30 bytes de direcci
 <h3>7.1 Basados en cobre.</h3>
 <div class="section" id="baset">
 <h4>7.1.1 10BaseT</h4>
-<p>10 Base T
-|   |   |
-|   |   +--&gt;Trenzado
-|   +------&gt;Emite en banda base
-+----------&gt;Ancho de banda</p>
-<p>El cable de par trenzado utiliza parejas de cables entrelazados para reducir las interferencias mutuas debidas al magnetismo.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="27%" />
+<col width="35%" />
+<col width="38%" />
+</colgroup>
+<tbody valign="top">
+<tr><td>10</td>
+<td>Base</td>
+<td>T</td>
+</tr>
+<tr><td>Ancho de
+banda
+(Mbps)</td>
+<td>Emite en
+banda base</td>
+<td>Par trenzado</td>
+</tr>
+</tbody>
+</table>
+<p>El cable de par trenzado utiliza parejas de cables entrelazados para reducir las interferencias mutuas debidas al magnetismo. El fenómeno por el cual dos cables se interfieren mutuamente debido a los campos magnéticos de cada uno se llama &quot;diafonía&quot;.</p>
+<p>Por otro lado, se dice que un cable emite en <em>banda base</em> cuando solo utiliza una señal en el canal. Sin embargo, cuando se meten dos o más señales en un mismo canal se dice que la banda es &quot;ancha&quot;.</p>
 </div>
 <div class="section" id="id8">
 <h4>7.1.2 100BaseT</h4>
-<p>100Base T
-|   |   |
-|   |   +--&gt;Trenzado
-|   +------&gt;Emite en banda base
-+----------&gt;Ancho de banda</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="27%" />
+<col width="35%" />
+<col width="38%" />
+</colgroup>
+<tbody valign="top">
+<tr><td>100</td>
+<td>Base</td>
+<td>T</td>
+</tr>
+<tr><td>Ancho de
+banda
+(Mbps)</td>
+<td>Emite en
+banda base</td>
+<td>Par trenzado</td>
+</tr>
+</tbody>
+</table>
 </div>
 <div class="section" id="id9">
 <h4>7.1.3 1000BaseT</h4>
-<p>1000BaseT
-|   |   |
-|   |   +--&gt;Trenzado
-|   +------&gt;Emite en banda base
-+----------&gt;Ancho de banda</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="27%" />
+<col width="35%" />
+<col width="38%" />
+</colgroup>
+<tbody valign="top">
+<tr><td>1000</td>
+<td>Base</td>
+<td>T</td>
+</tr>
+<tr><td>Ancho de
+banda
+(Mbps)</td>
+<td>Emite en
+banda base</td>
+<td>Par trenzado</td>
+</tr>
+</tbody>
+</table>
 </div>
 <div class="section" id="basef">
 <h4>7.1.4 100BaseF</h4>
-<p>100Base F
-|   |   |
-|   |   +--&gt;Fibra
-|   +------&gt;Emite en banda base
-+----------&gt;Ancho de banda</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="27%" />
+<col width="35%" />
+<col width="38%" />
+</colgroup>
+<tbody valign="top">
+<tr><td>10</td>
+<td>Base</td>
+<td>F</td>
+</tr>
+<tr><td>Ancho de
+banda
+(Mbps)</td>
+<td>Emite en
+banda base</td>
+<td>Fibra óptica</td>
+</tr>
+</tbody>
+</table>
 <p>Se puede poner en entornos industriales, con maquinaria pesada, etc.. sin sufrir interferencias.</p>
 </div>
 <div class="section" id="basec">
 <h4>7.1.4 100BaseC</h4>
-<p>100Base C
-|   |   |
-|   |   +--&gt;Coaxial
-|   +------&gt;Emite en banda base
-+----------&gt;Ancho de banda</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="27%" />
+<col width="35%" />
+<col width="38%" />
+</colgroup>
+<tbody valign="top">
+<tr><td>100</td>
+<td>Base</td>
+<td>C</td>
+</tr>
+<tr><td>Ancho de
+banda
+(Mbps)</td>
+<td>Emite en
+banda base</td>
+<td>Coaxial</td>
+</tr>
+</tbody>
+</table>
 <p>Tiene cierta tolerancia a las interferencias.</p>
 <p>En general, todos ellos tienen un tamaño máximo de segmento. Es decir, el cable que va de un equipo a otro no puede ser mayor de cierta longitud. Esta longitud oscila entre los 100 m y los kilómetros.</p>
 </div>
@@ -1395,38 +1480,188 @@ Si genero 1000 bytes, mi máquina enviará esos 1000 bytes + 30 bytes de direcci
 <p>El cable de par trenzado se denomina de 8 vías por tener 8 pequeños cables de colores en su interior. No es igual que el del teléfono (que tiene 4).</p>
 <p>Para montar un cable es importante saber que los pequeños cables del interior siempre van en el mismo orden. Al montar los cables dentro de los conectores se debe hacer lo siguiente</p>
 <p>Se debe poner el conector con los pin metálicos mirando hacia nosotros. Los pin se conectan de izquierda a derecha del 1 al 8. Hay 8 cables cuyos colores son los siguientes</p>
-<p>Blanco/Naranja
-Naranja</p>
-<p>Blanco/Verde
-Verde</p>
-<p>Blanco/Azul
-Azul</p>
-<p>Blanco/Marron
-Marron</p>
+<ul class="simple">
+<li>Blanco/Naranja y Naranja</li>
+<li>Blanco/Verde y Verde</li>
+<li>Blanco/Azul y Azul</li>
+<li>Blanco/Marron y Marron</li>
+</ul>
 <p>Crimpadora 20-45 Euros
 Pelacables 8 euros</p>
 <div class="section" id="cable-normal-o-directo">
 <h4>Cable Normal (o directo)</h4>
 <p>Punta 1</p>
-<p>Tx+   Tx-  Rx+            Rx-
-1     2    3    4    5    6    7    8
-Bl/N  N    B/V  A    B/A  V    B/M  M</p>
-<p>Punta 2
-1     2    3    4    5    6    7    8
-Bl/N  N    B/V  A    B/A  V    B/M  M</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+</colgroup>
+<tbody valign="top">
+<tr><td>Tx+</td>
+<td>Tx-</td>
+<td>Rx+</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>Rx-</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>1</td>
+<td>2</td>
+<td>3</td>
+<td>4</td>
+<td>5</td>
+<td>6</td>
+<td>7</td>
+<td>8</td>
+</tr>
+<tr><td>Bl/N</td>
+<td>N</td>
+<td>B/V</td>
+<td>A</td>
+<td>B/A</td>
+<td>V</td>
+<td>B/M</td>
+<td>M</td>
+</tr>
+</tbody>
+</table>
+<p>Punta 2</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+</colgroup>
+<tbody valign="top">
+<tr><td>Tx+</td>
+<td>Tx-</td>
+<td>Rx+</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>Rx-</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>1</td>
+<td>2</td>
+<td>3</td>
+<td>4</td>
+<td>5</td>
+<td>6</td>
+<td>7</td>
+<td>8</td>
+</tr>
+<tr><td>Bl/N</td>
+<td>N</td>
+<td>B/V</td>
+<td>A</td>
+<td>B/A</td>
+<td>V</td>
+<td>B/M</td>
+<td>M</td>
+</tr>
+</tbody>
+</table>
 </div>
 <div class="section" id="cable-cruzado">
 <h4>Cable Cruzado</h4>
 <p>Se puede crear un tipo de cable que se denomina cruzado poniendo en una punta del cable los colores que hemos dicho y en la otra modificando el orden.</p>
-<p>Punta 1
-Tx+   Tx-  Rx+            Rx-
-1     2    3    4    5    6    7    8
-Bl/N  N    B/V  A    B/A  V    B/M  M</p>
-<p>Punta 2
-Rx+   Rx-
-1     2    3    4    5    6    7    8
-Bl/V  V    B/N  A    B/A  N    B/M  M</p>
-<p>Se puede crear un tipo de cable que se denomina cruzado poniendo en una punta del cable los colores que hemos dicho y en la otra modificando el orden.</p>
+<p>Punta 1</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+</colgroup>
+<tbody valign="top">
+<tr><td>Tx+</td>
+<td>Tx-</td>
+<td>Rx+</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>Rx-</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>1</td>
+<td>2</td>
+<td>3</td>
+<td>4</td>
+<td>5</td>
+<td>6</td>
+<td>7</td>
+<td>8</td>
+</tr>
+<tr><td>Bl/N</td>
+<td>N</td>
+<td>B/V</td>
+<td>A</td>
+<td>B/A</td>
+<td>V</td>
+<td>B/M</td>
+<td>M</td>
+</tr>
+</tbody>
+</table>
+<p>Punta 2</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+</colgroup>
+<tbody valign="top">
+<tr><td>Rx+</td>
+<td>Rx-</td>
+<td>Tx+</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>Tx-</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>1</td>
+<td>2</td>
+<td>3</td>
+<td>4</td>
+<td>5</td>
+<td>6</td>
+<td>7</td>
+<td>8</td>
+</tr>
+<tr><td>Bl/V</td>
+<td>V</td>
+<td>B/N</td>
+<td>A</td>
+<td>B/A</td>
+<td>N</td>
+<td>B/M</td>
+<td>M</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 <div class="section" id="montaje-de-salas">
@@ -1443,15 +1678,19 @@ Bl/V  V    B/N  A    B/A  N    B/M  M</p>
 <h4>8.3.2 Riesgos para la salud.</h4>
 <p>Un cable(s) mal hechos podría llegar a ser un posible origen de foco de incendio. Cerca de toda instalación eléctrica debería haber extintores.</p>
 <p>Hay extintores para distintos usos:</p>
-<p>-Fuego por combustión química
--Fuego de origen eléctrico.
--Combustión de maderas, tejidos o papeles.</p>
+<ul class="simple">
+<li>Fuego por combustión química</li>
+<li>Fuego de origen eléctrico.</li>
+<li>Combustión de maderas, tejidos o papeles.</li>
+</ul>
 <p>La fibra óptica utiliza a menudo luces láser de alta intensidad que pueden quemar la retina.</p>
 </div>
 <div class="section" id="riesgos-especificos-de-la-electricidad">
 <h4>8.3.3 Riesgos específicos de la electricidad</h4>
-<p>-En toda instalación, las conexiones deberían estar compartimentadas en tramos.</p>
-<p>-La instalación debería tener conexiones a tierra.</p>
+<ul class="simple">
+<li>En toda instalación, las conexiones deberían estar compartimentadas en tramos.</li>
+<li>La instalación debería tener conexiones a tierra.</li>
+</ul>
 </div>
 </div>
 </div>
@@ -1468,8 +1707,7 @@ Bl/V  V    B/N  A    B/A  N    B/M  M</p>
 </div>
 <div class="section" id="id10">
 <h3>9.3 Fibra óptica</h3>
-<p>La fibra óptica es muy rápida, pero bastante compleja de montar.</p>
-<p>Hay dos tipos de fibra:</p>
+<p>La fibra óptica es muy rápida, pero bastante compleja de montar. Hay dos tipos de fibra: monomodo y multimodo</p>
 </div>
 <div class="section" id="monomodo">
 <h3>9.3.1 Monomodo.</h3>
@@ -1479,6 +1717,332 @@ Bl/V  V    B/N  A    B/A  N    B/M  M</p>
 <h3>9.3.2 Multimodo.</h3>
 <p>La luz se dispersa. Eso conlleva que las velocidades son un poco menores. Sin embargo, al permitir la dispersión podemos usar luces LED (más baratas)</p>
 </div>
+</div>
+</div>
+<div class="section" id="tema-3-nivel-de-enlace">
+<h1>Tema 3: Nivel de enlace</h1>
+<div class="section" id="id11">
+<h2>0. Introducción</h2>
+<p>La capa de enlace es la capa 2 del modelo OSI. Se encargaba de &quot;entregar datos entre vecinos inmediatos&quot;.</p>
+</div>
+<div class="section" id="servicios">
+<h2>1. Servicios</h2>
+</div>
+<div class="section" id="descripcion-de-los-servicios">
+<h2>1.1 Descripción de los servicios</h2>
+<p>La capa de enlace tiene dos subtareas fundamentales:</p>
+<ol class="loweralpha simple">
+<li>Proteger a la capa de red (que está arriba) de los detalles de la transmisión física</li>
+<li>Ayuda a resolver el problema de la entrega en una red local en la cual todo el mundo comparte el cable.</li>
+</ol>
+</div>
+<div class="section" id="terminologia">
+<h2>1.2 Terminología</h2>
+<p>Se llama &quot;trama&quot; a un bloque de datos manejado en la capa de enlace.</p>
+<p>Se llama &quot;medio físico&quot; al sistema utilizado para la transmisión de bits (a veces será un cable de cobre, otras fibra óptica).</p>
+</div>
+<div class="section" id="necesidad-de-la-capa-de-enlace">
+<h2>1.3 Necesidad de la capa de enlace</h2>
+<p>¿Por qué hace falta una capa de enlace?.</p>
+<p>Respuesta: Hay muchos tipos de medios físicos. Cada uno de ellos tiene distintas características.</p>
+<p>Por ejemplo, un enlace por satélite puede ser muy rápido, pero el comienzo de la transmisión puede ser muy lento (lo que llamamos &quot;ping&quot; o &quot;latencia&quot;.)</p>
+<p>Se podría decir que la latencia es la &quot;aceleración de un coche&quot; (por ejemplo, pasar de 0 a 100 en 4 o en 12 segundos). Sin embargo, la velocidad de una red es como decir que un coche puede ir de forma sostenida a 110 o a 190Km/h.</p>
+<p>La capa de enlace, se preocupa de resolver los problemas de latencia y ancho de banda de los distintos medios que puede cruzar un paquete.</p>
+<p>Cuando enviamos un email de aquí a Japón, ese email puede cruzar muchos tipos de redes (ver animación). Cuando el paquete llega por ejemplo a mi router, puede que mi router al ir conectado por fibra óptica a mi compañía decida confiar en el medio para así ir más deprisa. Sin embargo, al llegar ese email a un satélite, es posible que la capa de enlace de ese satélite decida activar todos los controles de errores para evitar problemas.</p>
+<p><strong>La regla general es que en función del medio que usemos, usaremos distintas capas de enlace adaptadas a las peculiaridades de ese medio, lo que supone que la capa de enlace incluso podría hacer cambios en el formato del mensaje (por ejemplo, cifrando, o haciendo trozos más pequeños o activando la comprobación de errores)</strong></p>
+</div>
+<div class="section" id="entramado">
+<h2>1.4 Entramado</h2>
+<p>Para poder ver la estructura de tramas descargaremos e instalaremos el analizador de red Wireshark.</p>
+<p>Toda la información que circula por una red tiene una estructura claramente determinada. El uso de determinadas conexiones implica el uso de distintos protocolos de enlace.</p>
+<p><strong>Las conexiones más utilizadas de lejos hoy en día son las basadas en par trenzado conectadas a tarjetas Ethernet.</strong></p>
+<p>Las normativas para construir tarjetas de red Ethernet son públicas y se denominan estándares de la serie 802.xxxx. Las tarjetas basadas en cable corresponden a la serie 802.3 y las Wi-Fi a la 802.11</p>
+<p>A esta estructuración de la información se le llama entramado. En general, las tramas Ethernet tienen un esquema como este</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="29%" />
+<col width="27%" />
+<col width="6%" />
+<col width="23%" />
+<col width="15%" />
+</colgroup>
+<tbody valign="top">
+<tr><td>Destino</td>
+<td>Origen</td>
+<td>O</td>
+<td>Datos</td>
+<td>Trailer</td>
+</tr>
+</tbody>
+</table>
+<p>Los distintos enlaces (Wi-Fi, Ethernet, Fibra óptica...) utilizan distintas estructuras de trama. Esto supone que si un router tiene una conexión de fibra y una Ethernet, habrá que convertir un formato de trama en el otro.</p>
+</div>
+<div class="section" id="acceso-al-medio">
+<h2>1.5 Acceso al medio.</h2>
+<p>Se denomina &quot;método de acceso al medio&quot; al procedimiento que ejecuta una capa de enlace para resolver el problema de la compartición de cables por parte de varios usuarios.</p>
+<p>Hay muchos mecanismos MAC (Medium Access Control) pero el MAC elegido por Ethernet está basado fundamentalmente en el azar.</p>
+</div>
+<div class="section" id="informacion-incluida-en-las-tramas">
+<h2>1.6 Información incluida en las tramas</h2>
+<p>¿Qué campos hay en una trama?</p>
+<p>Todas las capas de enlace suelen enviar marcas de inicio y final de trama, pero los sniffer no suelen mostrarlas.</p>
+<ol class="loweralpha simple">
+<li>Dirección de destino</li>
+<li>Dirección de origen</li>
+<li>Datos enviados</li>
+<li>Información de control: Se pueden marcar tramas de alta prioridad, y cosas por estilo.</li>
+<li>Tráiler: Puede incluir varias cosas, pero la más fundamental es el campo Checksum.</li>
+</ol>
+<p>Supongamos este mensaje</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="21%" />
+<col width="21%" />
+<col width="4%" />
+<col width="34%" />
+<col width="19%" />
+</colgroup>
+<tbody valign="top">
+<tr><td>Destino</td>
+<td>Origen</td>
+<td>C</td>
+<td>Datos</td>
+<td>Trailer</td>
+</tr>
+<tr><td>0c-02-0a</td>
+<td>0b-0c-02</td>
+<td>&nbsp;</td>
+<td>H O L A</td>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+<p>Si convertimos los datos a números obtenemos cosas como por ejemplo
+* H: 73
+* O: 84
+* L: 76
+* A: 65
+* Sumando H+O+L+A= 298</p>
+<p>La suma se mete en el tráiler y se envía esta trama</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="21%" />
+<col width="21%" />
+<col width="4%" />
+<col width="34%" />
+<col width="19%" />
+</colgroup>
+<tbody valign="top">
+<tr><td>Destino</td>
+<td>Origen</td>
+<td>C</td>
+<td>Datos</td>
+<td>Trailer</td>
+</tr>
+<tr><td>0c-02-0a</td>
+<td>0b-0c-02</td>
+<td>&nbsp;</td>
+<td>H O L A</td>
+<td>298</td>
+</tr>
+</tbody>
+</table>
+<p>Supongamos que el receptor recibe esto (se corrompe la O y se convierte en Q)</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="21%" />
+<col width="21%" />
+<col width="4%" />
+<col width="34%" />
+<col width="19%" />
+</colgroup>
+<tbody valign="top">
+<tr><td>Destino</td>
+<td>Origen</td>
+<td>C</td>
+<td>Datos</td>
+<td>Trailer</td>
+</tr>
+<tr><td>0c-02-0a</td>
+<td>0b-0c-02</td>
+<td>&nbsp;</td>
+<td>H Q L A</td>
+<td>298</td>
+</tr>
+</tbody>
+</table>
+<p>El receptor vuelve a calcular la suma</p>
+<ul class="simple">
+<li>H: 73</li>
+<li>Q: 86</li>
+<li>L: 76</li>
+<li>A: 65</li>
+<li>Sumando H+Q+L+A= 300</li>
+</ul>
+<p>La suma que calcula el receptor no coincide con la enviada por el emisor. ¡Se ha descubierto un error!</p>
+<p>Existen diversos protocolos y estándares para la capa de enlace, pero de lejos, el más utilizado es el sistema Ethernet</p>
+<p>Ethernet utiliza direcciones de 6 bytes (48 bits). Además, los distintos fabricantes tienen asignados distintos bloques de forma que es posible conocer el fabricante de una cierta tarjeta</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="51%" />
+<col width="49%" />
+</colgroup>
+<tbody valign="top">
+<tr><td>3 bytes</td>
+<td>3 bytes</td>
+</tr>
+<tr><td>Pref. fabricante</td>
+<td>Dirección</td>
+</tr>
+</tbody>
+</table>
+<p>Un ejemplo de dirección Ethernet sería 00:22:CD:2A:5A:F1.</p>
+<p>Se puede ver la dirección Ethernet de un equipo utilizando el comando ipconfig /all. A la dirección de enlace también se le conoce por el nombre de &quot;dirección MAC&quot; o &quot;dirección física&quot;.</p>
+<p>Al fabricar tarjetas, cada fabricante utiliza direcciones asignadas por un consorcio que centraliza la asignación de direcciones. ¡Nunca debería ocurrir que dos tarjetas tengan la misma MAC!.</p>
+</div>
+<div class="section" id="el-control-del-acceso-al-medio">
+<h2>2.- El control del acceso al medio</h2>
+<p>En una red, siempre ocurre lo siguiente</p>
+<p>Es decir, hay varios cables conectados a un mismo dispositivo. Todos los PC pueden enviar y/o recibir a la vez, entonces ¿como podemos resolver el tema de &quot;quién utiliza el cable al exterior&quot;?</p>
+<p>Esta pregunta se puede resolver con distintos mecanismos. Estos mecanismos se llaman mecanismos de &quot;CONTROL DE ACCESO AL MEDIO&quot; (o Medium Access Control o MAC)</p>
+<p>¿Qué posibles mecanimos podríamos utilizar?
+1) Por turnos 1-2-3-1-2-3-1-2-3....
+2) Por prioridad
+3) Por tipo de tráfico (primero HTTP y luego email)
+4) Otros sistemas</p>
+<p>Por curioso que resulte, el MAC en Ethernet se basa en el azar. Para enviar algo ocurre lo siguiente:</p>
+<ol class="arabic">
+<li><dl class="first docutils">
+<dt>Si alguien quiere enviar, mira el cable</dt>
+<dd><p class="first last">1.1) Si el cable está libre, envía (o recibe)
+1.2) Si no está libre, espera</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Al enviar (o recibir) pueden pasar dos cosas</dt>
+<dd><p class="first last">2.1) No hay ningún problema
+2.2) Nuestra trama choca con otra (colisión)
+Una colisión es el resultado de la
+destrucción de dos tramas que se
+interfieren mutuamente.</p>
+</dd>
+</dl>
+</li>
+</ol>
+<p>Cuando hay una colisión, los que la sufren deciden esperar a que haya menos congestión, pero ¿cuanto hay que esperar?.</p>
+<p>No se puede esperar un tiempo fijo, porque volveríamos a colisionar. Lo que ocurre es que las máquinas esperan un tiempo al azar, sin embargo el mecanismo es el siguiente</p>
+<ol class="arabic simple">
+<li>Espero un tiempo al azar entre 0 y 1.</li>
+<li>Intento reenviar</li>
+<li>Si hay mucho tráfico quiza mi reenvío tambien sufra una colisión</li>
+<li>Hay que volver a esperar, pero ahora se elige un tiempo al azar entre 0 y 2</li>
+<li>Si vuelve a haber colisiones, se espera más tiempo pero eligiendo entre 0 y 4</li>
+<li>Entre 0 y 8</li>
+<li>Entre 0 y 16</li>
+</ol>
+<p>Ethernet se dice que es &quot;no determinista&quot; es decir no predetermina a nadie a una situación de envío o espera concretas</p>
+</div>
+<div class="section" id="tipos-de-transmision">
+<h2>3.- Tipos de transmisión</h2>
+<div class="section" id="simplex">
+<h3>3.1 Símplex</h3>
+<p>Se denomina símplex a un sistema en el cual una máquina solo recibe o solo transmite. Solo puede hacer una cosa.</p>
+</div>
+<div class="section" id="semiduplex-o-half-duplex">
+<h3>3.2 Semidúplex o half-dúplex</h3>
+<p>Sistema en el cual uno emite y luego recibe, pero no hace las dos cosas a la vez.</p>
+</div>
+<div class="section" id="duplex">
+<h3>3.3 Dúplex</h3>
+<p>Sistema en el cual los participantes pueden enviar y recibir simultáneamente.</p>
+</div>
+<div class="section" id="autonegociados">
+<h3>3.4 Autonegociados</h3>
+<p>No tiene nada que ver con los anteriores. Un switch o router se dice que tiene autonegociación cuando es capaz de detectar si hemos conectado un cable cruzado o uno directo o un switch o un PC.</p>
+<p>Si al conectar dos dispositivos los dos tienen capacidades de negociación el orden de los colores de los cables pierde su importancia, ya que a nivel interno los dispositivos intercambian sus conexiones para que todo funcione correctamente.</p>
+</div>
+</div>
+<div class="section" id="topologias">
+<h2>4. Topologías</h2>
+<p>Se denomina topología al orden en que se disponen los cables y los equipos. Las más utilizadas hoy en día son la siguientes</p>
+<div class="section" id="punto-a-punto">
+<h3>4.1 Punto a punto</h3>
+<p>Es una topología en la que un nodo solo se conecta con otro nodo.</p>
+</div>
+<div class="section" id="multiacceso-o-en-bus">
+<h3>4.2 Multiacceso o en bus</h3>
+<p>Es la utilizada en las tarjetas Ethernet. Estas tarjetas van conectadas a un dispositivo en el cual hay un cable que todas las tarjetas comparten y que se llama bus.</p>
+</div>
+<div class="section" id="anillo">
+<h3>4.2 Anillo</h3>
+<p>Los nodos están conectados de dos en dos formando un círculo. En la red se define un &quot;sentido de giro&quot;. Así cuando alguien quiere enviar información a otro equipo, lo que hace es pasar el paquete al siguiente en la cadena de turnos.</p>
+<p>En este esquema supongamos que los turnos son</p>
+<p>A-&gt;B-&gt;C-&gt;D</p>
+<blockquote>
+<table border="1" class="docutils">
+<colgroup>
+<col width="100%" />
+</colgroup>
+<tbody valign="top">
+<tr><td>D</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<p>+-------+                       +-------+
+|   A   |                       |   C   |
++-------+                       +-------+</p>
+<blockquote>
+<table border="1" class="docutils">
+<colgroup>
+<col width="100%" />
+</colgroup>
+<tbody valign="top">
+<tr><td>B</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<p>Si A quiere enviar a D, se lo pasará a B. B, al ver que no es para él lo pasa al siguiente en la cadena. C, hará lo mismo y lo pasa al siguiente en la cadena. D, al recibirlo lo toma y se completa la transmisión.</p>
+<p>Hoy en día, la fibra óptica utiliza anillos pero de dos en dos. Uno de los anillos se usa para enviar y el otro para recibir.</p>
+</div>
+<div class="section" id="topologias-logicas">
+<h3>4.4 Topologías lógicas</h3>
+<p>Una topología ya montada en una cierta estructura (por ejemplo, bus) puede reprogramarse para actuar como si fuera otra (por ejemplo, topología en anillo).</p>
+<p>En estos casos diríamos que la topología FÍSICA es en bus, aunque hay una topología LÓGICA de anillo.</p>
+</div>
+</div>
+<div class="section" id="id12">
+<h2>5.-Entramado</h2>
+<p>Ya hemos hablado un poco de las tramas. En las tramas hay una pregunta importante ¿por qué no se usa el mismo formato de tramas en todas las redes?</p>
+<p>Respuesta: Porque no todas las redes son iguales. En una red de fibra, la fiabilidad es altísima y no necesitamos añadir mucha información de control de transmisión. Sin embargo, las redes basadas en satélites son muy inestables, por eso necesitan añadir muchas cosas para asegurar que todo llegue.</p>
+</div>
+<div class="section" id="id13">
+<h2>6.- Dispositivos</h2>
+<p>En la capa de enlace existen dos dispositivos básicos: hubs y switch.</p>
+<p>Un hub es un dispositivo que reenvía todo lo que recibe. Esto no es muy eficiente ya que es muy fácil que dos máquinas generen colisiones en el resto de máquinas de una red.</p>
+<p>Los switches no se comportan así. En primer lugar, tienen una memoria RAM y además tienen &quot;capacidad de aprendizaje&quot;. Un switch siempre se fija en la MAC de origen. Si el switch no conocía esa MAC se la apunta y se apunta el puerto por donde vino.</p>
+<p>En poco tiempo, el switch construye una tabla de MACs y puertos y es capaz de enviar los mensajes solo al destinatario correcto. Para ello, el switch analiza las tramas recibidas y se fija en la MAC de origen. Una vez que el switch ha aprendido las MAC de los PC que tiene conectados es capaz de hacer comunicaciones directas sin colisiones. Al ser capaz de ahorrar montones de colisiones, la comunicación con switches es muchísimo más eficiente.</p>
+<p>Si llega información al switch que le diga que tiene que cambiar algo en la tabla, el switch lo hace</p>
+</div>
+<div class="section" id="comandos">
+<h2>7.Comandos</h2>
+<p>(Usuario-&gt;Administrador) enable
+(Administrador-&gt;Config. global) configure terminal
+(Cambia el nombre)  hostname ejemplo
+(Config. global-&gt;Administrado) exit
+(Copiar config.) copy running-config startup-config
+reload</p>
+<p>Switch&gt;enable
+Switch#configure terminal
+Switch(Config)#line console 0
+switch(config-line)#pasword pepito
+switch(config-line)#login
+switch(config-line)#exit
+switch(config)#exit
+switch#copy running-config startup-config
+switch#reload</p>
 </div>
 </div>
 </div>
